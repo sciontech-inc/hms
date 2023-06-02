@@ -1,71 +1,86 @@
 <div id="medical_cases_tab" class="form-tab">
     <h5>MEDICAL CASES</h5>
     <div style="padding: 1em;"></div>
-    <div class="row">
-        <div class="col-6">
-            <div class="form-group date_recorded">
-                <label>DATE RECORDED</label>
-                <input type="date" class="form-control" name="date_recorded" id="date_recorded"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group chief_complaint">
-                <label>CHIEF COMPLAINT <span class="required">*</span></label>
-                <input type="text" class="form-control" name="chief_complaint" id="chief_complaint"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group diagnostic_tests">
-                <label>DIAGNOSTIC TESTS <span class="required">*</span></label>
-                <input type="text" class="form-control" name="diagnostic_tests" id="diagnostic_tests"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group diagnosis">
-                <label>DIAGNOSIS <span class="required">*</span></label>
-                <input type="text" class="form-control" name="diagnosis" id="diagnosis"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group prognosis">
-                <label>PROGNOSIS <span class="required">*</span></label>
-                <input type="text" class="form-control" name="prognosis" id="prognosis"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group physician_notes">
-                <label>PHYSICIAN NOTES <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="physician_notes" id="physician_notes"></textarea>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group nursing_notes">
-                <label>NURSING NOTES <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="nursing_notes" id="nursing_notes"></textarea>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group discharge_summary">
-                <label>DISCHARGE SUMMARY <span class="required">*</span></label>
-                <input type="text" class="form-control" name="discharge_summary" id="discharge_summary"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group street_2">
-                <label>REMARKS <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="remarks" id="remarks"></textarea>
+    <div class="medical-cases-table">
+        <div class="row">
+            <div class="col-12">
+                <table id="medical_cases_table" class="table table-striped" style="width:100%">
+                </table>
             </div>
         </div>
     </div>
     <hr>
-     <!-- <div class="educational-background-table">
-        <div class="row">
-            <div class="col-12">
-                <table id="work_history_table" class="table table-striped" style="width:100%">
-                </table>
+    {{-- MODAL --}}
+    @section('sc-modal')
+    <div class="sc-modal-content" id="medical_cases_form">
+        <div class="sc-modal-dialog">
+            <div class="sc-modal-header">
+                <span class="sc-title-bar"></span>
+                <span class="sc-close" onclick="scion.create.sc_modal('medical_cases_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="sc-modal-body">
+                <form id="medicalcasesForm" method="post" class="form-record">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group date_recorded">
+                                <label>DATE RECORDED</label>
+                                <input type="date" class="form-control" name="date_recorded" id="date_recorded"/>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group chief_complaint">
+                                <label>CHIEF COMPLAINT <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="chief_complaint" id="chief_complaint"/>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group diagnostic_tests">
+                                <label>DIAGNOSTIC TESTS <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="diagnostic_tests" id="diagnostic_tests"/>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group diagnosis">
+                                <label>DIAGNOSIS <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="diagnosis" id="diagnosis"/>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group prognosis">
+                                <label>PROGNOSIS <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="prognosis" id="prognosis"/>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group physician_notes">
+                                <label>PHYSICIAN NOTES <span class="required">*</span></label>
+                                <textarea type="text" class="form-control" name="physician_notes" id="physician_notes"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group nursing_notes">
+                                <label>NURSING NOTES <span class="required">*</span></label>
+                                <textarea type="text" class="form-control" name="nursing_notes" id="nursing_notes"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group discharge_summary">
+                                <label>DISCHARGE SUMMARY <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="discharge_summary" id="discharge_summary"/>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group street_2">
+                                <label>REMARKS <span class="required">*</span></label>
+                                <textarea type="text" class="form-control" name="remarks" id="remarks"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </div> -->
+    </div>
+    @endsection
 </div>
 
 

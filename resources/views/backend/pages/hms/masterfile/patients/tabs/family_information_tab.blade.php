@@ -1,115 +1,130 @@
 <div id="family_information_tab" class="form-tab">
     <h5>FAMILY INFORMATION</h5>
     <div style="padding: 1em;"></div>
-    <div class="row">
-        <div class="col-4">
-            <div class="form-group">
-                <label>FIRST NAME</label>
-                <div class="total_hours">
-                    <input type="text" id="firstname" name="firstname" class="form-control"/>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="form-group">
-                <label>MIDDLE NAME</label>
-                <div class="total_hours">
-                    <input type="text" id="middlename" name="middlename" class="form-control"/>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="form-group">
-                <label>LAST NAME</label>
-                <div class="total_hours">
-                    <input type="text" id="lastname" name="lastname" class="form-control"/>
-                </div>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="form-group">
-                <label>BIRTH DATE</label>
-                <div class="total_hours">
-                    <input type="date" id="birthdate" name="birthdate" class="form-control"/>
-                </div>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="form-group">
-                <label>RELATIONSHIP</label>
-                <div class="total_hours">
-                    <input type="text" id="relationship" name="relationship" class="form-control"/>
-                </div>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="form-group status">
-                <label>GENDER</label>
-                <select name="gender" id="gender" class="form-control">
-                    <option value="MALE">MALE</option>
-                    <option value="FEMALE">FEMALE</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="form-group">
-                <label>CITIZENSHIP</label>
-                <div class="total_hours">
-                    <input type="text" id="citizenship" name="citizenship" class="form-control"/>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="form-group">
-                <label>ADDRESS</label>
-                <div class="total_hours">
-                    <input type="text" id="address" name="address" class="form-control"/>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="form-group">
-                <label>CONTACT NO.</label>
-                <div class="total_hours">
-                    <input type="number" id="contact_no" name="contact_no" class="form-control"/>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="form-group">
-                <label>EMAIL ADDRESS</label>
-                <div class="total_hours">
-                    <input type="email" id="email" name="email" class="form-control"/>
-                </div>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group">
-                <label>BENEFICIARY DESIGNATION</label>
-                <div class="total_hours">
-                    <input type="text" id="beneficiary_designation" name="beneficiary_designation" class="form-control"/>
-                </div>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group">
-                <label>ADDITIONAL INFORMATION</label>
-                <div class="total_hours">
-                    <input type="text" id="additional_information" name="additional_information" class="form-control"/>
-                </div>
-            </div>
-        </div>
-       
-    </div>
-    <hr>
-    <!-- <div class="educational-background-table">
+    <div class="family-information-table">
         <div class="row">
             <div class="col-12">
-                <table id="work_history_table" class="table table-striped" style="width:100%">
+                <table id="family_information_table" class="table table-striped" style="width:100%">
                 </table>
             </div>
         </div>
-    </div> -->
+    </div>
+    <hr>
+    {{-- MODAL --}}
+    @section('sc-modal')
+    <div class="sc-modal-content" id="family_information_form">
+        <div class="sc-modal-dialog">
+            <div class="sc-modal-header">
+                <span class="sc-title-bar"></span>
+                <span class="sc-close" onclick="scion.create.sc_modal('family_information_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="sc-modal-body">
+                <form id="familyinformationForm" method="post" class="form-record">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>FIRST NAME</label>
+                                <div class="total_hours">
+                                    <input type="text" id="firstname" name="firstname" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>MIDDLE NAME</label>
+                                <div class="total_hours">
+                                    <input type="text" id="middlename" name="middlename" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>LAST NAME</label>
+                                <div class="total_hours">
+                                    <input type="text" id="lastname" name="lastname" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>BIRTH DATE</label>
+                                <div class="total_hours">
+                                    <input type="date" id="birthdate" name="birthdate" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>RELATIONSHIP</label>
+                                <div class="total_hours">
+                                    <input type="text" id="relationship" name="relationship" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group status">
+                                <label>GENDER</label>
+                                <select name="gender" id="gender" class="form-control">
+                                    <option value="MALE">MALE</option>
+                                    <option value="FEMALE">FEMALE</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>CITIZENSHIP</label>
+                                <div class="total_hours">
+                                    <input type="text" id="citizenship" name="citizenship" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>ADDRESS</label>
+                                <div class="total_hours">
+                                    <input type="text" id="address" name="address" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>CONTACT NO.</label>
+                                <div class="total_hours">
+                                    <input type="number" id="contact_no" name="contact_no" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>EMAIL ADDRESS</label>
+                                <div class="total_hours">
+                                    <input type="email" id="email" name="email" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>BENEFICIARY DESIGNATION</label>
+                                <div class="total_hours">
+                                    <input type="text" id="beneficiary_designation" name="beneficiary_designation" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>ADDITIONAL INFORMATION</label>
+                                <div class="total_hours">
+                                    <input type="text" id="additional_information" name="additional_information" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @endsection
+
 </div>
 
 

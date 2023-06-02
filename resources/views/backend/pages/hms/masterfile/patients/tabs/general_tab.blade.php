@@ -137,5 +137,23 @@
                 <input type="text" class="form-control" name="referred_by" id="referred_by"/>
             </div>
         </div>
+        <div class="col-12">
+            <div class="form-group referred_by">
+                <label>REFERRED BY</label>
+                <input type="text" class="form-control" name="referred_by" id="referred_by"/>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group referred_by">
+                <label>REFERRED BY</label>
+                <input type="text" class="form-control" name="referred_by" id="referred_by"/>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group referred_by">
+                <label>REFERRED BY</label>
+                <input type="text" class="form-control" name="referred_by" id="referred_by"/>
+            </div>
+        </div>
     </div>
 </div>

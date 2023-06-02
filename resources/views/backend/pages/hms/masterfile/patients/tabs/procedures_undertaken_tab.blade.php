@@ -1,77 +1,92 @@
 <div id="procedures_undertaken_tab" class="form-tab">
     <h5>PROCEDURES UNDERTAKEN</h5>
     <div style="padding: 1em;"></div>
-    <div class="row">
-        <div class="col-6">
-            <div class="form-group procedure_date">
-                <label>DATE OF PROCEDURE</label>
-                <input type="date" class="form-control" name="procedure_date" id="procedure_date"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group chief_complaint">
-                <label>PROCEDURE NAME <span class="required">*</span></label>
-                <input type="text" class="form-control" name="chief_complaint" id="chief_complaint"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group procedure_description">
-                <label>PROCEDURE DESCRIPTION <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="procedure_description" id="procedure_description"></textarea>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group reason">
-                <label>REASON <span class="required">*</span></label>
-                <input type="text" class="form-control" name="reason" id="reason"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group result">
-                <label>RESULTS OF THE PROCEDURE <span class="required">*</span></label>
-                <input type="text" class="form-control" name="result" id="result"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group preprocedure_preparation">
-                <label>PRE-PROCEDURE PREPARATION<span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="preprocedure_preparation" id="preprocedure_preparation"></textarea>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group postprocedure_preparation">
-                <label>POST-PROCEDURE PREPARATION <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="postprocedure_preparation" id="postprocedure_preparation"></textarea>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group complications">
-                <label>COMPLICATIONS <span class="required">*</span></label>
-                <input type="text" class="form-control" name="complications" id="complications"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group sedation_used">
-                <label>SEDATION USED <span class="required">*</span></label>
-                <input type="text" class="form-control" name="sedation_used" id="sedation_used"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group street_2">
-                <label>REMARKS <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="remarks" id="remarks"></textarea>
+    <div class="procedures-undertaken-table">
+        <div class="row">
+            <div class="col-12">
+                <table id="procedures_undertaken_table" class="table table-striped" style="width:100%">
+                </table>
             </div>
         </div>
     </div>
     <hr>
-     <!-- <div class="educational-background-table">
-        <div class="row">
-            <div class="col-12">
-                <table id="work_history_table" class="table table-striped" style="width:100%">
-                </table>
+    {{-- MODAL --}}
+    @section('sc-modal')
+    <div class="sc-modal-content" id="procedures_undertaken_form">
+        <div class="sc-modal-dialog">
+            <div class="sc-modal-header">
+                <span class="sc-title-bar"></span>
+                <span class="sc-close" onclick="scion.create.sc_modal('procedures_undertaken_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="sc-modal-body">
+                <form id="procedurestakenForm" method="post" class="form-record">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group procedure_date">
+                                <label>DATE OF PROCEDURE</label>
+                                <input type="date" class="form-control" name="procedure_date" id="procedure_date"/>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group procedure_name">
+                                <label>PROCEDURE NAME <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="procedure_name" id="procedure_name"/>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group procedure_description">
+                                <label>PROCEDURE DESCRIPTION <span class="required">*</span></label>
+                                <textarea type="text" class="form-control" name="procedure_description" id="procedure_description"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group reason">
+                                <label>REASON <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="reason" id="reason"/>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group result">
+                                <label>RESULTS OF THE PROCEDURE <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="result" id="result"/>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group preprocedure_preparation">
+                                <label>PRE-PROCEDURE PREPARATION<span class="required">*</span></label>
+                                <textarea type="text" class="form-control" name="preprocedure_preparation" id="preprocedure_preparation"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group postprocedure_preparation">
+                                <label>POST-PROCEDURE PREPARATION <span class="required">*</span></label>
+                                <textarea type="text" class="form-control" name="postprocedure_preparation" id="postprocedure_preparation"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group complications">
+                                <label>COMPLICATIONS <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="complications" id="complications"/>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group sedation_used">
+                                <label>SEDATION USED <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="sedation_used" id="sedation_used"/>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group street_2">
+                                <label>REMARKS <span class="required">*</span></label>
+                                <textarea type="text" class="form-control" name="remarks" id="remarks"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </div> -->
+    </div>
+    @endsection
 </div>
 
 

@@ -227,64 +227,249 @@ function contact_addresses_func() {
 
 function family_information_func() {
     module_content = 'family_information';
+    modal_content = 'family_information';
     module_url = '/hms/family-information';
     actions = 'update';
-    module_type = 'sub_transaction';
-    scion.centralized_button(true, true, true, true);
+    module_type = 'custom';
+    scion.centralized_button(false, true, true, true);
+
+    
+    if ($.fn.DataTable.isDataTable('#family_information_table')) {
+        $('#family_information_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'family_information_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "firstname", title: "FIRST NAME" },
+            { data: "lastname", title: "LAST NAME" },
+            { data: "relationship", title: "RELATIONSHIP" },
+        ], 'Bfrtip', []
+    );
 }
 
 function medical_cases_func() {
     module_content = 'medical_cases';
+    modal_content = 'medical_cases';
     module_url = '/hms/medical-cases';
     actions = 'update';
-    module_type = 'sub_transaction';
-    scion.centralized_button(true, true, true, true);
+    module_type = 'custom';
+    scion.centralized_button(false, true, true, true);
+
+    if ($.fn.DataTable.isDataTable('#medical_cases_table')) {
+        $('#medical_cases_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'medical_cases_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "date_recorded", title: "DATE RECORDED" },
+            { data: "chief_complaint", title: "CHIEF COMPLAINT" },
+            { data: "diagnosis", title: "DIAGNOSIS" },
+            { data: "prognosis", title: "PROGNOSIS" },
+        ], 'Bfrtip', []
+    );
 }
 
 function drugs_medicine_taken_func() {
     module_content = 'drugs_medicine_taken';
+    modal_content = 'drugs_medicine_taken';
     module_url = '/hms/drugs-medicine-taken';
     actions = 'update';
-    module_type = 'sub_transaction';
+    module_type = 'custom';
     scion.centralized_button(true, true, true, true);
+
+    if ($.fn.DataTable.isDataTable('#drugs_medicine_taken_table')) {
+        $('#drugs_medicine_taken_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'drugs_medicine_taken_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "name", title: "NAME" },
+            { data: "doses", title: "DOSES" },
+            { data: "reason", title: "REASON" },
+            { data: "duration", title: "DURATION" },
+        ], 'Bfrtip', []
+    );
 }
 
 function procedures_undertaken_func() {
     module_content = 'procedures_undertaken';
+    modal_content = 'procedures_undertaken';
     module_url = '/hms/procedures-undertaken';
     actions = 'update';
-    module_type = 'sub_transaction';
+    module_type = 'custom';
     scion.centralized_button(true, true, true, true);
+
+    if ($.fn.DataTable.isDataTable('#drugs_medicine_taken_table')) {
+        $('#drugs_medicine_taken_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'drugs_medicine_taken_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "procedure_date", title: "DATE OF PROCEDURE" },
+            { data: "procedure_name", title: "PROCEDURE NAME" },
+            { data: "result", title: "RESULT" },
+            { data: "complications", title: "COMPLICATIONS" },
+        ], 'Bfrtip', []
+    );
 }
 
 function allergies_func() {
     module_content = 'allergies';
+    modal_content = 'allergies';
     module_url = '/hms/allergies';
     actions = 'update';
-    module_type = 'sub_transaction';
+    module_type = 'custom';
+    scion.centralized_button(false, true, true, true);
+
+    if ($.fn.DataTable.isDataTable('#allergies_table')) {
+        $('#allergies_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'allergies_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "allergen", title: "ALLERGEN" },
+            { data: "reaction", title: "REACTION" },
+            { data: "prognosis", title: "PROGNOSIS" },
+        ], 'Bfrtip', []
+    );
+}
+
+function progress_consultation_func() {
+    module_content = 'progress_consultation';
+    modal_content = 'progress_consultation';
+    module_url = '/hms/progress_consultation';
+    actions = 'update';
+    module_type = 'custom';
     scion.centralized_button(true, true, true, true);
+
+    if ($.fn.DataTable.isDataTable('#progress_consultation_table')) {
+        $('#progress_consultation_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'progress_consultation_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "date", title: "DATE" },
+            { data: "title", title: "TITLE" },
+            { data: "notes", title: "NOTES" },
+        ], 'Bfrtip', []
+    );
+}
+
+function vital_measurement_func() {
+    module_content = 'vital_measurement';
+    modal_content = 'vital_measurement';
+    module_url = '/hms/vital_measurement';
+    actions = 'update';
+    module_type = 'custom';
+    scion.centralized_button(true, true, true, true);
+
+    if ($.fn.DataTable.isDataTable('#vital_measurement_table')) {
+        $('#vital_measurement_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'vital_measurement_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "date", title: "DATE" },
+            { data: "remarks", title: "REMARKS" },
+        ], 'Bfrtip', []
+    );
 }
 
 function family_medical_history_func() {
     module_content = 'family_medical_history';
+    modal_content = 'family_medical_history';
     module_url = '/hms/family-medical-history';
     actions = 'update';
-    module_type = 'sub_transaction';
+    module_type = 'custom';
     scion.centralized_button(true, true, true, true);
+    
+    if ($.fn.DataTable.isDataTable('#family_medical_history_table')) {
+        $('#family_medical_history_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'family_medical_history_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "relationship", title: "RELATIONSHIP" },
+            { data: "medical_condition", title: "MEDICAL CONDITION" },
+            { data: "remarks", title: "REMARKS" },
+        ], 'Bfrtip', []
+    );
+
 }
 
 function social_history_func() {
     module_content = 'social_history';
+    modal_content = 'social_history';
     module_url = '/hms/social-history';
+    actions = 'update';
+    module_type = 'custom';
+    scion.centralized_button(true, true, true, true);
+
+    if ($.fn.DataTable.isDataTable('#social_history_table')) {
+        $('#social_history_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'social_history_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "records", title: "RECORDS" },
+            { data: "details", title: "DETAILS" },
+        ], 'Bfrtip', []
+    );
+}
+
+function other_information_func() {
+    module_content = 'other_information';
+    modal_content = 'other_information';
+    module_url = '/hms/other-information';
+    actions = 'update';
+    module_type = 'custom';
+    scion.centralized_button(true, true, true, true);
+
+    if ($.fn.DataTable.isDataTable('#other_information_table')) {
+        $('#other_information_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'other_information_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "description", title: "DESCRIPTION" },
+            { data: "remarks", title: "REMARKS" },
+        ], 'Bfrtip', []
+    );
+
+}
+
+function document_func() {
+    module_content = 'document';
+    module_url = '/hms/document';
     actions = 'update';
     module_type = 'sub_transaction';
     scion.centralized_button(true, true, true, true);
 }
 
-function other_information_func() {
-    module_content = 'other_information';
-    module_url = '/hms/other-information';
-    actions = 'update';
-    module_type = 'sub_transaction';
-    scion.centralized_button(true, true, true, true);
+function modalShowFunction() {
+    scion.centralized_button(true, false, true, true);
+}
+
+function modalHideFunction() {
+    scion.centralized_button(false, true, true, true);
 }

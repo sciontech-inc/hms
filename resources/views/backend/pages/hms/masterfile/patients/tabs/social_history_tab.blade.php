@@ -1,30 +1,48 @@
 <div id="social_history_tab" class="form-tab">
     <h5>SOCIAL HISTORY</h5>
     <div style="padding: 1em;"></div>
-    <div class="row">
-        <div class="col-12">
-            <div class="form-group description">
-                <label>DESCRIPTION <span class="required">*</span></label>
-                <input type="text" class="form-control" name="description" id="description"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group remarks">
-                <label>REMARKS <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="remarks" id="remarks"></textarea>
+    <hr>
+    <div class="social-history-table">
+        <div class="row">
+            <div class="col-12">
+                <table id="social_history_table" class="table table-striped" style="width:100%">
+                </table>
             </div>
         </div>
     </div>
     <hr>
-     <!-- <div class="educational-background-table">
-        <div class="row">
-            <div class="col-12">
-                <table id="work_history_table" class="table table-striped" style="width:100%">
-                </table>
+    {{-- MODAL --}}
+    @section('sc-modal')
+    <div class="sc-modal-content" id="social_history_form">
+        <div class="sc-modal-dialog">
+            <div class="sc-modal-header">
+                <span class="sc-title-bar"></span>
+                <span class="sc-close" onclick="scion.create.sc_modal('social_history_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="sc-modal-body">
+                <form id="socialhistoryForm" method="post" class="form-record">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group description">
+                                <label>RECORD <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="description" id="description"/>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group remarks">
+                                <label>DETAILS <span class="required">*</span></label>
+                                <textarea type="text" class="form-control" name="details" id="details"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </div> -->
+    </div>
+    @endsection
 </div>
+
+
 
 @section('styles')
 <style>

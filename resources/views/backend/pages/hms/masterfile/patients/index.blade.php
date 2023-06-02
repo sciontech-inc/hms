@@ -17,10 +17,12 @@
             array('id'=>'drugs_medicine_taken', 'title'=>'DRUGS & MEDICINE TAKEN', 'icon'=>' fas fa-prescription', 'active'=>false, 'disabled'=>false, 'function'=>true),
             array('id'=>'procedures_undertaken', 'title'=>'PROCEDURES UNDERTAKEN', 'icon'=>' fas fa-procedures', 'active'=>false, 'disabled'=>false, 'function'=>true),
             array('id'=>'allergies', 'title'=>'ALLERGIES', 'icon'=>' fas fa-allergies', 'active'=>false, 'disabled'=>false, 'function'=>true),
+            array('id'=>'progress_consultation', 'title'=>'PROGRESS NOTES & CONSULTATION', 'icon'=>' fas fa-notes-medical', 'active'=>false, 'disabled'=>false, 'function'=>true),
+            array('id'=>'vital_measurement', 'title'=>'VITAL SIGNS & MEASUREMENTS', 'icon'=>' fas fa-file-medical-alt', 'active'=>false, 'disabled'=>false, 'function'=>true),
             array('id'=>'family_medical_history', 'title'=>'FAMILY MEDICAL HISTORY', 'icon'=>' fas fa-user-clock', 'active'=>false, 'disabled'=>false, 'function'=>true),
             array('id'=>'social_history', 'title'=>'SOCIAL HISTORY', 'icon'=>' fas fa-user-friends', 'active'=>false, 'disabled'=>false, 'function'=>true),
             array('id'=>'other_information', 'title'=>'OTHER INFORMATION', 'icon'=>' fas fa-exclamation-circle', 'active'=>false, 'disabled'=>false, 'function'=>true),
-
+            array('id'=>'document', 'title'=>'DOCUMENTS', 'icon'=>' fas fa-file-alt', 'active'=>false, 'disabled'=>false, 'function'=>true),
         )
     ])
 @endsection
@@ -39,9 +41,12 @@
                     @include('backend.pages.hms.masterfile.patients.tabs.drugs_medicine_taken_tab')
                     @include('backend.pages.hms.masterfile.patients.tabs.procedures_undertaken_tab')
                     @include('backend.pages.hms.masterfile.patients.tabs.allergies_tab')
+                    @include('backend.pages.hms.masterfile.patients.tabs.progress_consultation_tab')
+                    @include('backend.pages.hms.masterfile.patients.tabs.vital_measurement_tab')
                     @include('backend.pages.hms.masterfile.patients.tabs.family_medical_history_tab')
                     @include('backend.pages.hms.masterfile.patients.tabs.social_history_tab')
                     @include('backend.pages.hms.masterfile.patients.tabs.other_information_tab')
+                    @include('backend.pages.hms.masterfile.patients.tabs.document_tab')
                 </form>
             </div>
         </div>

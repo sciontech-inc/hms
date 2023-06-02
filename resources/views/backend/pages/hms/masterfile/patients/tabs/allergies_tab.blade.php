@@ -1,101 +1,116 @@
 <div id="allergies_tab" class="form-tab">
     <h5>ALLERGIES</h5>
     <div style="padding: 1em;"></div>
-    <div class="row">
-        <div class="col-6">
-            <div class="form-group allergen">
-                <label>ALLERGEN <span class="required">*</span></label>
-                <input type="text" class="form-control" name="allergen" id="allergen"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group reaction">
-                <label>REACTION <span class="required">*</span></label>
-                <input type="text" class="form-control" name="reaction" id="reaction"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group severity">
-                <label>SEVERITY <span class="required">*</span></label>
-                <input type="text" class="form-control" name="severity" id="severity"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group prognosis">
-                <label>DATE OF ONSET</label>
-                <input type="date" class="form-control" name="date_of_onset" id="date_of_onset"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group treatment">
-                <label>TREATMENT <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="treatment" id="treatment"></textarea>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group duration">
-                <label>DURATION <span class="required">*</span></label>
-                <input type="text" class="form-control" name="duration" id="duration"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group source_of_information">
-                <label>SOURCE OF INFORMATION <span class="required">*</span></label>
-                <input type="text" class="form-control" name="source_of_information" id="source_of_information"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group known_cross_reactives">
-                <label>KNOWN CROSS-REACTIVES <span class="required">*</span></label>
-                <input type="text" class="form-control" name="known_cross_reactives" id="known_cross_reactives"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group current_management_plan">
-                <label>CURRENT MANAGEMENT PLAN <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="current_management_plan" id="current_management_plan"></textarea>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group medications_to_avoid">
-                <label>MEDICATIONS TO AVOID <span class="required">*</span></label>
-                <input type="text" class="form-control" name="medications_to_avoid" id="medications_to_avoid"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group severity_of_reaction_to_each_medication">
-                <label>SEVERITY OF REACTION TO EACH MEDICATION<span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="severity_of_reaction_to_each_medication" id="severity_of_reaction_to_each_medication"></textarea>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group anaphylaxis">
-                <label>ANAPHYLAXIS <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="anaphylaxis" id="anaphylaxis"></textarea>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group allergy_testing">
-                <label>ALLERGY TESTING <span class="required">*</span></label>
-                <input type="text" class="form-control" name="allergy_testing" id="allergy_testing"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group other_relevant_medical_history">
-                <label>OTHER RELEVANT MEDICAL HISTORY <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="other_relevant_medical_history" id="other_relevant_medical_history"></textarea>
+    <div class="allergies-table">
+        <div class="row">
+            <div class="col-12">
+                <table id="allergies_table" class="table table-striped" style="width:100%">
+                </table>
             </div>
         </div>
     </div>
     <hr>
-     <!-- <div class="educational-background-table">
-        <div class="row">
-            <div class="col-12">
-                <table id="work_history_table" class="table table-striped" style="width:100%">
-                </table>
+    {{-- MODAL --}}
+    @section('sc-modal')
+    <div class="sc-modal-content" id="allergies_form">
+        <div class="sc-modal-dialog">
+            <div class="sc-modal-header">
+                <span class="sc-title-bar"></span>
+                <span class="sc-close" onclick="scion.create.sc_modal('allergies_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="sc-modal-body">
+                <form id="allergiesForm" method="post" class="form-record">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group allergen">
+                                <label>ALLERGEN <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="allergen" id="allergen"/>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group reaction">
+                                <label>REACTION <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="reaction" id="reaction"/>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group severity">
+                                <label>SEVERITY <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="severity" id="severity"/>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group prognosis">
+                                <label>DATE OF ONSET</label>
+                                <input type="date" class="form-control" name="date_of_onset" id="date_of_onset"/>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group treatment">
+                                <label>TREATMENT <span class="required">*</span></label>
+                                <textarea type="text" class="form-control" name="treatment" id="treatment"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group duration">
+                                <label>DURATION <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="duration" id="duration"/>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group source_of_information">
+                                <label>SOURCE OF INFORMATION <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="source_of_information" id="source_of_information"/>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group known_cross_reactives">
+                                <label>KNOWN CROSS-REACTIVES <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="known_cross_reactives" id="known_cross_reactives"/>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group current_management_plan">
+                                <label>CURRENT MANAGEMENT PLAN <span class="required">*</span></label>
+                                <textarea type="text" class="form-control" name="current_management_plan" id="current_management_plan"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group medications_to_avoid">
+                                <label>MEDICATIONS TO AVOID <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="medications_to_avoid" id="medications_to_avoid"/>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group severity_of_reaction_to_each_medication">
+                                <label>SEVERITY OF REACTION TO EACH MEDICATION<span class="required">*</span></label>
+                                <textarea type="text" class="form-control" name="severity_of_reaction_to_each_medication" id="severity_of_reaction_to_each_medication"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group anaphylaxis">
+                                <label>ANAPHYLAXIS <span class="required">*</span></label>
+                                <textarea type="text" class="form-control" name="anaphylaxis" id="anaphylaxis"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group allergy_testing">
+                                <label>ALLERGY TESTING <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="allergy_testing" id="allergy_testing"/>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group other_relevant_medical_history">
+                                <label>OTHER RELEVANT MEDICAL HISTORY <span class="required">*</span></label>
+                                <textarea type="text" class="form-control" name="other_relevant_medical_history" id="other_relevant_medical_history"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </div> -->
+    </div>
+    @endsection
 </div>
 
 
