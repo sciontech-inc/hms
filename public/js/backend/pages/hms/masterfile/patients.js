@@ -225,6 +225,31 @@ function contact_addresses_func() {
     scion.centralized_button(true, true, true, true);
 }
 
+function insurance_func() {
+    module_content = 'insurance';
+    modal_content = 'insurance';
+    module_url = '/hms/insurance';
+    actions = 'update';
+    module_type = 'custom';
+    scion.centralized_button(false, true, true, true);
+
+    
+    if ($.fn.DataTable.isDataTable('#insurance_table')) {
+        $('#insurance_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'insurance_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "provider", title: "PROVIDER" },
+            { data: "type", title: "TYPE" },
+            { data: "policy_no", title: "POLICY NO./GROUP NO." },
+        ], 'Bfrtip', []
+    );
+}
+
+
 function family_information_func() {
     module_content = 'family_information';
     modal_content = 'family_information';

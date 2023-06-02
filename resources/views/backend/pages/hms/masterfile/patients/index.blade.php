@@ -12,6 +12,7 @@
         'data'=>array(
             array('id'=>'general', 'title'=>'GENERAL', 'icon'=>' fas fa-file-alt', 'active'=>true, 'disabled'=>false, 'function'=>true),
             array('id'=>'contact_addresses', 'title'=>'CONTACT & ADDRESSES', 'icon'=>' fas fa-mobile-alt', 'active'=>false, 'disabled'=>false, 'function'=>true),
+            array('id'=>'insurance', 'title'=>'INSURANCE', 'icon'=>' fas fa-clipboard-list', 'active'=>false, 'disabled'=>false, 'function'=>true),
             array('id'=>'family_information', 'title'=>'FAMILY INFORMATION', 'icon'=>' fas fa-users', 'active'=>false, 'disabled'=>false, 'function'=>true),
             array('id'=>'medical_cases', 'title'=>'MEDICAL CASES', 'icon'=>' fas fa-briefcase-medical', 'active'=>false, 'disabled'=>false, 'function'=>true),
             array('id'=>'drugs_medicine_taken', 'title'=>'DRUGS & MEDICINE TAKEN', 'icon'=>' fas fa-prescription', 'active'=>false, 'disabled'=>false, 'function'=>true),
@@ -36,6 +37,7 @@
                 <form class="form-record" method="post" id="employeeInformation">
                     @include('backend.pages.hms.masterfile.patients.tabs.general_tab')
                     @include('backend.pages.hms.masterfile.patients.tabs.contact_addresses_tab')
+                    @include('backend.pages.hms.masterfile.patients.tabs.insurance_tab')
                     @include('backend.pages.hms.masterfile.patients.tabs.family_information_tab')
                     @include('backend.pages.hms.masterfile.patients.tabs.medical_cases_tab')
                     @include('backend.pages.hms.masterfile.patients.tabs.drugs_medicine_taken_tab')
