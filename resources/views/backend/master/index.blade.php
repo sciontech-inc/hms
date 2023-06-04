@@ -8,12 +8,14 @@
     <title>Business Solutions</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
     <script src="{{asset('/js/jquery.validate.min.js')}}" ></script>
     <script src="{{asset('/plugins/moment.js')}}" ></script>
     <link href="{{{ URL::asset('backend/css/modern.css') }}}" rel="stylesheet">
     <link href="{{asset('/plugins/toastr/toastr.min.css')}}" rel="stylesheet">
     <link href="{{asset('/css/custom.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
+
     {{-- <script src="{{{ URL::asset('backend/js/settings.js') }}}"></script> --}}
     <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     @yield('scripts')
@@ -64,7 +66,7 @@
         });
 
     </script>
-    
+
 </head>
 <body>
     <div class="wrapper">
@@ -108,10 +110,10 @@
             </div>
             @include('backend.partial.footer')
         </div>
-        
+
     </div>
 
-    
+
     <div class="modal fade" id="deleteMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -132,6 +134,8 @@
     <script src="{{ URL::asset('backend/js/app.js') }}"></script>
 
     <script src="{{asset('/plugins/cropimg/cropzee.js')}}" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}" ></script>
     <script src="{{asset('/js/global.js')}}" ></script>
     <script>
@@ -140,7 +144,7 @@
 			$('#datatables-basic').DataTable({
 				responsive: true
 			});
-            
+
 			// Datatables with Buttons
 			var datatablesButtons = $('#datatables-buttons').DataTable({
 				lengthChange: !1,
@@ -148,10 +152,10 @@
 				responsive: true
 			});
 			datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)");
-            
+
 		});
 	</script>
-    
+
     @yield('chart-js')
 </body>
 </html>
