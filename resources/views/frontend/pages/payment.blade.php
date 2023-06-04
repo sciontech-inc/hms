@@ -55,7 +55,7 @@ input[type="radio"]:checked + label {
             <span class="sc-close" onclick="scion.create.sc_modal('online_payment_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
         </div>
         <div class="sc-modal-body">
-            <form method="post" id="onlineAppointmentForm" class="form-record">
+            <form method="post" id="onlinePaymentForm" class="form-record">
             <ul>
                 <li><a href="#validation-step-1">INVOICE DETAILS<br /><small></small></a></li>
                 <li><a href="#validation-step-2">PAYMENT DETAILS<br /><small></small></a></li>
@@ -185,7 +185,7 @@ input[type="radio"]:checked + label {
 				showStepURLhash: false
 			});
 			// Validation
-			var $validationForm = $("#onlineAppointmentForm");
+			var $validationForm = $("#onlinePaymentForm");
 			$validationForm.validate({
 				errorPlacement: function errorPlacement(error, element) {
 					$(element).parents(".form-group").append(

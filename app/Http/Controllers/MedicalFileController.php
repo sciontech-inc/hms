@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\OnlinePayment;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\MedicalFile;
 use Auth;
-use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use App\Traits\UploadTrait;
 
-class OnlinePaymentController extends Controller
+class MedicalFileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,17 +19,22 @@ class OnlinePaymentController extends Controller
      */
     public function index()
     {
-        return view('frontend.pages.payment');
+        return view('backend.pages.hms.transaction.medical_file');
     }
 
     public function get() {
         if(request()->ajax()) {
-            return datatables()->of(OnlinePayment::get())
+            return datatables()->of(MedicalFile::get())
             ->addIndexColumn()
             ->make(true);
         }
     }
 
+    public function index2()
+    {
+        $files = MedicalFile::orderBy('id')->get();
+        return view('frontend.pages.medical_file', compact('files'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -46,34 +54,31 @@ class OnlinePaymentController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'invoice_number' => ['required'],
-            'contact_no'=> ['required'],
-            'email' =>  ['required', 'email'],
-            'payment_type' => ['required'],
-            'amount' => ['required'],
+            'filename' => ['required'],
+            'file'=> ['required'],
 
         ]);
-        
-        $dt = Carbon::now();
 
-        $request['payment_date'] = $dt;
+        $request['file'] = $this->uploadFile($request->file, '/images/hms/', date('Ymdhis'));
+        
+
+        $request['password'] = Hash::make('P@ssword');
         $request['workstation_id'] = Auth::user()->workstation_id;
         $request['created_by'] = Auth::user()->id;
         $request['updated_by'] = Auth::user()->id;
 
-        OnlinePayment::create($request->all());
+        MedicalFile::create($request->all());
 
         return response()->json(compact('validate'));
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\OnlinePayment  $onlinePayment
+     * @param  \App\MedicalFile  $medicalFile
      * @return \Illuminate\Http\Response
      */
-    public function show(OnlinePayment $onlinePayment)
+    public function show(MedicalFile $medicalFile)
     {
         //
     }
@@ -81,43 +86,34 @@ class OnlinePaymentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\OnlinePayment  $onlinePayment
+     * @param  \App\MedicalFile  $medicalFile
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(MedicalFile $medicalFile)
     {
-        $online_payment = OnlinePayment::where('id', $id)->orderBy('id')->firstOrFail();
-        return response()->json(compact('online_payment'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\OnlinePayment  $onlinePayment
+     * @param  \App\MedicalFile  $medicalFile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, MedicalFile $medicalFile)
     {
-        $request['updated_by'] = Auth::user()->id;
-        OnlinePayment::find($id)->update($request->all());
-        return "Record Saved";
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\OnlinePayment  $onlinePayment
+     * @param  \App\MedicalFile  $medicalFile
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(MedicalFile $medicalFile)
     {
-        $record = $request->data;
-
-        foreach($record as $item) {
-            OnlinePayment::find($item)->delete();
-        }
-        
-        return 'Record Deleted';
+        //
     }
 }

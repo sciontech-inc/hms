@@ -22,14 +22,28 @@
             <li class="sidebar-item">
                 <a href="/online/online_appointment" class="sidebar-link collapsed">
                     <span class="item">
-                        <i class="align-middle mr-2 fas fa-fw fa-tachometer-alt"></i> <span class="align-middle">APPOINTMENT</span>
+                        <i class="align-middle mr-2 fas fa-fw fa-calendar-plus"></i> <span class="align-middle">APPOINTMENT</span>
                     </span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="/online/online_payment" class="sidebar-link collapsed">
                     <span class="item">
-                        <i class="align-middle mr-2 fas fa-fw fa-tachometer-alt"></i> <span class="align-middle">PAYMENT</span>
+                        <i class="align-middle mr-2 fas fa-fw fa-money-bill"></i> <span class="align-middle">PAYMENT</span>
+                    </span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="/online/online_queue" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-clipboard-list"></i> <span class="align-middle">QUEUE</span>
+                    </span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="/online/medical_files" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-file-medical"></i> <span class="align-middle">MEDICAL FILES</span>
                     </span>
                 </a>
             </li>
