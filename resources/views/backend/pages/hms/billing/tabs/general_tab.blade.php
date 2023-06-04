@@ -100,4 +100,44 @@
         </div>
     </div>
 </div>
+
+<div class="sc-modal-content" id="payment_form">
+    <div class="sc-modal-dialog">
+        <div class="sc-modal-header">
+            <span class="sc-title-bar"></span>
+            <span class="sc-close" onclick="scion.create.sc_modal('payment_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+        </div>
+        <div class="sc-modal-body">
+            <form method="post" id="workAssignmentsForm" class="form-record">
+                <div class="row">
+                    <div class="form-group col-md-12 title">
+                        <label>AMOUNT</label>
+                        <input type="number" class="form-control" id="amount" name="amount" placeholder="AMOUNT"/>
+                    </div>
+                    <div class="form-group col-md-12 status">
+                        <label>PAYMENT METHOD</label>
+                        <select class="form-control" name="billing_status" id="billing_status">
+                            <option value="ONLINE PAYMENT">ONLINE PAYMENT</option>
+                            <option value="CHEQUE">INSURANCE CLAIM</option>
+                            <option value="BANK DEPOSIT">PAID IN FULL</option>
+                            <option value="CASH">PARTIALLY PAID</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-12 title">
+                        <label>DATE</label>
+                        <input type="date" class="form-control" id="payment_date" name="payment_date"/>
+                    </div>
+                    <div class="form-group col-md-12 title">
+                        <label>REMARKS</label>
+                        <textarea type="text" class="form-control" name="remarks" id="remarks" cols="30" rows="3" placeholder="REMARKS"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
+
+
+
+
