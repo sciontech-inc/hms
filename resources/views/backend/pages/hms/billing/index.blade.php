@@ -12,6 +12,8 @@
         'data'=>array(
             array('id'=>'general', 'title'=>'GENERAL', 'icon'=>' fas fa-file-alt', 'active'=>true, 'disabled'=>false, 'function'=>true),
             array('id'=>'billing_history', 'title'=>'BILLING HISTORY', 'icon'=>' fas fa-mobile-alt', 'active'=>false, 'disabled'=>false, 'function'=>true),
+            array('id'=>'insurance', 'title'=>'INSURANCE MANAGEMENT', 'icon'=>' fas fa-mobile-alt', 'active'=>false, 'disabled'=>false, 'function'=>true),
+            array('id'=>'payment_history', 'title'=>'PAYMENT RECORDS', 'icon'=>' fas fa-money-bill', 'active'=>false, 'disabled'=>false, 'function'=>true),
             array('id'=>'report_summary', 'title'=>'REPORT AND SUMMARY', 'icon'=>' fas fa-clipboard-list', 'active'=>false, 'disabled'=>false, 'function'=>true),
         )
     ])
@@ -26,6 +28,8 @@
                 <form class="form-record" method="post" id="employeeInformation">
                     @include('backend.pages.hms.billing.tabs.general_tab')
                     @include('backend.pages.hms.billing.tabs.billing_history')
+                    @include('backend.pages.hms.billing.tabs.insurance')
+                    @include('backend.pages.hms.billing.tabs.payment')
                     @include('backend.pages.hms.billing.tabs.report_summary')
                 </form>
             </div>

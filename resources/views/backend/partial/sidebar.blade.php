@@ -58,8 +58,8 @@
                 </a>
                 <ul id="billing_and_payment" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">BILLING AND PAYMENT</li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/payment">PAYMENT</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING AND PAYMENT</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#">REPORTS</a></li>
                 </ul>
             </li>
 

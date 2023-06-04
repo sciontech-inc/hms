@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Billing;
 use App\BillingDetail;
 use App\Admission;
+use App\Payment;
 use Illuminate\Http\Request;
 
 class BillingController extends Controller
@@ -33,6 +34,14 @@ class BillingController extends Controller
     public function billingDetail($id) {
         if(request()->ajax()) {
             return datatables()->of(BillingDetail::where('billing_id', $id)->get())
+            ->addIndexColumn()
+            ->make(true);
+        }
+    }
+
+    public function payment() {
+        if(request()->ajax()) {
+            return datatables()->of(Payment::get())
             ->addIndexColumn()
             ->make(true);
         }

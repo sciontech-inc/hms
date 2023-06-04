@@ -80,12 +80,23 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get          ('/',                            'BillingController@index'                                )->name('billing');
             Route::get          ('/get',                         'BillingController@get'                                  )->name('get_billing');
             Route::get          ('/admission/get',               'BillingController@admissionGet'                         )->name('get_billing');
+            Route::get          ('/payment/get',                 'BillingController@payment'                              )->name('get_billing');
             Route::get          ('/billing_detail/get/{id}',     'BillingController@billingDetail'                        )->name('get_billing');
             Route::post         ('/save',                        'BillingController@store'                                )->name('save_get_billing');
             Route::get          ('/edit/{id}',                   'BillingController@edit'                                 )->name('edit_get_billing');
             Route::post         ('/update/{id}',                 'BillingController@update'                               )->name('update_get_billing');
             Route::post         ('/destroy',                     'BillingController@destroy'                              )->name('destroy_get_billing');
         });
+
+        Route::group(['prefix' => '/insurance'], function (){
+            Route::get          ('/',                            'InsuranceController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'InsuranceController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'InsuranceController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'InsuranceController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'InsuranceController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'InsuranceController@destroy'                              )->name('destroy_employment_information');
+        });
+
     });
 
 

@@ -94,6 +94,7 @@ function general_func() {
                 html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
                 html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+modal_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
                 html += '<a href="#" class="align-middle edit" onclick="billing_detail('+ row.id +')"><i class="fas fa-tasks"></i></a>';
+                html += '<a href="#" class="align-middle edit" onclick="payment('+ row.id +')"><i class="fas fa-money-bill"></i></a>';
                 return html;
             }},
             { data: "invoice_number", title: "INVOICE NO." },
@@ -163,6 +164,62 @@ function billing_detail(id)
             { data: "total_amount", title: "TOTAL AMOUNT" },
         ], 'Bfrtip', []
     );
+}
+
+function insurance_func()
+{
+    module_url = '/hms/insurance';
+
+    if ($.fn.DataTable.isDataTable('#insurance_table')) {
+        $('#insurance_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'insurance_table',
+        module_url + '/payment/get',
+        [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+modal_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
+            { data: "billing_id", title: "INVOICE NO." },
+            { data: "amount", title: "AMOUNT" },
+            { data: "payment_method", title: "PAYMENT METHOD" },
+            { data: "payment_date", title: "PAYMENT DATE" },
+        ], 'Bfrtip', []
+    );
+}
+
+function payment_history_func()
+{
+    if ($.fn.DataTable.isDataTable('#payment_history_table')) {
+        $('#payment_history_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'payment_history_table',
+        module_url + '/payment/get',
+        [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+modal_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
+            { data: "billing_id", title: "INVOICE NO." },
+            { data: "amount", title: "AMOUNT" },
+            { data: "payment_method", title: "PAYMENT METHOD" },
+            { data: "payment_date", title: "PAYMENT DATE" },
+        ], 'Bfrtip', []
+    );
+}
+
+function payment($id)
+{
+    scion.create.sc_modal("payment_form", page_title).show(modalShowFunction);
+
 }
 
 function modalShowFunction() {
