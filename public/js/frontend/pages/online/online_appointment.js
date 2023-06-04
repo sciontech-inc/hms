@@ -1,6 +1,6 @@
 $(function() {
     modal_content = 'online_appointment';
-    module_url = '/online/appointment';
+    module_url = '/online/online_appointment';
     module_type = 'custom';
     page_title = "ONLINE APPOINTMENT";
 

@@ -6,22 +6,28 @@
             <table id="general_table" class="table table-striped" style="width:100%"></table>
             <hr style="border-top:1px dashed black">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
+                <span class="hdr-title">PATIENT NAME :</span> <span class="hdr-detail">001</span>
+            </div>
+            <div class="col-md-3">
+                <span class="hdr-title">ADMISSION NO. :</span> <span class="hdr-detail">001</span>
+            </div>
+            <div class="col-md-3">
                 <span class="hdr-title">INVOICE NO. :</span> <span class="hdr-detail">001</span>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <span class="hdr-title">INSURANCE CLAIM :</span> <span class="hdr-detail"></span>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <span class="hdr-title">TOTAL :</span> <span class="hdr-detail"></span>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <span class="hdr-title">PAID :</span> <span class="hdr-detail"></span>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <span class="hdr-title">BALANCE :</span> <span class="hdr-detail"></span>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <span class="hdr-title">STATUS: </span> <span class="hdr-detail"></span>
             </div>
         </div>
