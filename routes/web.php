@@ -97,6 +97,15 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/destroy',                     'InsuranceController@destroy'                              )->name('destroy_employment_information');
         });
 
+        Route::group(['prefix' => '/medical_file'], function (){
+            Route::get          ('/',                            'MedicalFileController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'MedicalFileController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'MedicalFileController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'MedicalFileController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'MedicalFileController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'MedicalFileController@destroy'                              )->name('destroy_employment_information');
+        });
+
     });
 
     Route::group(['prefix' => '/online'], function (){
@@ -119,7 +128,23 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/destroy',                     'OnlineAppointmentController@destroy'                              )->name('destroy_employment_information');
         });
 
+        Route::group(['prefix' => '/online_queue'], function (){
+            Route::get          ('/',                            'OnlineQueueController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'OnlineQueueController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'OnlineQueueController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'OnlineQueueController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'OnlineQueueController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'OnlineQueueController@destroy'                              )->name('destroy_employment_information');
+        });
      
+        Route::group(['prefix' => '/medical_files'], function (){
+            Route::get          ('/',                            'MedicalFileController@index2'                                )->name('employment_information');
+            Route::get          ('/get',                         'MedicalFileController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'MedicalFileController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'MedicalFileController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'MedicalFileController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'MedicalFileController@destroy'                              )->name('destroy_employment_information');
+        });
     });
 
 

@@ -49,7 +49,22 @@
                     <li class="sidebar-item"><a class="sidebar-link" href="/dashboard">OUTPATIENTS</a></li>
                 </ul>
             </li>
-
+            <li class="sidebar-item">
+                <a href="#admission" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-file-invoice"></i> <span class="align-middle">EHR</span>
+                    </span>
+                </a>
+                <ul id="admission" class="sidebar-dropdown list-unstyled collapse" data-parent="#sidebar">
+                    <li class="list-title">ADMISSION</li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/dashboard">REFERRAL</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/dashboard">VITAL SIGN</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/dashboard">E-PRESCRIPTION</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/dashboard">SPECIALIZE NOTE</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/dashboard">VIDEO CONFERENCE</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/dashboard">DATA TRENDS</a></li>
+                </ul>
+            </li>
             <li class="sidebar-item">
                 <a href="#billing_and_payment" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">

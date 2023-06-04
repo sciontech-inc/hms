@@ -29,7 +29,7 @@
     <div class="sc-modal-dialog">
         <div class="sc-modal-header">
             <span class="sc-title-bar"></span>
-            <span class="sc-close" onclick="scion.create.sc_modal('wonline_appointment_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+            <span class="sc-close" onclick="scion.create.sc_modal('online_appointment_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
         </div>
         <div class="sc-modal-body">
             <form method="post" id="onlineAppointmentForm" class="form-record">
