@@ -2,6 +2,10 @@
 
 @section('title', 'BILLING')
 
+@section('style')
+
+@endsection
+
 @section('breadcrumbs')
     <span>TRANSACTION/BILLING AND PAYMENT</span>  /  <span class="highlight">BILLING</span>
 @endsection
@@ -16,8 +20,16 @@
         )
     ])
 @endsection
-
-
+<style>
+    .hdr-title {
+        font-size: 13px;
+        color: #3282b8;
+        font-weight: bold;
+    }
+    .hdr-detail {
+        float: right;
+    }
+</style>
 @section('content')
 <div class="row" style="height:100%;">
     <div class="col-12" style="height:100%;">
