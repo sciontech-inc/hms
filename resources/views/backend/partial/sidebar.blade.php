@@ -64,12 +64,12 @@
             </li>
 
             <li class="sidebar-item">
-                <a href="#billing_and_payment" data-toggle="collapse" class="sidebar-link collapsed">
+                <a href="##" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
                         <i class="align-middle mr-2 fas fa-fw fa-boxes"></i> <span class="align-middle">INVENTORY</span>
                     </span>
                 </a>
-                <ul id="billing_and_payment" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                <ul id="#" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">SUPPLIES INVENTORY MANAGEMENT</li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/payment">PAYMENT</a></li>
@@ -77,12 +77,12 @@
             </li>
 
             <li class="sidebar-item">
-                <a href="#billing_and_payment" data-toggle="collapse" class="sidebar-link collapsed">
+                <a href="##" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
                         <i class="align-middle mr-2 fas fa-fw fa-prescription-bottle-alt"></i> <span class="align-middle">PHARMACY</span>
                     </span>
                 </a>
-                <ul id="billing_and_payment" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                <ul id="#" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">PHARMACY MANAGEMENT</li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/payment">PAYMENT</a></li>
@@ -90,12 +90,12 @@
             </li>
 
             <li class="sidebar-item">
-                <a href="#billing_and_payment" data-toggle="collapse" class="sidebar-link collapsed">
+                <a href="##" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
                         <i class="align-middle mr-2 fas fa-fw fa-flask"></i> <span class="align-middle">LABORATORY</span>
                     </span>
                 </a>
-                <ul id="billing_and_payment" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                <ul id="#" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">PHARMACY MANAGEMENT</li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/payment">PAYMENT</a></li>
@@ -103,12 +103,12 @@
             </li>
 
             <li class="sidebar-item">
-                <a href="#billing_and_payment" data-toggle="collapse" class="sidebar-link collapsed">
+                <a href="##" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
                         <i class="align-middle mr-2 fas fa-fw fa-briefcase-medical"></i> <span class="align-middle">MEDICAL EQUIPMENT</span>
                     </span>
                 </a>
-                <ul id="billing_and_payment" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                <ul id="#" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">PHARMACY MANAGEMENT</li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/payment">PAYMENT</a></li>
@@ -116,12 +116,12 @@
             </li>
 
             <li class="sidebar-item">
-                <a href="#billing_and_payment" data-toggle="collapse" class="sidebar-link collapsed">
+                <a href="##" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
                         <i class="align-middle mr-2 fas fa-fw fa-sort-numeric-up-alt"></i> <span class="align-middle">QUEUE MANAGEMENT</span>
                     </span>
                 </a>
-                <ul id="billing_and_payment" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                <ul id="#" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">PHARMACY MANAGEMENT</li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/payment">PAYMENT</a></li>
@@ -129,12 +129,12 @@
             </li>
 
             <li class="sidebar-item">
-                <a href="#billing_and_payment" data-toggle="collapse" class="sidebar-link collapsed">
+                <a href="##" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
                         <i class="align-middle mr-2 fas fa-fw fa-heartbeat"></i> <span class="align-middle">PHILHEALTH ECLAIMS</span>
                     </span>
                 </a>
-                <ul id="billing_and_payment" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                <ul id="#" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">PHARMACY MANAGEMENT</li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/payment">PAYMENT</a></li>
@@ -142,12 +142,12 @@
             </li>
 
             <li class="sidebar-item">
-                <a href="#billing_and_payment" data-toggle="collapse" class="sidebar-link collapsed">
+                <a href="##" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
                         <i class="align-middle mr-2 fas fa-fw fa-users"></i> <span class="align-middle">HRIS</span>
                     </span>
                 </a>
-                <ul id="billing_and_payment" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                <ul id="#" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">PHARMACY MANAGEMENT</li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/payment">PAYMENT</a></li>
@@ -155,12 +155,12 @@
             </li>
 
             <li class="sidebar-item">
-                <a href="#billing_and_payment" data-toggle="collapse" class="sidebar-link collapsed">
+                <a href="##" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
                         <i class="align-middle mr-2 fas fa-fw fa-money-check-alt"></i> <span class="align-middle">PAYROLL</span>
                     </span>
                 </a>
-                <ul id="billing_and_payment" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                <ul id="#" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">PHARMACY MANAGEMENT</li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/payment">PAYMENT</a></li>

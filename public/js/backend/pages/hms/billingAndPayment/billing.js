@@ -81,17 +81,20 @@ function general_func() {
     module_url = '/hms/billing';
     module_type = 'custom';
 
-
-    scion.centralized_button(true, true, true, true);
-
-    if ($.fn.DataTable.isDataTable('#family_medical_history_table')) {
-        $('#family_medical_history_table').DataTable().destroy();
+    if ($.fn.DataTable.isDataTable('#general_table')) {
+        $('#general_table').DataTable().destroy();
     }
 
     scion.create.table(
         'general_table',
         module_url + '/get',
         [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/payroll/"+modal_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
             { data: "invoice_number", title: "INVOICE NO." },
             { data: "insurance_claim_no", title: "INSURANCE CLAIM" },
             { data: "total", title: "TOTAL" },
@@ -104,12 +107,35 @@ function general_func() {
     scion.centralized_button(false, true, true, true);
 }
 
-function contact_addresses_func() {
-    module_content = 'contact_addresses';
-    module_url = '/hms/contact-addresses';
-    actions = 'update';
+function billing_history_func() {
+    module_content = 'billing';
+    module_url = '/hms/billing';
     module_type = 'sub_transaction';
-    scion.centralized_button(true, true, true, true);
+
+    if ($.fn.DataTable.isDataTable('#billing_history_table')) {
+        $('#billing_history_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'billing_history_table',
+        module_url + '/get',
+        [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/payroll/"+modal_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
+            { data: "invoice_number", title: "INVOICE NO." },
+            { data: "insurance_claim_no", title: "INSURANCE CLAIM" },
+            { data: "total", title: "TOTAL" },
+            { data: "paid", title: "PAID" },
+            { data: "balance", title: "BALANCE" },
+            { data: "billing_status", title: "BILLING STATUS" },
+        ], 'Bfrtip', []
+    );
+
+    scion.centralized_button(false, true, true, true);
 }
 
 function modalShowFunction() {
