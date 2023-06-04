@@ -79,6 +79,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::group(['prefix' => '/billing'], function (){
             Route::get          ('/',                            'BillingController@index'                                )->name('billing');
             Route::get          ('/get',                         'BillingController@get'                                  )->name('get_billing');
+            Route::get          ('/admission/get',               'BillingController@admissionGet'                         )->name('get_billing');
+            Route::get          ('/billing_detail/get/{id}',     'BillingController@billingDetail'                        )->name('get_billing');
             Route::post         ('/save',                        'BillingController@store'                                )->name('save_get_billing');
             Route::get          ('/edit/{id}',                   'BillingController@edit'                                 )->name('edit_get_billing');
             Route::post         ('/update/{id}',                 'BillingController@update'                               )->name('update_get_billing');

@@ -19,9 +19,10 @@ class CreateBillingsTable extends Migration
             $table->string('invoice_number');
             $table->string('billing_status');
             $table->string('insurance_claim_no');
-            $table->decimal('total', 13, 4);
-            $table->decimal('paid', 13, 4);
-            $table->decimal('balance', 13, 4);
+            $table->string('remarks')->nullable();
+            $table->decimal('total', 13, 4)->default(0);
+            $table->decimal('paid', 13, 4)->default(0);
+            $table->decimal('balance', 13, 4)->default(0);
             $table->timestamps();
 
             $table->foreign('admission_id')

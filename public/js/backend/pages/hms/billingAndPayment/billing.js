@@ -92,7 +92,8 @@ function general_func() {
             { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
                 var html = "";
                 html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
-                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/payroll/"+modal_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+modal_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                html += '<a href="#" class="align-middle edit" onclick="billing_detail('+ row.id +')"><i class="fas fa-tasks"></i></a>';
                 return html;
             }},
             { data: "invoice_number", title: "INVOICE NO." },
@@ -124,6 +125,7 @@ function billing_history_func() {
                 var html = "";
                 html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
                 html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/payroll/"+modal_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                html += '<a href="#" class="align-middle edit" onclick="billing_detail('+ row.id +')"><i class="fas fa-tasks"></i></a>';
                 return html;
             }},
             { data: "invoice_number", title: "INVOICE NO." },
@@ -136,6 +138,31 @@ function billing_history_func() {
     );
 
     scion.centralized_button(false, true, true, true);
+}
+
+function billing_detail(id)
+{
+    if ($.fn.DataTable.isDataTable('#billing_detail_table')) {
+        $('#billing_detail_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'billing_detail_table',
+        module_url + '/billing_detail/get/' + id,
+        [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+modal_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
+            { data: "service_description", title: "SERVICE DESCRIPTION" },
+            { data: "date_of_service", title: "DATE" },
+            { data: "quantity", title: "QUANTITY" },
+            { data: "unit_price", title: "UNIT PRICE" },
+            { data: "total_amount", title: "TOTAL AMOUNT" },
+        ], 'Bfrtip', []
+    );
 }
 
 function modalShowFunction() {
