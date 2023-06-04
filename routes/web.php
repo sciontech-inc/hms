@@ -88,6 +88,28 @@ Route::group(['middleware' => ['auth']], function() {
         });
     });
 
+    Route::group(['prefix' => '/online'], function (){
+
+        Route::group(['prefix' => '/online_payment'], function (){
+            Route::get          ('/',                            'OnlinePaymentController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'OnlinePaymentController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'OnlinePaymentController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'OnlinePaymentController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'OnlinePaymentController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'OnlinePaymentController@destroy'                              )->name('destroy_employment_information');
+        });
+
+        Route::group(['prefix' => '/online_appointment'], function (){
+            Route::get          ('/',                            'OnlineAppointmentController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'OnlineAppointmentController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'OnlineAppointmentController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'OnlineAppointmentController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'OnlineAppointmentController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'OnlineAppointmentController@destroy'                              )->name('destroy_employment_information');
+        });
+
+     
+    });
 
 
 });
