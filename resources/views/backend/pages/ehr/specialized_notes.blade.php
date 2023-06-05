@@ -51,22 +51,22 @@
                         <label>PATIENT NAME</label>
                         <input type="text" class="form-control" id="patient_name" name="patient_name" placeholder="PATIENT NAME"/>
                     </div>
-                    <div class="form-group col-md-12 date">
+                    <div class="form-group col-md-6 date">
                         <label>DATE</label>
                         <input type="date" class="form-control" id="date" name="date"/>
                     </div>
-                    <div class="form-group col-md-12 note_title">
+                    <div class="form-group col-md-6 note_title">
                         <label>NOTE TITLE</label>
                         <input type="text" class="form-control" id="note_title" name="note_title" placeholder="NOTE TITLE"/>
                     </div>
-                    <div class="form-group col-md-12 note_type">
+                    <div class="form-group col-md-6 note_type">
                         <label>NOTE TYPE</label>
                         <select class="form-control" name="note_type" id="note_type">
                             <option value="ONE TIME NOTE">ONE TIME NOTE</option>
                             <option value="RECURRING NOTE">RECURRING NOTE</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-12 note_group">
+                    <div class="form-group col-md-6 note_group">
                         <label>NOTE GROUP</label>
                         <input type="text" class="form-control" id="note_group" name="note_group" placeholder="NOTE GROUP"/>
                     </div>
