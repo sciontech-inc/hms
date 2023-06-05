@@ -14,9 +14,10 @@ use App\Events\FormSubmitted;
 */
 Route::group(['middleware' => ['auth']], function() {
 
-    Route::get('/', function () {
-        return view('backend.pages.dashboard');
-    });
+    // Route::get('/', function () {
+    //     return view('backend.pages.dashboard');
+    // });
+    Route::get         ('/',                                'DashboardController@index'                                    )->name('dashboard');
 
     // Route::get('/dashboard', function () {
     //     return view('backend.pages.dashboard');
