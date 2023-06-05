@@ -7,16 +7,16 @@
             <hr style="border-top:1px dashed black">
         <div class="row">
             <div class="col-md-3">
-                <span class="hdr-title">PATIENT NAME :</span> <span class="hdr-detail">001</span>
+                <span class="hdr-title">PATIENT NAME :</span> <span class="hdr-detail" id="hdr_name">001</span>
             </div>
             <div class="col-md-3">
-                <span class="hdr-title">ADMISSION NO. :</span> <span class="hdr-detail">001</span>
+                <span class="hdr-title">ADMISSION NO. :</span> <span class="hdr-detail" id="hdr_admission"></span>
             </div>
             <div class="col-md-3">
-                <span class="hdr-title">INVOICE NO. :</span> <span class="hdr-detail">001</span>
+                <span class="hdr-title">INVOICE NO. :</span> <span class="hdr-detail" id="invoice_no">001</span>
             </div>
             <div class="col-md-3">
-                <span class="hdr-title">INSURANCE CLAIM :</span> <span class="hdr-detail"></span>
+                <span class="hdr-title">INSURANCE CLAIM :</span> <span class="hdr-detail" id="insurance_claim"></span>
             </div>
             <div class="col-md-3">
                 <span class="hdr-title">TOTAL :</span> <span class="hdr-detail"></span>
@@ -131,6 +131,23 @@
                         <label>REMARKS</label>
                         <textarea type="text" class="form-control" name="remarks" id="remarks" cols="30" rows="3" placeholder="REMARKS"></textarea>
                     </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="sc-modal-content" id="invoice_form">
+    <div class="sc-modal-dialog sc-xl">
+        <div class="sc-modal-header">
+            <span class="sc-title-bar"></span>
+            <span class="sc-close" onclick="scion.create.sc_modal('invoice_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+        </div>
+        <div class="sc-modal-body">
+            <form method="post" id="workAssignmentsForm" class="form-record">
+                <div class="row">
+                        @include('backend.partial.print.invoice')
                 </div>
             </form>
         </div>

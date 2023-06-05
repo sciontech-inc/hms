@@ -95,6 +95,7 @@ function general_func() {
                 html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+modal_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
                 html += '<a href="#" class="align-middle edit" onclick="billing_detail('+ row.id +')"><i class="fas fa-tasks"></i></a>';
                 html += '<a href="#" class="align-middle edit" onclick="payment('+ row.id +')"><i class="fas fa-money-bill"></i></a>';
+                html += '<a href="#" class="align-middle edit" onclick="print_bill('+ row.id +')"><i class="fas fa-print"></i></a>';
                 return html;
             }},
             { data: "invoice_number", title: "INVOICE NO." },
@@ -226,7 +227,15 @@ function payment_history_func()
 function payment($id)
 {
     scion.create.sc_modal("payment_form", page_title).show(modalShowFunction);
+}
 
+function print_bill($id)
+{
+    printJS({
+        printable: 'printableArea',
+        type: 'html',
+        targetStyles: ['*']
+    });
 }
 
 function modalShowFunction() {

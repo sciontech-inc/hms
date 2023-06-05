@@ -31,6 +31,21 @@
     .hdr-detail {
         float: right;
     }
+    .invoice-title h2, .invoice-title h3 {
+    display: inline-block;
+    }
+
+    .table > tbody > tr > .no-line {
+        border-top: none;
+    }
+
+    .table > thead > tr > .no-line {
+        border-bottom: none;
+    }
+
+    .table > tbody > tr > .thick-line {
+        border-top: 2px solid;
+    }
 </style>
 @section('content')
 <div class="row" style="height:100%;">
@@ -60,4 +75,5 @@
 @section('scripts')
 <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="/js/backend/pages/hms/billingAndPayment/billing.js"></script>
+<script src="{{ asset('/js/print.min.js') }}"></script>
 @endsection
