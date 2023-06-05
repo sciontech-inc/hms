@@ -91,6 +91,12 @@ p.form-btn button.btn.btn-primary {
 .form-1.register-btn a span {
     color: white !important;
 }
-.form-carousel {
-    margin: 4em;
+
+.form-carousel, .carousel.slide, .carousel-inner, .carousel-item {
+    height: 100% !important;
+}
+
+.carousel-item {
+    background-size: cover !important;
+    background-position: center center !important;
 }

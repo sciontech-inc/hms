@@ -11,10 +11,12 @@
                         <div class="form-carousel">
                             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="2000">
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                <img class="d-block w-100" src="{{ asset('images/slide-1.png')}}" alt="First slide">
-                                </div>
-                                <div class="carousel-item">
+                                <div class="carousel-item active" style="background:url({{ asset('images/slide-1.png')}})no-repeat;"></div>
+                                <div class="carousel-item" style="background:url({{ asset('images/slide-2.png')}})no-repeat;"></div>
+                                <div class="carousel-item" style="background:url({{ asset('images/slide-3.png')}})no-repeat;"></div>
+                                <div class="carousel-item" style="background:url({{ asset('images/slide-4.png')}})no-repeat;"></div>
+                                <div class="carousel-item" style="background:url({{ asset('images/slide-5.png')}})no-repeat;"></div>
+                                {{-- <div class="carousel-item">
                                 <img class="d-block w-100" src="{{ asset('images/slide-2.png')}}" alt="Second slide">
                                 </div>
                                 <div class="carousel-item">
@@ -25,7 +27,7 @@
                                 </div>
                                 <div class="carousel-item">
                                 <img class="d-block w-100" src="{{ asset('images/slide-5.png')}}" alt="Third slide">
-                                </div>
+                                </div> --}}
                             </div>
                             </div>
                         </div>
