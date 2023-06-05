@@ -19,7 +19,7 @@
             </div>
             <div class="col-4 text-right">
                 <p class="mb-0">
-                    &copy; 2022 - <a href="dashboard-default.html" class="text-muted">SHARP BUSINESS SOLUTIONS</a>
+                    &copy; 2023 - <a href="dashboard-default.html" class="text-muted">Saint Dominic General Hospital</a>
                 </p>
             </div>
         </div>

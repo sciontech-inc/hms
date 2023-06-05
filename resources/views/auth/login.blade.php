@@ -35,7 +35,7 @@
                             <img src="{{ asset('images/logo.png')}}" class="img-fluid" alt="">
                         </p>
                         <p class="section-title">
-                            <span>Welcome to Sharp Business Solutions</span>
+                            <span>Welcome to Saint Dominic General Hospital</span>
                         </p>
                         <div class="form-1">
                             <p class="form-label">Email</p>
@@ -78,7 +78,7 @@
                         <div class="form-1 register-btn">
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}">
-                                <span>New with ScionTech? Create Account</span>
+                                <span>New with MedIQ? Create Account</span>
                                 </a>
                             @endif
 
