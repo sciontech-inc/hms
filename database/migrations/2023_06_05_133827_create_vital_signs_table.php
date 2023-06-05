@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHealthInformationTable extends Migration
+class CreateVitalSignsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,22 @@ class CreateHealthInformationTable extends Migration
      */
     public function up()
     {
-        Schema::create('health_information', function (Blueprint $table) {
+        Schema::create('vital_signs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('reference_id')->nullable();
-            $table->string('doctor_id')->nullable();
-            $table->string('department_id')->nullable();
+            $table->string('attendant_id');
             $table->string('patient_name');
-            $table->string('referred_by')->nullable();
-            $table->string('referred_to');
-            $table->string('status')->default(0);
-            $table->string('referred_date');
+            $table->string('sex');
+            $table->string('patient_type');
+            $table->string('date');
+            $table->string('time');
+            $table->string('blood_pressure');
+            $table->string('temperature');
+            $table->string('respiratory_rate');
+            $table->string('pulse_rate');
+            $table->string('oxygen_saturation');
+            $table->string('weight');
+            $table->string('height');
+            $table->string('bmi')->nullable();
             $table->longText('notes')->nullable();
             $table->integer('workstation_id')->default(1);
             $table->unsignedBigInteger('created_by')->nullable();
@@ -38,6 +44,6 @@ class CreateHealthInformationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('health_information');
+        Schema::dropIfExists('vital_signs');
     }
 }

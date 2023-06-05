@@ -151,6 +151,45 @@ Route::group(['middleware' => ['auth']], function() {
         });
     });
 
+    Route::group(['prefix' => '/ehr'], function (){
+
+        Route::group(['prefix' => '/health_information'], function (){
+            Route::get          ('/',                            'HealthInformationController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'HealthInformationController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'HealthInformationController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'HealthInformationController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'HealthInformationController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'HealthInformationController@destroy'                              )->name('destroy_employment_information');
+        });
+
+        Route::group(['prefix' => '/video_conference'], function (){
+            Route::get          ('/',                            'VideoConferenceController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'VideoConferenceController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'VideoConferenceController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'VideoConferenceController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'VideoConferenceController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'VideoConferenceController@destroy'                              )->name('destroy_employment_information');
+        });
+
+        Route::group(['prefix' => '/specialized_notes'], function (){
+            Route::get          ('/',                            'SpecializedNoteController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'SpecializedNoteController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'SpecializedNoteController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'SpecializedNoteController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'SpecializedNoteController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'SpecializedNoteController@destroy'                              )->name('destroy_employment_information');
+        });
+
+        Route::group(['prefix' => '/vital_signs'], function (){
+            Route::get          ('/',                            'VitalSignsController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'VitalSignsController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'VitalSignsController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'VitalSignsController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'VitalSignsController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'VitalSignsController@destroy'                              )->name('destroy_employment_information');
+        });
+
+    });
 
 });
 
