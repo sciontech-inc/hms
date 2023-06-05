@@ -79,28 +79,40 @@
             </li>
 
             <li class="sidebar-item">
-                <a href="##" data-toggle="collapse" class="sidebar-link collapsed">
+                <a href="#inventory" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
                         <i class="align-middle mr-2 fas fa-fw fa-boxes"></i> <span class="align-middle">INVENTORY</span>
                     </span>
                 </a>
-                <ul id="#" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                <ul id="inventory" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">SUPPLIES INVENTORY MANAGEMENT</li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/payment">PAYMENT</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/inventory">CREATE INVENTORY</a></li>
                 </ul>
             </li>
 
             <li class="sidebar-item">
-                <a href="##" data-toggle="collapse" class="sidebar-link collapsed">
+                <a href="#pharmacy" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
                         <i class="align-middle mr-2 fas fa-fw fa-prescription-bottle-alt"></i> <span class="align-middle">PHARMACY</span>
                     </span>
                 </a>
-                <ul id="#" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                <ul id="pharmacy" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
                     <li class="list-title">PHARMACY MANAGEMENT</li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/payment">PAYMENT</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/pharmacy">INVENTORY</a></li>
+
+                </ul>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="#radiology" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-x-ray"></i> <span class="align-middle">RADIOLOGY</span>
+                    </span>
+                </a>
+                <ul id="radiology" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                    <li class="list-title">PHARMACY MANAGEMENT</li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/radiology_procedure">RADIOLOGY PROCEDURE</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/radiology_result">RADIOLOGY RESULT</a></li>
                 </ul>
             </li>
 
@@ -159,7 +171,7 @@
             <li class="sidebar-item">
                 <a href="##" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
-                        <i class="align-middle mr-2 fas fa-fw fa-users"></i> <span class="align-middle">HRIS</span>
+                        <i class="align-middle mr-2 fas fa-fw fa-comments"></i> <span class="align-middle">FEEDBACK</span>
                     </span>
                 </a>
                 <ul id="#" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
@@ -169,18 +181,6 @@
                 </ul>
             </li>
 
-            <li class="sidebar-item">
-                <a href="##" data-toggle="collapse" class="sidebar-link collapsed">
-                    <span class="item">
-                        <i class="align-middle mr-2 fas fa-fw fa-money-check-alt"></i> <span class="align-middle">PAYROLL</span>
-                    </span>
-                </a>
-                <ul id="#" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="list-title">PHARMACY MANAGEMENT</li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/payment">PAYMENT</a></li>
-                </ul>
-            </li>
 
             <li class="sidebar-header">
                 SETUP
@@ -188,7 +188,7 @@
             <li class="sidebar-item">
                 <a href="#payroll_setup" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
-                        <i class="align-middle mr-2 fas fa-fw fa-list-alt"></i> <span class="align-middle">PAYROLL</span>
+                        <i class="align-middle mr-2 fas fa-fw fa-list-alt"></i> <span class="align-middle">USER</span>
                     </span>
                 </a>
                 <ul id="payroll_setup" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">

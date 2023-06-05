@@ -16,7 +16,7 @@ $(function() {
                 return html;
             }},
             { data: "patient_name", title: "PATIENT" },
-            { data: "referred_by", title: "REFERRED BY" },
+            { data: "referred_to", title: "REFERRED TO" },
             { data: "referred_date", title: "REFERRED DATE" },
             { data: "status", title: "STATUS", render: function(data, type, row, meta) {
                 var html = "";
