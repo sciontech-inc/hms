@@ -17,7 +17,7 @@ Route::group(['middleware' => ['auth']], function() {
     // Route::get('/', function () {
     //     return view('backend.pages.dashboard');
     // });
-    Route::get         ('/',                                'DashboardController@index'                                    )->name('dashboard');
+    Route::get         ('/',                                'DashboardController@action_item'                                    )->name('dashboard');
 
     // Route::get('/dashboard', function () {
     //     return view('backend.pages.dashboard');
@@ -28,7 +28,7 @@ Route::group(['middleware' => ['auth']], function() {
     });
 
     Route::group(['prefix' => '/dashboard'], function (){
-        Route::get         ('/',                                'DashboardController@index'                                    )->name('dashboard');
+            Route::get         ('/',                             'DashboardController@index'                                    )->name('dashboard');
     }); 
 
     Route::group(['prefix' => '/masterlist'], function() {

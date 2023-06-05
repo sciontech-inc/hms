@@ -9,4 +9,8 @@ class DashboardController extends Controller
     public function index() {
         return view('backend.pages.dashboard', ["type"=>"full-view"]);
     }
+
+    public function action_item() {
+        return view('backend.pages.action_item');
+    }
 }
