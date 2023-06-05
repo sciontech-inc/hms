@@ -171,7 +171,7 @@ function insurance_func()
     modal_content = 'insurance';
     module_content = 'insurance';
     module_url = '/hms/insurance';
-    module_type = 'sub_transaction';
+    module_type = 'custom';
 
     if ($.fn.DataTable.isDataTable('#insurance_table')) {
         $('#insurance_table').DataTable().destroy();
