@@ -111,6 +111,42 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/destroy',                     'MedicalFileController@destroy'                              )->name('destroy_employment_information');
         });
 
+        Route::group(['prefix' => '/pharmacy'], function (){
+            Route::get          ('/',                            'PharmacyController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'PharmacyController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'PharmacyController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'PharmacyController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'PharmacyController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'PharmacyController@destroy'                              )->name('destroy_employment_information');
+        });
+
+        Route::group(['prefix' => '/inventory'], function (){
+            Route::get          ('/',                            'InventoryController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'InventoryController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'InventoryController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'InventoryController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'InventoryController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'InventoryController@destroy'                              )->name('destroy_employment_information');
+        });
+
+        Route::group(['prefix' => '/radiology_procedure'], function (){
+            Route::get          ('/',                            'RadiologyProcedureController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'RadiologyProcedureController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'RadiologyProcedureController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'RadiologyProcedureController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'RadiologyProcedureController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'RadiologyProcedureController@destroy'                              )->name('destroy_employment_information');
+        });
+
+        Route::group(['prefix' => '/radiology_result'], function (){
+            Route::get          ('/',                            'RadiologyResultController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'RadiologyResultController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'RadiologyResultController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'RadiologyResultController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'RadiologyResultController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'RadiologyResultController@destroy'                              )->name('destroy_employment_information');
+        });
+
     });
 
     Route::group(['prefix' => '/online'], function (){
