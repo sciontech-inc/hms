@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\SpecializedNote;
 use Illuminate\Http\Request;
+use Auth;
 
 class SpecializedNoteController extends Controller
 {
@@ -14,7 +15,15 @@ class SpecializedNoteController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.pages.ehr.specialized_notes');
+    }
+
+    public function get() {
+        if(request()->ajax()) {
+            return datatables()->of(SpecializedNote::get())
+            ->addIndexColumn()
+            ->make(true);
+        }
     }
 
     /**
@@ -35,7 +44,24 @@ class SpecializedNoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'patient_name' => ['required'],
+            'date' => ['required'],
+            'note_title' => ['required'],
+            'note_type' => ['required'],
+            'note_group' => ['required'],
+            'note_description' => ['required'],
+
+        ]);
+        
+   
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        SpecializedNote::create($request->all());
+
+        return response()->json(compact('validate'));
     }
 
     /**
@@ -55,9 +81,10 @@ class SpecializedNoteController extends Controller
      * @param  \App\SpecializedNote  $specializedNote
      * @return \Illuminate\Http\Response
      */
-    public function edit(SpecializedNote $specializedNote)
+    public function edit($id)
     {
-        //
+        $specialized_note = SpecializedNote::where('id', $id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('specialized_note'));
     }
 
     /**
@@ -67,9 +94,11 @@ class SpecializedNoteController extends Controller
      * @param  \App\SpecializedNote  $specializedNote
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SpecializedNote $specializedNote)
+    public function update(Request $request, $id)
     {
-        //
+        $request['updated_by'] = Auth::user()->id;
+        SpecializedNote::find($id)->update($request->all());
+        return "Record Saved";
     }
 
     /**
@@ -78,8 +107,14 @@ class SpecializedNoteController extends Controller
      * @param  \App\SpecializedNote  $specializedNote
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SpecializedNote $specializedNote)
+    public function destroy($id)
     {
-        //
+        $record = $request->data;
+
+        foreach($record as $item) {
+            SpecializedNote::find($item)->delete();
+        }
+        
+        return 'Record Deleted';
     }
 }
