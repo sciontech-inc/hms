@@ -6,8 +6,10 @@
         </a>
 
         <div class="company-logo">
-            <img src="/images/logo.png" class="logo1" alt="company-logo" width="100%"/>
-            <img src="/images/logo-2.png" class="logo2" alt="company-logo-2" width="100%"/>
+            <a href="/">
+                <img src="/images/logo.png" class="logo1" alt="company-logo" width="100%"/>
+                <img src="/images/logo-2.png" class="logo2" alt="company-logo-2" width="100%"/>
+            </a>
             <div class="company-name">
                 Company Name
             </div>
@@ -15,6 +17,15 @@
 
 
         <ul class="sidebar-nav">
+            
+            <li class="sidebar-item">
+                <a href="/dashboard" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-tachometer-alt"></i> <span class="align-middle">DASHBOARD</span>
+                    </span>
+                </a>
+            </li>
+
             <li class="sidebar-header">
                 HOSPITAL MANAGEMENT
             </li>
@@ -49,6 +60,15 @@
                     <li class="sidebar-item"><a class="sidebar-link" href="/dashboard">OUTPATIENTS</a></li>
                 </ul>
             </li>
+
+            <li class="sidebar-item">
+                <a href="#" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-bed"></i> <span class="align-middle">FACILITY</span>
+                    </span>
+                </a>
+            </li>
+
             <li class="sidebar-item">
                 <a href="#ehr" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
@@ -65,6 +85,7 @@
                     <li class="sidebar-item"><a class="sidebar-link" href="/dashboard">DATA TRENDS</a></li>
                 </ul>
             </li>
+
             <li class="sidebar-item">
                 <a href="#billing_and_payment" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
@@ -76,6 +97,14 @@
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING AND PAYMENT</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="#">REPORTS</a></li>
                 </ul>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="#" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-user-nurse"></i> <span class="align-middle">NURSE STATION</span>
+                    </span>
+                </a>
             </li>
 
             <li class="sidebar-item">
@@ -130,6 +159,30 @@
             </li>
 
             <li class="sidebar-item">
+                <a href="#" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-tint"></i> <span class="align-middle">BLOOD BANK</span>
+                    </span>
+                </a>
+            </li>
+            
+            <li class="sidebar-item">
+                <a href="#" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-tshirt"></i> <span class="align-middle">LINEN AND LAUNDRY</span>
+                    </span>
+                </a>
+            </li>
+            
+            <li class="sidebar-item">
+                <a href="#" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-warehouse"></i> <span class="align-middle">MORTUARY MANAGEMENT</span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
                 <a href="##" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
                         <i class="align-middle mr-2 fas fa-fw fa-briefcase-medical"></i> <span class="align-middle">MEDICAL EQUIPMENT</span>
@@ -166,6 +219,30 @@
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/payment">PAYMENT</a></li>
                 </ul>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="#" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-tablets"></i> <span class="align-middle">PHARMACY MANAGEMENT</span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="#" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-desktop"></i> <span class="align-middle">PACS</span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="#" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-folder"></i> <span class="align-middle">REPORTS</span>
+                    </span>
+                </a>
             </li>
 
             <li class="sidebar-item">
