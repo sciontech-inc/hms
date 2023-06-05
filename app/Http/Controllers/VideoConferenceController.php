@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\VideoConference;
 use Illuminate\Http\Request;
+use Auth;
 
 class VideoConferenceController extends Controller
 {
@@ -14,7 +15,15 @@ class VideoConferenceController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.pages.ehr.video_conference');
+    }
+
+    public function get() {
+        if(request()->ajax()) {
+            return datatables()->of(VideoConference::get())
+            ->addIndexColumn()
+            ->make(true);
+        }
     }
 
     /**
@@ -35,7 +44,28 @@ class VideoConferenceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $validate = $request->validate([
+            'topic' => ['required'],
+            'agenda' => ['required'],
+            'duration' => ['required'],
+            'participant_email' => ['required'],
+            'date' => ['required'],
+            'time' => ['required'],
+            'meeting_link' => ['required'],
+
+        ]);
+        
+        $request['doctor_id'] = Auth::user()->id;
+        $request['patient_id'] = 1;
+   
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        VideoConference::create($request->all());
+
+        return response()->json(compact('validate'));
     }
 
     /**
@@ -55,9 +85,10 @@ class VideoConferenceController extends Controller
      * @param  \App\VideoConference  $videoConference
      * @return \Illuminate\Http\Response
      */
-    public function edit(VideoConference $videoConference)
+    public function edit($id)
     {
-        //
+        $video_conference = VideoConference::where('id', $id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('video_conference'));
     }
 
     /**
@@ -67,9 +98,11 @@ class VideoConferenceController extends Controller
      * @param  \App\VideoConference  $videoConference
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, VideoConference $videoConference)
+    public function update(Request $request, $id)
     {
-        //
+        $request['updated_by'] = Auth::user()->id;
+        VideoConference::find($id)->update($request->all());
+        return "Record Saved";
     }
 
     /**
@@ -78,8 +111,14 @@ class VideoConferenceController extends Controller
      * @param  \App\VideoConference  $videoConference
      * @return \Illuminate\Http\Response
      */
-    public function destroy(VideoConference $videoConference)
+    public function destroy(Request $request)
     {
-        //
+        $record = $request->data;
+
+        foreach($record as $item) {
+            VideoConference::find($item)->delete();
+        }
+        
+        return 'Record Deleted';
     }
 }

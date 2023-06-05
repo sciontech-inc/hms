@@ -107,6 +107,11 @@ li.sidebar-item a i {
     padding: 3px;
     font-size: 9px;
     color: #ffffff;
+    display: inline-block;
+}
+
+ul.sidebar-nav {
+    overflow: auto;
 }
 
 a.sidebar-link:before {

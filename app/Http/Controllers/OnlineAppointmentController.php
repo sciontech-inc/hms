@@ -112,7 +112,7 @@ class OnlineAppointmentController extends Controller
      * @param  \App\OnlineAppointment  $onlineAppointment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         $record = $request->data;
 

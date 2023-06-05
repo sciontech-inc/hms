@@ -14,17 +14,22 @@ use App\Events\FormSubmitted;
 */
 Route::group(['middleware' => ['auth']], function() {
 
-    Route::get('/', function () {
-        return view('backend.pages.dashboard');
-    });
+    // Route::get('/', function () {
+    //     return view('backend.pages.dashboard');
+    // });
+    Route::get         ('/',                                'DashboardController@index'                                    )->name('dashboard');
 
-    Route::get('/dashboard', function () {
-        return view('backend.pages.dashboard');
-    });
+    // Route::get('/dashboard', function () {
+    //     return view('backend.pages.dashboard');
+    // });
 
     Route::get('/inpatient', function () {
         return view('backend.pages.hms.transaction.inpatient');
     });
+
+    Route::group(['prefix' => '/dashboard'], function (){
+        Route::get         ('/',                                'DashboardController@index'                                    )->name('dashboard');
+    }); 
 
     Route::group(['prefix' => '/masterlist'], function() {
         Route::group(['prefix' => '/employee'], function (){
@@ -106,6 +111,42 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/destroy',                     'MedicalFileController@destroy'                              )->name('destroy_employment_information');
         });
 
+        Route::group(['prefix' => '/pharmacy'], function (){
+            Route::get          ('/',                            'PharmacyController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'PharmacyController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'PharmacyController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'PharmacyController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'PharmacyController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'PharmacyController@destroy'                              )->name('destroy_employment_information');
+        });
+
+        Route::group(['prefix' => '/inventory'], function (){
+            Route::get          ('/',                            'InventoryController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'InventoryController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'InventoryController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'InventoryController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'InventoryController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'InventoryController@destroy'                              )->name('destroy_employment_information');
+        });
+
+        Route::group(['prefix' => '/radiology_procedure'], function (){
+            Route::get          ('/',                            'RadiologyProcedureController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'RadiologyProcedureController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'RadiologyProcedureController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'RadiologyProcedureController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'RadiologyProcedureController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'RadiologyProcedureController@destroy'                              )->name('destroy_employment_information');
+        });
+
+        Route::group(['prefix' => '/radiology_result'], function (){
+            Route::get          ('/',                            'RadiologyResultController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'RadiologyResultController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'RadiologyResultController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'RadiologyResultController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'RadiologyResultController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'RadiologyResultController@destroy'                              )->name('destroy_employment_information');
+        });
+
     });
 
     Route::group(['prefix' => '/online'], function (){
@@ -147,6 +188,45 @@ Route::group(['middleware' => ['auth']], function() {
         });
     });
 
+    Route::group(['prefix' => '/ehr'], function (){
+
+        Route::group(['prefix' => '/health_information'], function (){
+            Route::get          ('/',                            'HealthInformationController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'HealthInformationController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'HealthInformationController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'HealthInformationController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'HealthInformationController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'HealthInformationController@destroy'                              )->name('destroy_employment_information');
+        });
+
+        Route::group(['prefix' => '/video_conference'], function (){
+            Route::get          ('/',                            'VideoConferenceController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'VideoConferenceController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'VideoConferenceController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'VideoConferenceController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'VideoConferenceController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'VideoConferenceController@destroy'                              )->name('destroy_employment_information');
+        });
+
+        Route::group(['prefix' => '/specialized_notes'], function (){
+            Route::get          ('/',                            'SpecializedNoteController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'SpecializedNoteController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'SpecializedNoteController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'SpecializedNoteController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'SpecializedNoteController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'SpecializedNoteController@destroy'                              )->name('destroy_employment_information');
+        });
+
+        Route::group(['prefix' => '/vital_signs'], function (){
+            Route::get          ('/',                            'VitalSignsController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'VitalSignsController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'VitalSignsController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'VitalSignsController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'VitalSignsController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'VitalSignsController@destroy'                              )->name('destroy_employment_information');
+        });
+
+    });
 
 });
 

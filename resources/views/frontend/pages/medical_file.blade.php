@@ -44,7 +44,7 @@ h5.file-details {
                             <img src="/images/file.png" alt="" style="width: 60px;">
                         </div>
                         <div class="col-md-10">
-                            <p class="file-name"><a href="/files/eprescription.pdf" target=”_blank”>ePRESCRIPTION</a></p>
+                            <p class="file-name"><a href="/files/eprescription.pdf" target="_blank">ePRESCRIPTION</a></p>
                             <h5 class="file-details">Date Uploaded: May 02, 2023 - 2.03 MB </h5>
                         </div>
                     </div>
@@ -53,25 +53,25 @@ h5.file-details {
                             <img src="/images/file.png" alt="" style="width: 60px;">
                         </div>
                         <div class="col-md-10">
-                            <p class="file-name"><a href="/files/laboratory.pdf" target=”_blank”>LABORATORY RESULT</a></p>
+                            <p class="file-name"><a href="/files/laboratory.pdf" target="_blank">LABORATORY RESULT</a></p>
                             <h5 class="file-details">Date Uploaded: March 26, 2023 - 1.43 MB </h5>
                         </div>
                     </div>
                     <div class="row file-card">
-                        <div class="col-md-2" style="text-align: center;" target=”_blank”>
+                        <div class="col-md-2" style="text-align: center;">
                             <img src="/images/file.png" alt="" style="width: 60px;">
                         </div>
                         <div class="col-md-10">
-                            <p class="file-name"><a href="/files/medcert.pdf" target=”_blank”>MEDICAL CERTIFICATE</a></p>
+                            <p class="file-name"><a href="/files/medcert.pdf" target="_blank">MEDICAL CERTIFICATE</a></p>
                             <h5 class="file-details">Date Uploaded: April 06, 2023 - 0.91 MB </h5>
                         </div>
                     </div>
                     <div class="row file-card">
-                        <div class="col-md-2" style="text-align: center;" target=”_blank”>
+                        <div class="col-md-2" style="text-align: center;">
                             <img src="/images/file.png" alt="" style="width: 60px;">
                         </div>
                         <div class="col-md-10">
-                            <p class="file-name"><a href="/files/xray.pdf">XRAY RESULT</a></p>
+                            <p class="file-name"><a href="/files/xray.pdf" target="_blank">XRAY RESULT</a></p>
                             <h5 class="file-details">Date Uploaded: February 12, 2023 - 4.35 MB </h5>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\HealthInformation;
 use Illuminate\Http\Request;
+use Auth;
 
 class HealthInformationController extends Controller
 {
@@ -14,7 +15,15 @@ class HealthInformationController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.pages.ehr.health_information');
+    }
+
+    public function get() {
+        if(request()->ajax()) {
+            return datatables()->of(HealthInformation::get())
+            ->addIndexColumn()
+            ->make(true);
+        }
     }
 
     /**
@@ -35,7 +44,26 @@ class HealthInformationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'patient_name' => ['required'],
+            'referred_to' => ['required'],
+            'referred_date' => ['required'],
+            'notes' => ['required'],
+      
+
+        ]);
+        
+        $request['doctor_id'] = Auth::user()->id;
+        $request['department_id'] = 1;
+        $request['referred_by'] = Auth::user()->workstation_id;
+   
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        HealthInformation::create($request->all());
+
+        return response()->json(compact('validate'));
     }
 
     /**
@@ -55,9 +83,10 @@ class HealthInformationController extends Controller
      * @param  \App\HealthInformation  $healthInformation
      * @return \Illuminate\Http\Response
      */
-    public function edit(HealthInformation $healthInformation)
+    public function edit($id)
     {
-        //
+        $health_information = HealthInformation::where('id', $id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('health_information'));
     }
 
     /**
@@ -67,9 +96,11 @@ class HealthInformationController extends Controller
      * @param  \App\HealthInformation  $healthInformation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, HealthInformation $healthInformation)
+    public function update(Request $request, $id)
     {
-        //
+        $request['updated_by'] = Auth::user()->id;
+        HealthInformation::find($id)->update($request->all());
+        return "Record Saved";
     }
 
     /**
@@ -78,8 +109,14 @@ class HealthInformationController extends Controller
      * @param  \App\HealthInformation  $healthInformation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HealthInformation $healthInformation)
+    public function destroy(Request $request)
     {
-        //
+        $record = $request->data;
+
+        foreach($record as $item) {
+            HealthInformation::find($item)->delete();
+        }
+        
+        return 'Record Deleted';
     }
 }
