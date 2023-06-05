@@ -58,7 +58,7 @@
                 <ul id="ehr" class="sidebar-dropdown list-unstyled collapse" data-parent="#sidebar">
                     <li class="list-title">ADMISSION</li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/ehr/health_information">REFERRAL</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/dashboard">VITAL SIGN</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/ehr/vital_signs">VITAL SIGN</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/dashboard">E-PRESCRIPTION</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/ehr/specialized_notes">SPECIALIZE NOTE</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/ehr/video_conference">VIDEO CONFERENCE</a></li>

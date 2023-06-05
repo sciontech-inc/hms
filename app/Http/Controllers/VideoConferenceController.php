@@ -111,7 +111,7 @@ class VideoConferenceController extends Controller
      * @param  \App\VideoConference  $videoConference
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         $record = $request->data;
 

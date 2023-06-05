@@ -12,7 +12,7 @@
         <div class="col-xl-12 col-xxl-12">
             <div class="card flex-fill w-100 dashboard-greeting">
                 <div class="card-body py-3">
-                    <h1 class="card-title mb-0">Welcome to Sharp Business Solutions</h1>
+                    <h1 class="card-title mb-0">Welcome to MedIQ Hospital Information System</h1>
                     <br>
                     <div class="card-details">
                         At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.

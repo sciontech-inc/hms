@@ -109,7 +109,7 @@ class HealthInformationController extends Controller
      * @param  \App\HealthInformation  $healthInformation
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         $record = $request->data;
 

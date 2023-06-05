@@ -2,6 +2,19 @@
 
 @section('title', 'ONLINE APPOINTMENT')
 
+@section('styles')
+<style>
+    .sc-modal-dialog {
+        max-width: 780px !important;
+        background: #fff;
+        top: 20px;
+        position: relative;
+        margin: auto;
+        border-radius: 9px;
+    }
+</style>
+@endsection
+
 @section('breadcrumbs')
     <span>MedIQ Online</span> / <span class="highlight">ONLINE APPOINTMENT</span>
 @endsection
@@ -34,34 +47,34 @@
         <div class="sc-modal-body">
             <form method="post" id="onlineAppointmentForm" class="form-record">
                 <div class="row">
-                    <div class="form-group col-md-12 firstname">
+                    <div class="form-group col-md-4 firstname">
                         <label>FIRST NAME</label>
                         <input type="text" class="form-control" id="firstname" name="firstname" placeholder="FIRST NAME"/>
                     </div>
-                    <div class="form-group col-md-12 middlename">
+                    <div class="form-group col-md-4 middlename">
                         <label>MIDDLE NAME</label>
                         <input type="text" class="form-control" id="middlename" name="middlename" placeholder="MIDDLE NAME"/>
                     </div>
-                    <div class="form-group col-md-12 lastname">
+                    <div class="form-group col-md-4 lastname">
                         <label>LAST NAME</label>
                         <input type="text" class="form-control" id="lastname" name="lastname" placeholder="LAST NAME"/>
                     </div>
-                    <div class="form-group col-md-12 sex">
+                    <div class="form-group col-md-6 sex">
                         <label>SEX</label>
                         <select class="form-control" name="sex" id="sex">
                             <option value="MALE">MALE</option>
                             <option value="FEMALE">FEMALE</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-12 birthdate">
+                    <div class="form-group col-md-6 birthdate">
                         <label>DATE OF BIRTH</label>
                         <input type="date" class="form-control" id="birthdate" name="birthdate"/>
                     </div>
-                    <div class="form-group col-md-12 contact_no">
+                    <div class="form-group col-md-6 contact_no">
                         <label>CONTACT NO.</label>
                         <input type="number" class="form-control" id="contact_no" name="contact_no" placeholder="0950XXXXXXX"/>
                     </div>
-                    <div class="form-group col-md-12 email">
+                    <div class="form-group col-md-6 email">
                         <label>EMAIL</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="EMAIL"/>
                     </div>
@@ -69,21 +82,21 @@
                         <label>ADDRESS</label>
                         <input type="text" class="form-control" id="address" name="address" placeholder="ADDRESS"/>
                     </div>
-                    <div class="form-group col-md-12 date">
+                    <div class="form-group col-md-6 date">
                         <label>DATE OF APPOINTMENT</label>
                         <input type="date" class="form-control" id="date" name="date"/>
                     </div>
-                    <div class="form-group col-md-12 time">
+                    <div class="form-group col-md-6 time">
                         <label>TIME OF APPOINTMENT</label>
                         <input type="time" class="form-control" id="time" name="time"/>
                     </div>
                     <div class="form-group col-md-12 reason">
                         <label>REASON</label>
-                        <textarea class="form-control" name="reason" id="reason" cols="5" rows="2"></textarea>
+                        <textarea class="form-control" name="reason" id="reason" rows="1"></textarea>
                     </div>
                     <div class="form-group col-md-12 medical_history">
                         <label>MEDICAL HISTORY</label>
-                        <textarea class="form-control" name="medical_history" id="medical_history" cols="5" rows="2"></textarea>
+                        <textarea class="form-control" name="medical_history" id="medical_history" rows="2"></textarea>
                     </div>
                     <div class="form-group col-md-12 preferred_doctor">
                         <label>PREFERRED DOCTOR</label>

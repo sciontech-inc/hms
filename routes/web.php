@@ -176,6 +176,15 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/destroy',                     'SpecializedNoteController@destroy'                              )->name('destroy_employment_information');
         });
 
+        Route::group(['prefix' => '/vital_signs'], function (){
+            Route::get          ('/',                            'VitalSignsController@index'                                )->name('employment_information');
+            Route::get          ('/get',                         'VitalSignsController@get'                                  )->name('get_employment_information');
+            Route::post         ('/save',                        'VitalSignsController@store'                                )->name('save_employment_information');
+            Route::get          ('/edit/{id}',                   'VitalSignsController@edit'                                 )->name('edit_employment_information');
+            Route::post         ('/update/{id}',                 'VitalSignsController@update'                               )->name('update_employment_information');
+            Route::post         ('/destroy',                     'VitalSignsController@destroy'                              )->name('destroy_employment_information');
+        });
+
     });
 
 });

@@ -408,7 +408,7 @@ var scion = {
 }
 
 
-$('body').delegate('form input[type="text"], form input[type="number"], form textarea', 'keyup', function() {
+$('body').delegate('form input[type="text"], form textarea', 'keyup', function() {
     this.value = this.value.toUpperCase();
 }).delegate('form', 'submit', function() {
     event.preventDefault();
