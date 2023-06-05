@@ -168,7 +168,10 @@ function billing_detail(id)
 
 function insurance_func()
 {
+    modal_content = 'insurance';
+    module_content = 'insurance';
     module_url = '/hms/insurance';
+    module_type = 'sub_transaction';
 
     if ($.fn.DataTable.isDataTable('#insurance_table')) {
         $('#insurance_table').DataTable().destroy();
@@ -176,7 +179,7 @@ function insurance_func()
 
     scion.create.table(
         'insurance_table',
-        module_url + '/payment/get',
+        module_url + '/get',
         [
             { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
                 var html = "";
@@ -185,9 +188,13 @@ function insurance_func()
                 return html;
             }},
             { data: "billing_id", title: "INVOICE NO." },
-            { data: "amount", title: "AMOUNT" },
-            { data: "payment_method", title: "PAYMENT METHOD" },
-            { data: "payment_date", title: "PAYMENT DATE" },
+            { data: "insurance_id", title: "INSURANCE ID" },
+            { data: "insurance_provider", title: "INSURANCE PROVIDER" },
+            { data: "policy_number", title: "POLICY NUMBER" },
+            { data: "claim_number", title: "CLAIM NUMBER" },
+            { data: "start_date", title: "START DATE" },
+            { data: "end_date", title: "END DATE" },
+            { data: "claim_status", title: "CLAIM STATUS" },
         ], 'Bfrtip', []
     );
 }
