@@ -2,7 +2,7 @@
 
 @section('title', 'BILLING')
 
-@section('style')
+@section('styles')
 
 @endsection
 

@@ -38,7 +38,7 @@
             <a class="btn btn-light action-menu" href="/hms/billing"><img src="/images/action-items/Billing and Collection.png" alt=""/> <span class="action-title">Billing & Collection</span></a>
         </div>
         <div class="col-2 mb-4">
-            <a class="btn btn-light action-menu" href="#"><img src="/images/action-items/Insurance and Eclaim.png" alt=""/> <span class="action-title">Insurance and HMO</span></a>
+            <a class="btn btn-light action-menu" href="/hms/insurance"><img src="/images/action-items/Insurance and Eclaim.png" alt=""/> <span class="action-title">Insurance and HMO</span></a>
         </div>
         <div class="col-2 mb-4">
             <a class="btn btn-light action-menu" href="#"><img src="/images/action-items/Laboratory.png" alt=""/> <span class="action-title">Laboratory</span></a>
@@ -93,7 +93,7 @@
     $(function() {
         scion.centralized_button(true, true, true, true);
         $('body').delegate('.action-menu', 'click', function() {
-            
+
         });
     });
 </script>

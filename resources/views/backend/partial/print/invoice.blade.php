@@ -1,11 +1,10 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container"  id="printableArea">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-lg-12">
     		<div class="invoice-title">
     			<h2>BILLING</h2><h3 class="pull-right"></h3>
     		</div>
@@ -17,7 +16,7 @@
             </div>
     		<hr>
     		<div class="row">
-    			<div class="col-xs-6">
+    			<div class="col-lg-6">
     				<address>
     				<strong>Billed To:</strong><br>
                     <strong>Name:</strong> John Smith<br>
@@ -26,7 +25,7 @@
 
     				</address>
     			</div>
-    			<div class="col-xs-6 text-right">
+    			<div class="col-lg-6 text-right">
     				<address>
         			<strong>Billing Information:</strong><br>
     				 <strong>Billing No:</strong>	 INV-000235<br>
@@ -35,13 +34,13 @@
     			</div>
     		</div>
     		<div class="row">
-    			<div class="col-xs-6">
+    			<div class="col-lg-6">
     				<address>
     					<strong>Date Issued:</strong><br>
     					March 04, 2023<br>
     				</address>
     			</div>
-    			<div class="col-xs-6 text-right">
+    			<div class="col-lg-6 text-right">
     				<address>
     					<strong>Due Date:</strong><br>
     					March 07, 2023<br><br>
