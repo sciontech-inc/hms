@@ -18,13 +18,17 @@ Route::group(['middleware' => ['auth']], function() {
         return view('backend.pages.dashboard');
     });
 
-    Route::get('/dashboard', function () {
-        return view('backend.pages.dashboard');
-    });
+    // Route::get('/dashboard', function () {
+    //     return view('backend.pages.dashboard');
+    // });
 
     Route::get('/inpatient', function () {
         return view('backend.pages.hms.transaction.inpatient');
     });
+
+    Route::group(['prefix' => '/dashboard'], function (){
+        Route::get         ('/',                                'DashboardController@index'                                    )->name('dashboard');
+    }); 
 
     Route::group(['prefix' => '/masterlist'], function() {
         Route::group(['prefix' => '/employee'], function (){
