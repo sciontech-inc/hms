@@ -26,7 +26,7 @@
         <div class="col-12">
             <h3>FINANCIAL METRICS</h3>
             <div class="row">
-                <div class="col-3">    
+                <div class="col-12">
                     <h5>REVENUE ACTUAL TO BUDGET BY TYPE</h5>
                     <div class="revenue-table">
                         <table>
@@ -75,69 +75,72 @@
                         </table>
                     </div>
                     <hr>
-                    <h5>REVENUE RATIO BY ENTITY</h5>
-                    <canvas id="entity_pie"></canvas>
-                    <hr>
-                    <h5>REVENUE RATIO BY TYPE</h5>
-                    <canvas id="type_pie"></canvas>
                 </div>
-                <div class="col-9">
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="label-chart">REVENUE vs LY</div>
+                            <div class="label-value">120.95M</div>
+                            <div class="label-sub">GOAL: 108.76M (+11.2%)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="label-chart">OPERATING INCOME vs LY</div>
+                            <div class="label-value">35.39M</div>
+                            <div class="label-sub">GOAL: 29.91M (+18.35%)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="label-chart">NET INCOME vs LY</div>
+                            <div class="label-value">27.34M</div>
+                            <div class="label-sub">GOAL: 22.48M (+21.6%)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="label-chart">NET INCOME (%) vs LY</div>
+                            <div class="label-value">22.60%</div>
+                            <div class="label-sub">GOAL: 20.67% (+9.35%)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
                     <div class="row">
-                        <div class="col-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="label-chart">REVENUE vs LY</div>
-                                    <div class="label-value">120.95M</div>
-                                    <div class="label-sub">GOAL: 108.76M (+11.2%)</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="label-chart">OPERATING INCOME vs LY</div>
-                                    <div class="label-value">35.39M</div>
-                                    <div class="label-sub">GOAL: 29.91M (+18.35%)</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="label-chart">NET INCOME vs LY</div>
-                                    <div class="label-value">27.34M</div>
-                                    <div class="label-sub">GOAL: 22.48M (+21.6%)</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="label-chart">NET INCOME (%) vs LY</div>
-                                    <div class="label-value">22.60%</div>
-                                    <div class="label-sub">GOAL: 20.67% (+9.35%)</div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-2">
+                            <h5>REVENUE RATIO BY ENTITY</h5>
+                            <canvas id="entity_pie"></canvas>
+                        </div>
+                        <div class="col-5">
                             <h5>EXPENSES ACTUAL TO BUDGET BY ENTITY</h5>
                             <canvas id="expense_actual"></canvas>
                         </div>
-                        <div class="col-6">
+                        <div class="col-5">
                             <h5>REVENUE vs EXPENSE</h5>
                             <canvas id="rev_expense"></canvas>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-2">
+                            <h5>REVENUE RATIO BY TYPE</h5>
+                            <canvas id="type_pie"></canvas>
+                        </div>
+                        <div class="col-5">
                             <h5>TOP 10 EXPENSES BY CATEGORY</h5>
                             <canvas id="top_expense"></canvas>
                         </div>
-                        <div class="col-6">
+                        <div class="col-5">
                             <h5>REVENUE vs OPERATING INCOME COMPARED WITH LAST YEAR</h5>
                             <canvas id="rev_op"></canvas>
                         </div>
@@ -145,6 +148,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
 @endsection
@@ -502,7 +506,6 @@
 }
 
 .revenue-table table thead th {
-    width: 100% !important;
     font-size: 12px;
     background: #6eafdb;
     padding: 5px 10px;
