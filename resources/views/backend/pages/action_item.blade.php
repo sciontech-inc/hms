@@ -38,7 +38,7 @@
             <a class="btn btn-light action-menu" href="/hms/billing"><img src="/images/action-items/Billing and Collection.png" alt=""/> <span class="action-title">Billing & Collection</span></a>
         </div>
         <div class="col-2 mb-4">
-            <a class="btn btn-light action-menu" href="/hms/insurance"><img src="/images/action-items/Insurance and Eclaim.png" alt=""/> <span class="action-title">Insurance and HMO</span></a>
+            <a class="btn btn-light action-menu" href="/hms/billing"><img src="/images/action-items/Insurance and Eclaim.png" alt=""/> <span class="action-title">Insurance and HMO</span></a>
         </div>
         <div class="col-2 mb-4">
             <a class="btn btn-light action-menu" href="#"><img src="/images/action-items/Laboratory.png" alt=""/> <span class="action-title">Laboratory</span></a>
@@ -47,7 +47,7 @@
             <a class="btn btn-light action-menu" href="#"><img src="/images/action-items/Blood Bank.png" alt=""/> <span class="action-title">Blood Bank</span></a>
         </div>
         <div class="col-2 mb-4">
-            <a class="btn btn-light action-menu" href="#"><img src="/images/action-items/Radiology.png" alt=""/> <span class="action-title">Radiology</span></a>
+            <a class="btn btn-light action-menu" href="/hms/radiology_procedure"><img src="/images/action-items/Radiology.png" alt=""/> <span class="action-title">Radiology</span></a>
         </div>
         <div class="col-2 mb-4">
             <a class="btn btn-light action-menu" href="#"><img src="/images/action-items/Linen and Laundry.png" alt=""/> <span class="action-title">Linen and Laundry</span></a>
@@ -59,16 +59,16 @@
             <a class="btn btn-light action-menu" href="#"><img src="/images/action-items/Feedback and Survey.png" alt=""/> <span class="action-title">Feedback and Survey</span></a>
         </div>
         <div class="col-2 mb-4">
-            <a class="btn btn-light action-menu" href="#"><img src="/images/action-items/Inventory Management.png" alt=""/> <span class="action-title">Inventory Management</span></a>
+            <a class="btn btn-light action-menu" href="/hms/inventory"><img src="/images/action-items/Inventory Management.png" alt=""/> <span class="action-title">Inventory Management</span></a>
         </div>
         <div class="col-2 mb-4">
-            <a class="btn btn-light action-menu" href="#"><img src="/images/action-items/Medical Records.png" alt=""/> <span class="action-title">Medical Records</span></a>
+            <a class="btn btn-light action-menu" href="/hms/medical_file"><img src="/images/action-items/Medical Records.png" alt=""/> <span class="action-title">Medical Records</span></a>
         </div>
         <div class="col-2 mb-4">
             <a class="btn btn-light action-menu" href="#"><img src="/images/action-items/HRIS.png" alt=""/> <span class="action-title">HRIS</span></a>
         </div>
         <div class="col-2 mb-4">
-            <a class="btn btn-light action-menu" href="#"><img src="/images/action-items/Pharmacy Management.png" alt=""/> <span class="action-title">Pharmacy Management</span></a>
+            <a class="btn btn-light action-menu" href="/hms/pharmacy"><img src="/images/action-items/Pharmacy Management.png" alt=""/> <span class="action-title">Pharmacy Management</span></a>
         </div>
         <div class="col-2 mb-4">
             <a class="btn btn-light action-menu" href="#"><img src="/images/action-items/Philhealth eClaims.png" alt=""/> <span class="action-title">Philhealth eClaims</span></a>
