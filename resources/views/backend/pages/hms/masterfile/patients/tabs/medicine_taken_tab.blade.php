@@ -1,70 +1,65 @@
-<div id="family_information_tab" class="form-tab">
+
+<div id="medicine_taken_tab" class="form-tab">
     <h5>FAMILY INFORMATION</h5>
     <div style="padding: 1em;"></div>
     <div class="row">
+        <div class="col-6">
+            <div class="form-group medicine_name">
+                <label>NAME</label>
+                <input type="text" class="form-control" name="medicine_name" id="medicine_name"/>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group medicine_doses">
+                <label>DOSES </label>
+                <input type="text" class="form-control" name="medicine_doses" id="medicine_doses"/>
+            </div>
+        </div>
         <div class="col-12">
-            <div class="form-group family_fullname">
-                <label>FULL NAME <span class="required">*</span></label>
-                <input type="text" class="form-control" name="family_fullname" id="family_fullname"/>
+            <div class="form-group routes_of_administration">
+                <label>ROUTES OF ADMINISTRATION </label>
+                <input type="text" class="form-control" name="routes_of_administration" id="routes_of_administration"/>
             </div>
         </div>
         <div class="col-6">
-            <div class="form-group family_birthdate">
-                <label>BIRTHDATE <span class="required">*</span></label>
-                <input type="date" class="form-control" name="family_birthdate" id="family_birthdate"/>
+            <div class="form-group medicine_type">
+                <label>TYPE </label>
+                <input type="text" class="form-control" name="medicine_type" id="medicine_type"/>
             </div>
         </div>
         <div class="col-6">
-            <div class="form-group family_relationship">
-                <label>RELATIONSHIP <span class="required">*</span></label>
-                <input type="text" class="form-control" name="family_relationship" id="family_relationship"/>
+            <div class="form-group medicine_duration">
+                <label>DURATION </label>
+                <input type="text" class="form-control" name="medicine_duration" id="medicine_duration"/>
             </div>
         </div>
         <div class="col-6">
-            <div class="form-group family_sex">
-                <label>SEX <span class="required">*</span></label>
-                <select name="family_sex" id="family_sex" class="form-control">
-                    <option value="MALE">MALE</option>
-                    <option value="FEMALE">FEMALE</option>
+            <div class="form-group medicine_reason">
+                <label>REASON </label>
+                <input type="text" class="form-control" name="medicine_reason" id="medicine_reason"/>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group medicine_compliance">
+                <label>COMPLIANCE </label>
+                <select name="medicine_compliance" id="medicine_compliance" class="form-control">
+                    <option value="PRESCRIBED">Prescribed</option>
+                    <option value="NOT PRESCRIBED">Not Prescribed</option>
                 </select>
             </div>
         </div>
-        <div class="col-6">
-            <div class="form-group family_citizenship">
-                <label>CITIZENSHIP</label>
-                <input type="text" class="form-control" name="family_citizenship" id="family_citizenship"/>
-            </div>
-        </div>
         <div class="col-12">
-            <div class="form-group family_address">
-                <label>ADDRESS <span class="required">*</span></label>
-                <input type="text" class="form-control" name="family_address" id="family_address"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group family_contact_no">
-                <label>CONTACT NO <span class="required">*</span></label>
-                <input type="number" class="form-control" name="family_contact_no" id="family_contact_no"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group family_email">
-                <label>EMAIL </label>
-                <input type="email" class="form-control" name="family_email" id="family_email"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group insurance_notes">
-                <label>FAMILY REMARKS</label>
-                <textarea name="family_remarks" id="family_remarks" rows="2" class="form-control"></textarea>
+            <div class="form-group medicine_remarks">
+                <label>REMARKS </label>
+                <textarea type="text" class="form-control" name="medicine_remarks" id="medicine_remarks"></textarea>
             </div>
         </div>
     </div>
     <hr>
-    <div class="family-information-table">
+    <div class="medicine-taken-table">
         <div class="row">
             <div class="col-12">
-                <table id="family_information_table" class="table table-striped" style="width:100%">
+                <table id="medicine_taken_table" class="table table-striped" style="width:100%">
                 </table>
             </div>
         </div>

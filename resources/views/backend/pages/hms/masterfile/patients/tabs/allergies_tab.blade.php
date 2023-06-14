@@ -82,9 +82,9 @@
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="form-group severity_of_reaction_to_each_medication">
+                            <div class="form-group severity_of_reaction">
                                 <label>SEVERITY OF REACTION TO EACH MEDICATION<span class="required">*</span></label>
-                                <textarea type="text" class="form-control" name="severity_of_reaction_to_each_medication" id="severity_of_reaction_to_each_medication"></textarea>
+                                <textarea type="text" class="form-control" name="severity_of_reaction" id="severity_of_reaction"></textarea>
                             </div>
                         </div>
                         <div class="col-6">

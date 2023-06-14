@@ -29,6 +29,12 @@
                             </div>
                         </div>
                         <div class="col-12">
+                            <div class="form-group description">
+                                <label>CATEGORY <span class="category">*</span></label>
+                                <input type="text" class="form-control" name="category" id="category"/>
+                            </div>
+                        </div>
+                        <div class="col-12">
                             <div class="form-group remarks">
                                 <label>DETAILS <span class="required">*</span></label>
                                 <textarea type="text" class="form-control" name="details" id="details"></textarea>

@@ -7,7 +7,7 @@
                 <div class="employee-picture">
                     <label>PATIENT PICTURE</label>
                     <div id="" onclick="$('#profile_img').click()">
-                        <img src="/images/payroll/201-file/default.png" alt="" width="200px" id="viewer" class="image-previewer" data-cropzee="profile_img">
+                        <img src="/images/hms/patients/default.png" alt="" width="200px" id="viewer" class="image-previewer" data-cropzee="profile_img">
                     </div>
                     <input id="profile_img" type="file" name="profile_img" class="form-control" onchange="scion.fileView(event)" style="display:none;">
                     <button class="btn btn-primary" type="button" onclick="$('#profile_img').click()" style="width:100%;">Select Photo</button>
@@ -15,11 +15,24 @@
             </div>
         </div>
         <div class="col-6">
-            <div class="form-group">
-                <div class="form-group patient_id">
-                    <label>PATIENT ID <span class="required">*</span></label>
-                    <input type="text" class="form-control" name="patient_id" id="patient_id"/>
-                </div>
+        <div class="form-group">
+                @include('backend.partial.component.lookup', [
+                    'label' => "PATIENT ID",
+                    'placeholder' => '<NEW>',
+                    'id' => "patient_id",
+                    'title' => "PATIENT ID",
+                    'url' => "/hms/patients/get",
+                    'data' => array(
+                        array('data' => "DT_RowIndex", 'title' => "#"),
+                        array('data' => "patient_id", 'title' => "Patient ID"),
+                        array('data' => "firstname", 'title' => "First Name"),
+                        array('data' => "email", 'title' => "Email"),
+                    ),
+                    'disable' => true,
+                    'lookup_module' => 'patients',
+                    'modal_type'=> 'all',
+                    'lookup_type' => 'main'
+                ])
             </div>
         </div>
         <div class="col-6">
@@ -62,11 +75,11 @@
             </div>
         </div>
         <div class="col-4">
-            <div class="form-group gender">
-                <label>GENDER <span class="required">*</span></label>
-                <select name="gender" id="gender" class="form-control">
-                    <option value="male">MALE</option>
-                    <option value="female">FEMALE</option>
+            <div class="form-group sex">
+                <label>SEX <span class="required">*</span></label>
+                <select name="sex" id="sex" class="form-control">
+                    <option value="MALE">MALE</option>
+                    <option value="FEMALE">FEMALE</option>
                 </select>
             </div>
         </div>
@@ -83,12 +96,11 @@
             </div>
         </div>
         <div class="col-12">
-            <div class="form-group email">
+            <div class="form-group birthplace">
                 <label>BIRTH PLACE</label>
                 <input type="text" class="form-control" name="birthplace" id="birthplace"/>
             </div>
         </div>
-
         <div class="col-6">
              <div class="form-group marital_status">
                 <label>MARITAL STATUS <span class="required">*</span></label>
@@ -120,13 +132,13 @@
             </div>
         </div>
         <div class="col-6">
-            <div class="form-group nationality">
+            <div class="form-group blood_type">
                 <label>BLOOD TYPE</label>
                 <input type="text" class="form-control" name="blood_type" id="blood_type"/>
             </div>
         </div>
         <div class="col-6">
-            <div class="form-group religion">
+            <div class="form-group occupation">
                 <label>OCCUPATION</label>
                 <input type="text" class="form-control" name="occupation" id="occupation"/>
             </div>
@@ -139,20 +151,99 @@
         </div>
         <div class="col-12">
             <div class="form-group referred_by">
-                <label>REFERRED BY</label>
-                <input type="text" class="form-control" name="referred_by" id="referred_by"/>
+                <label>REMARKS</label>
+                <textarea name="remarks" id="remarks" rows="3" class="form-control"></textarea>
             </div>
         </div>
+        <hr>
         <div class="col-12">
-            <div class="form-group referred_by">
-                <label>REFERRED BY</label>
-                <input type="text" class="form-control" name="referred_by" id="referred_by"/>
+            <label for="contact-address">CONTACT AND ADDRESSES</label>
+        </div>
+        <div class="col-6">
+            <div class="form-group contact_number_1">
+                <label>CONTACT NUMBER 1 <span class="required">*</span></label>
+                <input type="text" class="form-control" name="contact_number_1" id="contact_number_1"/>
             </div>
         </div>
-        <div class="col-12">
-            <div class="form-group referred_by">
-                <label>REFERRED BY</label>
-                <input type="text" class="form-control" name="referred_by" id="referred_by"/>
+        <div class="col-6">
+            <div class="form-group contact_number_2">
+                <label>CONTACT NUMBER 2</label>
+                <input type="text" class="form-control" name="contact_number_2" id="contact_number_2"/>
+            </div>
+        </div>
+        <h3 class="col-12 form-title">ADDRESS 1</h3>
+        <div class="col-4">
+            <div class="form-group street_no">
+                <label>STREET NO. <span class="required">*</span></label>
+                <input type="text" class="form-control" name="street_no" id="street_no"/>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group barangay">
+                <label>BARANGAY <span class="required">*</span></label>
+                <input type="text" class="form-control" name="barangay" id="barangay"/>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group city">
+                <label>CITY <span class="required">*</span></label>
+                <input type="text" class="form-control" name="city" id="city"/>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group province">
+                <label>PROVINCE <span class="required">*</span></label>
+                <input type="text" class="form-control" name="province" id="province"/>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group country">
+                <label>COUNTRY <span class="required">*</span></label>
+                <input type="text" class="form-control" name="country" id="country"/>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group zip_code">
+                <label>ZIP CODE <span class="required">*</span></label>
+                <input type="text" class="form-control" name="zip_code" id="zip_code"/>
+            </div>
+        </div>
+
+        <h3 class="col-12 form-title">ADDRESS 2</h3>
+        <div class="col-4">
+            <div class="form-group street_no_2">
+                <label>STREET NO.</label>
+                <input type="text" class="form-control" name="street_no_2" id="street_no_2"/>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group barangay_2">
+                <label>BARANGAY</label>
+                <input type="text" class="form-control" name="barangay_2" id="barangay_2"/>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group city_2">
+                <label>CITY</label>
+                <input type="text" class="form-control" name="city_2" id="city_2"/>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group province_2">
+                <label>PROVINCE</label>
+                <input type="text" class="form-control" name="province_2" id="province_2"/>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group country_2">
+                <label>COUNTRY</label>
+                <input type="text" class="form-control" name="country_2" id="country_2"/>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group zip_code_2">
+                <label>ZIP CODE</label>
+                <input type="text" class="form-control" name="zip_code_2" id="zip_code_2"/>
             </div>
         </div>
     </div>

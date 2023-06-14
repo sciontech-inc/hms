@@ -2,19 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\GlobalFunction;
 use App\Patients;
 use Illuminate\Http\Request;
+use Auth;
 
 class PatientsController extends Controller
 {
+    use GlobalFunction;
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function get()
+    {
+        if(request()->ajax()) {
+            return datatables()->of(Patients::get())
+            ->addIndexColumn()
+            ->make(true);
+        }
+    }
+     
+
     public function index()
     {
-        return view('backend.pages.hms.masterfile.patients.index');
+        $patient = Patients::orderBy('id', 'desc')->get();
+        return view('backend.pages.hms.masterfile.patients.index', compact('patient'));
     }
 
     /**
@@ -35,7 +51,44 @@ class PatientsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'firstname' => 'required',
+            'middlename' => 'required',
+            'lastname' => 'required',
+            'birthdate' => 'required',
+            'sex' => 'required',
+            'citizenship' => 'required',
+            'email' => 'required|unique:patients',
+            'birthplace' => 'required',
+            'marital_status' => 'required',
+            'body_marks' => 'required',
+            'nationality' => 'required',
+            'religion' => 'required',
+            'blood_type' => 'required',
+            'contact_number_1' => 'required',
+            'street_no' => 'required',
+            'barangay' => 'required',
+            'city' => 'required',
+            'province' => 'required',
+            'country' => 'required',
+            'zip_code' => 'required',
+        ]);
+
+
+        $request['patient_id'] = $this->series('PTNT', 'Patients');
+
+            if($request->profile_img !== null) {
+                $request['profile_img'] = $this->uploadFile($request->profile_img, 'images/hms/patients/', date('Ymdhis'));
+            }
+            else {
+                $request['profile_img'] = "default.png";
+            }
+ 
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        $patient = Patients::create($request->all());
     }
 
     /**
@@ -55,9 +108,10 @@ class PatientsController extends Controller
      * @param  \App\Patients  $patients
      * @return \Illuminate\Http\Response
      */
-    public function edit(Patients $patients)
+    public function edit($id)
     {
-        //
+        $patient = Patients::where('id', $id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('patient'));
     }
 
     /**
@@ -67,9 +121,40 @@ class PatientsController extends Controller
      * @param  \App\Patients  $patients
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patients $patients)
+    public function update(Request $request, $id)
     {
-        //
+        $validate = $request->validate([
+            'firstname' => 'required',
+            'middlename' => 'required',
+            'lastname' => 'required',
+            'birthdate' => 'required',
+            'sex' => 'required',
+            'citizenship' => 'required',
+            'email' => 'required|unique:patients',
+            'birthplace' => 'required',
+            'marital_status' => 'required',
+            'body_marks' => 'required',
+            'nationality' => 'required',
+            'religion' => 'required',
+            'blood_type' => 'required',
+            'contact_number_1' => 'required',
+            'street_no' => 'required',
+            'barangay' => 'required',
+            'city' => 'required',
+            'province' => 'required',
+            'country' => 'required',
+            'zip_code' => 'required',
+        ]);
+
+        if($request->profile_img !== null && $request->profile_img !== '') {
+            $request['profile_img'] = $this->uploadFile($request->profile_img, 'images/hms/patients/', date('Ymdhis'));
+        }
+        else {
+            $request['profile_img'] = Patients::where('id', $id)->first()->profile_img;
+        }
+
+        Patients::findOrFail($id)->update($request->except('created_by'));
+        return response()->json(compact('validate'));
     }
 
     /**
@@ -78,8 +163,14 @@ class PatientsController extends Controller
      * @param  \App\Patients  $patients
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patients $patients)
+    public function destroy(Request $request)
     {
-        //
+        $record = $request->data;
+
+        foreach($record as $item) {
+            Patients::find($item)->delete();
+        }
+        
+        return 'Record Deleted';
     }
 }
