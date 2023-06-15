@@ -38,13 +38,34 @@ function success(record) {
                 case 'family-information':
                     $('#family_information_table').DataTable().draw();
                     break;
-                case 'medical-case':
-                    $('#medical_case_table').DataTable().draw();
+                case 'medical-cases':
+                    $('#medical_cases_table').DataTable().draw();
                     break;
                 case 'medicine-taken':
                     $('#medicine_taken_table').DataTable().draw();
                     break;
-            }
+                case 'procedures-undertaken':
+                    $('#procedures_undertaken_table').DataTable().draw();
+                    break;
+                case 'patient-allergies':
+                    $('#patient_allergies_table').DataTable().draw();
+                    break;
+                case 'progress-consultation':
+                    $('#progress_consultation_table').DataTable().draw();
+                    break;
+                case 'vital-measurement':
+                    $('#vital_measurement_table').DataTable().draw();
+                    break;
+                case 'family-medical-history':
+                    $('#family_medical_history_table').DataTable().draw();
+                    break;
+                case 'social-history':
+                    $('#social_history_table').DataTable().draw();
+                    break;
+                case 'other-information':
+                    $('other_information_table').DataTable().draw();
+                    break;
+    }
             
             break;
     }
@@ -135,7 +156,7 @@ function generateData() {
                     family_remarks	: $('#family_remarks').val(),
             };
                 break;
-            case 'medical-case':
+            case 'medical-cases':
                 form_data = {
                     _token: _token,
                     patient_id: record_id,
@@ -162,6 +183,107 @@ function generateData() {
                     medicine_reason: $('#medicine_reason').val(),
                     medicine_compliance: $('#medicine_compliance').val(),
                     medicine_remarks: $('#medicine_remarks').val(),
+                };
+                    break;
+            case 'procedures-undertaken':
+                form_data = {
+                    _token: _token,
+                    patient_id: record_id,
+                    procedure_date: $('#procedure_date').val(),
+                    procedure_name: $('#procedure_name').val(),
+                    procedure_description: $('#procedure_description').val(),
+                    procedure_reason: $('#procedure_reason').val(),
+                    procedure_results: $('#procedure_results').val(),
+                    pre_procedure_preparation: $('#pre_procedure_preparation').val(),
+                    post_procedure_preparation: $('#post_procedure_preparation').val(),
+                    procedure_complications: $('#procedure_complications').val(),
+                    procedure_sedation_used: $('#procedure_sedation_used').val(),
+                    procedure_remarks: $('#procedure_remarks').val(),
+
+                };
+                    break;
+            case 'patient-allergies':
+                form_data = {
+                    _token: _token,
+                    patient_id: record_id,
+                    allergy_allergen: $('#allergy_allergen').val(),
+                    allergy_reaction: $('#allergy_reaction').val(),
+                    allergy_severity: $('#allergy_severity').val(),
+                    allergy_date_of_onset: $('#allergy_date_of_onset').val(),
+                    allergy_treatment: $('#allergy_treatment').val(),
+                    allergy_duration: $('#allergy_duration').val(),
+                    source_of_information: $('#source_of_information').val(),
+                    known_cross_reactives: $('#known_cross_reactives').val(),
+                    current_management_plan: $('#current_management_plan').val(),
+                    medications_to_avoid: $('#medications_to_avoid').val(),
+                    severity_of_reaction: $('#severity_of_reaction').val(),
+                    allergy_anaphylaxis: $('#allergy_anaphylaxis').val(),
+                    allergy_testing: $('#allergy_testing').val(),
+                    other_relevant_medical_history: $('#other_relevant_medical_history').val(),
+
+                };
+                    break;
+            case 'progress-consultation':
+                form_data = {
+                    _token: _token,
+                    patient_id: record_id,
+                    progress_date: $('#progress_date').val(),
+                    progress_title: $('#progress_title').val(),
+                    progress_notes: $('#progress_notes').val(),
+
+                };
+                    break;
+            case 'vital-measurement':
+                form_data = {
+                    _token: _token,
+                    patient_id: record_id,
+                    vital_date: $('#vital_date').val(),
+                    vital_time: $('#vital_time').val(),
+                    blood_pressure: $('#blood_pressure').val(),
+                    heart_rate: $('#heart_rate').val(),
+                    temperature: $('#temperature').val(),
+                    respiratory_rate: $('#respiratory_rate').val(),
+                    oxygen_saturation: $('#oxygen_saturation').val(),
+                    pulse_rate: $('#pulse_rate').val(),
+                    vital_remarks: $('#vital_remarks').val(),
+
+                };
+                    break;
+            case 'family-medical-history':
+                form_data = {
+                    _token: _token,
+                    patient_id: record_id,
+                    fm_relationship: $('#fm_relationship').val(),
+                    fm_medical_condition: $('#fm_medical_condition').val(),
+                    fm_age_at_diagnosis: $('#fm_age_at_diagnosis').val(),
+                    fm_age_at_death: $('#fm_age_at_death').val(),
+                    fm_cause_of_death: $('#fm_cause_of_death').val(),
+                    fm_other_relevant_medical_history: $('#fm_other_relevant_medical_history').val(),
+                    fm_family_history_of_specific_conditions: $('#fm_family_history_of_specific_conditions').val(),
+                    fm_ethnicity: $('#fm_ethnicity').val(),
+                    fm_lifestyle_factors: $('#fm_lifestyle_factors').val(),
+                    fm_other_family_members_affected: $('#fm_other_family_members_affected').val(),
+                    fm_remarks: $('#fm_remarks').val(),
+
+                };
+                    break;
+            case 'social-history':
+                form_data = {
+                    _token: _token,
+                    patient_id: record_id,
+                    sh_record: $('#sh_record').val(),
+                    sh_category: $('#sh_category').val(),
+                    sh_details: $('#sh_details').val(),
+                    
+                };
+                    break;
+            case 'other-information':
+                form_data = {
+                    _token: _token,
+                    patient_id: record_id,
+                    oi_description: $('#oi_description').val(),
+                    oi_remarks: $('#oi_remarks').val(),
+                    
                 };
                     break;
     }
@@ -292,6 +414,160 @@ function medicine_taken_func() {
             { data: "medicine_duration", title: "MEDICINE DURATION" },
             { data: "medicine_reason", title: "MEDICINE REASON" },
 
+        ], 'Bfrtip', []
+    );
+}
+
+function procedures_undertaken_func() {
+    module_content = 'procedures-undertaken';
+    module_url = '/hms/procedures-undertaken';
+    actions = 'update';
+    module_type = 'sub_transaction';
+    scion.centralized_button(true, false, true, true);
+
+    if ($.fn.DataTable.isDataTable('#procedures_undertaken_table')) {
+        $('#procedures_undertaken_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'procedures_undertaken_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "procedure_date", title: "PROCEDURE DATE" },
+            { data: "procedure_name", title: "PROCEDURE NAME" },
+            { data: "procedure_reason", title: "PROCEDURE REASON" },
+            { data: "procedure_results", title: "PROCEDURE RESULTS" },
+            { data: "procedure_complications", title: "PROCEDURE COMPLICATIONS" },
+
+        ], 'Bfrtip', []
+    );
+}
+
+function patient_allergies_func() {
+    module_content = 'patient-allergies';
+    module_url = '/hms/patient-allergies';
+    actions = 'update';
+    module_type = 'sub_transaction';
+    scion.centralized_button(true, false, true, true);
+
+    if ($.fn.DataTable.isDataTable('#patient_allergies_table')) {
+        $('#patient_allergies_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'patient_allergies_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "allergy_allergen", title: "PROCEDURE DATE" },
+            { data: "allergy_reaction", title: "PROCEDURE NAME" },
+            { data: "allergy_severity", title: "PROCEDURE REASON" },
+            { data: "allergy_date_of_onset", title: "PROCEDURE RESULTS" },
+            { data: "allergy_treatment", title: "PROCEDURE COMPLICATIONS" },
+            { data: "allergy_duration", title: "PROCEDURE COMPLICATIONS" },
+            { data: "allergy_anaphylaxis", title: "PROCEDURE COMPLICATIONS" },
+
+        ], 'Bfrtip', []
+    );
+}
+
+function progress_consultation_func() {
+    module_content = 'progress-consultation';
+    module_url = '/hms/progress-consultation';
+    actions = 'update';
+    module_type = 'sub_transaction';
+    scion.centralized_button(true, false, true, true);
+
+    if ($.fn.DataTable.isDataTable('#progress_consultation_table')) {
+        $('#progress_consultation_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'progress_consultation_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "progress_date", title: "PROGRESS DATE" },
+            { data: "progress_title", title: "PROGRESS TITLE" },
+            { data: "progress_notes", title: "PROGRESS NOTES" },
+
+        ], 'Bfrtip', []
+    );
+}
+
+function vital_measurement_func() {
+    module_content = 'vital-measurement';
+    module_url = '/hms/vital-measurement';
+    actions = 'update';
+    module_type = 'sub_transaction';
+    scion.centralized_button(true, false, true, true);
+
+    if ($.fn.DataTable.isDataTable('#vital_measurement_table')) {
+        $('#vital_measurement_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'vital_measurement_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "vital_date", title: "PROGRESS DATE" },
+            { data: "vital_time", title: "VITAL TIME" },
+            { data: "blood_pressure", title: "PROGRESS TITLE" },
+            { data: "heart_rate", title: "PROGRESS NOTES" },
+            { data: "temperature", title: "PROGRESS NOTES" },
+            { data: "respiratory_rate", title: "PROGRESS NOTES" },
+            { data: "oxygen_saturation", title: "PROGRESS NOTES" },
+            { data: "pulse_rate", title: "PROGRESS NOTES" },
+
+        ], 'Bfrtip', []
+    );
+}
+
+function family_medical_history_func() {
+    module_content = 'family-medical-history';
+    module_url = '/hms/family-medical-history';
+    actions = 'update';
+    module_type = 'sub_transaction';
+    scion.centralized_button(true, false, true, true);
+
+    if ($.fn.DataTable.isDataTable('#family_medical_history_table')) {
+        $('#family_medical_history_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'family_medical_history_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "fm_relationship", title: "RELATIONSHIP" },
+            { data: "fm_medical_condition", title: "MEDICAL CONDITION" },
+            { data: "fm_age_at_diagnosis", title: "AGE AT DIAGNOSIS" },
+            { data: "fm_age_at_death", title: "AGE AT DEATH" },
+            { data: "fm_cause_of_death", title: "CAUSE OF DEATH" },
+            { data: "fm_other_relevant_medical_history", title: "OTHER RELEVANT MEDICAL HISTORY" },
+            { data: "fm_family_history_of_specific_conditions", title: "FAMILY HISTORY OF SPECIFIC CONDITIONS" },
+            { data: "fm_ethnicity", title: "ETHNICITY" },
+
+        ], 'Bfrtip', []
+    );
+}
+
+function social_history_func() {
+    module_content = 'social-history';
+    module_url = '/hms/social-history';
+    actions = 'update';
+    module_type = 'sub_transaction';
+    scion.centralized_button(true, false, true, true);
+
+    if ($.fn.DataTable.isDataTable('#social_history_table')) {
+        $('#social_history_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'social_history_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "sh_record", title: "RECORD" },
+            { data: "sh_category", title: "CATEGORY" },
+            { data: "sh_details", title: "DETAILS" },
+ 
         ], 'Bfrtip', []
     );
 }

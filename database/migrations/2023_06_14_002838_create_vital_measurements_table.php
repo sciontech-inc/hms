@@ -16,14 +16,15 @@ class CreateVitalMeasurementsTable extends Migration
         Schema::create('vital_measurements', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('patient_id');
-            $table->string('date');
+            $table->string('vital_date');
+            $table->string('vital_time');
             $table->string('blood_pressure');
             $table->string('heart_rate');
             $table->string('temperature');
             $table->string('respiratory_rate');
             $table->string('oxygen_saturation');
             $table->string('pulse_rate');
-            $table->string('remarks');
+            $table->string('vital_remarks');
             $table->integer('workstation_id')->default(1);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

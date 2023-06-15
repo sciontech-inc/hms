@@ -4,82 +4,58 @@ namespace App\Http\Controllers;
 
 use App\ProceduresUndertaken;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Auth;
 
 class ProceduresUndertakenController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function save(Request $request, $id) {
+        $output = '';
+
+        $validate = $request->validate([
+            'procedure_date' => 'required',
+            'procedure_name' => 'required',
+            'procedure_description' => 'required',
+            'procedure_reason' => 'required',
+            'procedure_results' => 'required',
+            'pre_procedure_preparation' => 'required',
+            'post_procedure_preparation' => 'required',
+            'procedure_complications' => 'required',
+            'procedure_sedation_used' => 'required',
+
+        ]);
+
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        $insurance = ProceduresUndertaken::where('patient_id', $request->patient_id)->where('procedure_name', $request->procedure_name)->count();
+        if($insurance === 0) {
+            $output = 'saved';
+            ProceduresUndertaken::create($request->all());
+        }
+        else {
+            $output = "updated";
+            ProceduresUndertaken::where('patient_id', $request->patient_id)->update($request->except('_token', 'created_by'));
+        }
+        return response()->json(compact('validate'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function get($id) {
+        if(request()->ajax()) {
+            return datatables()->of(ProceduresUndertaken::where('patient_id', $id)->get())
+            ->addIndexColumn()
+            ->make(true);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function destroy(Request $request)
     {
-        //
-    }
+        $record = $request->data;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\ProceduresUndertaken  $proceduresUndertaken
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ProceduresUndertaken $proceduresUndertaken)
-    {
-        //
-    }
+        foreach($record as $item) {
+            ProceduresUndertaken::find($item)->delete();
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\ProceduresUndertaken  $proceduresUndertaken
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ProceduresUndertaken $proceduresUndertaken)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ProceduresUndertaken  $proceduresUndertaken
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ProceduresUndertaken $proceduresUndertaken)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\ProceduresUndertaken  $proceduresUndertaken
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(ProceduresUndertaken $proceduresUndertaken)
-    {
-        //
+        return 'Record Deleted';
     }
 }

@@ -25,7 +25,7 @@ class MedicalCaseController extends Controller
         $request['created_by'] = Auth::user()->id;
         $request['updated_by'] = Auth::user()->id;
 
-        $family = MedicalCase::where('patient_id', $request->patient_id)->count();
+        $family = MedicalCase::where('patient_id', $request->patient_id)->where('chief_complaint', $request->chief_complaint)->count();
         if($family === 0) {
             $output = 'saved';
             MedicalCase::create($request->all());

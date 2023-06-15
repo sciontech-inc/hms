@@ -4,82 +4,58 @@ namespace App\Http\Controllers;
 
 use App\VitalMeasurement;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Auth;
+
 
 class VitalMeasurementController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function save(Request $request, $id) {
+        $output = '';
+
+        $validate = $request->validate([
+            'vital_date' => 'required',
+            'vital_time' => 'required',
+            'blood_pressure' => 'required',
+            'heart_rate' => 'required',
+            'temperature' => 'required',
+            'respiratory_rate' => 'required',
+            'oxygen_saturation' => 'required',
+            'pulse_rate' => 'required',
+
+        ]);
+
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        $insurance = VitalMeasurement::where('patient_id', $request->patient_id)->where('vital_date', $request->vital_date)->where('vital_time', $request->vital_time)->count();
+        if($insurance === 0) {
+            $output = 'saved';
+            VitalMeasurement::create($request->all());
+        }
+        else {
+            $output = "updated";
+            VitalMeasurement::where('patient_id', $request->patient_id)->update($request->except('_token', 'created_by'));
+        }
+        return response()->json(compact('validate'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function get($id) {
+        if(request()->ajax()) {
+            return datatables()->of(VitalMeasurement::where('patient_id', $id)->get())
+            ->addIndexColumn()
+            ->make(true);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function destroy(Request $request)
     {
-        //
-    }
+        $record = $request->data;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\VitalMeasurement  $vitalMeasurement
-     * @return \Illuminate\Http\Response
-     */
-    public function show(VitalMeasurement $vitalMeasurement)
-    {
-        //
-    }
+        foreach($record as $item) {
+            VitalMeasurement::find($item)->delete();
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\VitalMeasurement  $vitalMeasurement
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(VitalMeasurement $vitalMeasurement)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\VitalMeasurement  $vitalMeasurement
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, VitalMeasurement $vitalMeasurement)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\VitalMeasurement  $vitalMeasurement
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(VitalMeasurement $vitalMeasurement)
-    {
-        //
+        return 'Record Deleted';
     }
 }

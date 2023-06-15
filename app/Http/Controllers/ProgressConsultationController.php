@@ -4,82 +4,54 @@ namespace App\Http\Controllers;
 
 use App\ProgressConsultation;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Auth;
+
 
 class ProgressConsultationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function save(Request $request, $id) {
+        $output = '';
+
+        $validate = $request->validate([
+            'progress_date' => 'required',
+            'progress_title' => 'required',
+            'progress_notes' => 'required',
+       
+
+        ]);
+
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        $insurance = ProgressConsultation::where('patient_id', $request->patient_id)->where('progress_title', $request->progress_title)->count();
+        if($insurance === 0) {
+            $output = 'saved';
+            ProgressConsultation::create($request->all());
+        }
+        else {
+            $output = "updated";
+            ProgressConsultation::where('patient_id', $request->patient_id)->update($request->except('_token', 'created_by'));
+        }
+        return response()->json(compact('validate'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function get($id) {
+        if(request()->ajax()) {
+            return datatables()->of(ProgressConsultation::where('patient_id', $id)->get())
+            ->addIndexColumn()
+            ->make(true);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function destroy(Request $request)
     {
-        //
-    }
+        $record = $request->data;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\ProgressConsultation  $progressConsultation
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ProgressConsultation $progressConsultation)
-    {
-        //
-    }
+        foreach($record as $item) {
+            ProgressConsultation::find($item)->delete();
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\ProgressConsultation  $progressConsultation
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ProgressConsultation $progressConsultation)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ProgressConsultation  $progressConsultation
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ProgressConsultation $progressConsultation)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\ProgressConsultation  $progressConsultation
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(ProgressConsultation $progressConsultation)
-    {
-        //
+        return 'Record Deleted';
     }
 }

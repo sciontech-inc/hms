@@ -16,8 +16,8 @@ class CreatePatientOtherInformationTable extends Migration
         Schema::create('patient_other_information', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('patient_id');
-            $table->string('description');
-            $table->string('remarks');
+            $table->string('oi_description');
+            $table->string('oi_remarks');
             $table->integer('workstation_id')->default(1);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

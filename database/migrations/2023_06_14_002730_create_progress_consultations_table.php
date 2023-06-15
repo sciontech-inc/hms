@@ -16,9 +16,9 @@ class CreateProgressConsultationsTable extends Migration
         Schema::create('progress_consultations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('patient_id');
-            $table->string('date');
-            $table->string('title');
-            $table->string('notes');
+            $table->string('progress_date');
+            $table->string('progress_title');
+            $table->string('progress_notes');
             $table->integer('workstation_id')->default(1);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

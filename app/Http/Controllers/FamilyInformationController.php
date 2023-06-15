@@ -25,7 +25,7 @@ class FamilyInformationController extends Controller
         $request['created_by'] = Auth::user()->id;
         $request['updated_by'] = Auth::user()->id;
 
-        $family = FamilyInformation::where('patient_id', $request->patient_id)->count();
+        $family = FamilyInformation::where('patient_id', $request->patient_id)->where('family_fullname', $request->family_fullname)->count();
         if($family === 0) {
             $output = 'saved';
             FamilyInformation::create($request->all());

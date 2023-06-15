@@ -8,14 +8,15 @@ class VitalMeasurement extends Model
 {
     protected $fillable = [
         'patient_id',
-        'date',
+        'vital_date',
+        'vital_time',
         'blood_pressure',
         'heart_rate',
         'temperature',
         'respiratory_rate',
         'oxygen_saturation',
         'pulse_rate',
-        'remarks',
+        'vital_remarks',
         'workstation_id',
         'created_by',
         'updated_by'

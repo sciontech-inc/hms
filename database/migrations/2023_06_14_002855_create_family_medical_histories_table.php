@@ -16,17 +16,17 @@ class CreateFamilyMedicalHistoriesTable extends Migration
         Schema::create('family_medical_histories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('patient_id');
-            $table->string('relationship');
-            $table->string('medical_condition');
-            $table->string('age_at_diagnosis');
-            $table->string('age_at_death');
-            $table->string('cause_of_death');
-            $table->string('other_relevant_medical_history');
-            $table->string('family_history_of_specific_conditions');
-            $table->string('ethnicity');
-            $table->string('lifestyle_factors');
-            $table->string('other_family_members_affected');
-            $table->string('remarks');
+            $table->string('fm_relationship');
+            $table->string('fm_medical_condition');
+            $table->string('fm_age_at_diagnosis');
+            $table->string('fm_age_at_death');
+            $table->string('fm_cause_of_death');
+            $table->string('fm_other_relevant_medical_history');
+            $table->string('fm_family_history_of_specific_conditions');
+            $table->string('fm_ethnicity');
+            $table->string('fm_lifestyle_factors');
+            $table->string('fm_other_family_members_affected');
+            $table->string('fm_remarks');
             $table->integer('workstation_id')->default(1);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

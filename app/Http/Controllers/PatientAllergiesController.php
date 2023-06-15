@@ -4,82 +4,63 @@ namespace App\Http\Controllers;
 
 use App\PatientAllergies;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Auth;
+
 
 class PatientAllergiesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function save(Request $request, $id) {
+        $output = '';
+
+        $validate = $request->validate([
+            'allergy_allergen' => 'required',
+            'allergy_reaction' => 'required',
+            'allergy_severity' => 'required',
+            'allergy_date_of_onset' => 'required',
+            'allergy_treatment' => 'required',
+            'allergy_duration' => 'required',
+            'source_of_information' => 'required',
+            'known_cross_reactives' => 'required',
+            'current_management_plan' => 'required',
+            'medications_to_avoid' => 'required',
+            'severity_of_reaction' => 'required',
+            'allergy_anaphylaxis' => 'required',
+            'allergy_testing' => 'required',
+
+        ]);
+
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        $insurance = PatientAllergies::where('patient_id', $request->patient_id)->where('allergy_allergen', $request->allergy_allergen)->count();
+        if($insurance === 0) {
+            $output = 'saved';
+            PatientAllergies::create($request->all());
+        }
+        else {
+            $output = "updated";
+            PatientAllergies::where('patient_id', $request->patient_id)->update($request->except('_token', 'created_by'));
+        }
+        return response()->json(compact('validate'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function get($id) {
+        if(request()->ajax()) {
+            return datatables()->of(PatientAllergies::where('patient_id', $id)->get())
+            ->addIndexColumn()
+            ->make(true);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function destroy(Request $request)
     {
-        //
-    }
+        $record = $request->data;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\PatientAllergies  $patientAllergies
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PatientAllergies $patientAllergies)
-    {
-        //
-    }
+        foreach($record as $item) {
+            PatientAllergies::find($item)->delete();
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\PatientAllergies  $patientAllergies
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PatientAllergies $patientAllergies)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PatientAllergies  $patientAllergies
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PatientAllergies $patientAllergies)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\PatientAllergies  $patientAllergies
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PatientAllergies $patientAllergies)
-    {
-        //
+        return 'Record Deleted';
     }
 }

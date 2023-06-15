@@ -26,7 +26,7 @@ class MedicineTakenController extends Controller
         $request['created_by'] = Auth::user()->id;
         $request['updated_by'] = Auth::user()->id;
 
-        $medicine = MedicineTaken::where('patient_id', $request->patient_id)->count();
+        $medicine = MedicineTaken::where('patient_id', $request->patient_id)->where('medicine_name', $request->medicine_name)->count();
         if($medicine === 0) {
             $output = 'saved';
             MedicineTaken::create($request->all());

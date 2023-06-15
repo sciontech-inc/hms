@@ -19,13 +19,13 @@ class CreateProceduresUndertakensTable extends Migration
             $table->string('procedure_date');
             $table->string('procedure_name');
             $table->string('procedure_description');
-            $table->string('reason');
-            $table->string('results');
+            $table->string('procedure_reason');
+            $table->string('procedure_results');
             $table->string('pre_procedure_preparation');
             $table->string('post_procedure_preparation');
-            $table->string('complications');
-            $table->string('sedation_used');
-            $table->string('remarks');
+            $table->string('procedure_complications');
+            $table->string('procedure_sedation_used');
+            $table->string('procedure_remarks')->nullable();
             $table->integer('workstation_id')->default(1);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

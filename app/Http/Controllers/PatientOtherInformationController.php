@@ -4,82 +4,51 @@ namespace App\Http\Controllers;
 
 use App\PatientOtherInformation;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Auth;
 
 class PatientOtherInformationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function save(Request $request, $id) {
+        $output = '';
+
+        $validate = $request->validate([
+            'oi_description' => 'required',
+            'oi_remarks' => 'required',
+
+        ]);
+
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        $insurance = PatientOtherInformation::where('patient_id', $request->patient_id)->where('oi_description', $request->oi_description)->count();
+        if($insurance === 0) {
+            $output = 'saved';
+            PatientOtherInformation::create($request->all());
+        }
+        else {
+            $output = "updated";
+            PatientOtherInformation::where('patient_id', $request->patient_id)->update($request->except('_token', 'created_by'));
+        }
+        return response()->json(compact('validate'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function get($id) {
+        if(request()->ajax()) {
+            return datatables()->of(PatientOtherInformation::where('patient_id', $id)->get())
+            ->addIndexColumn()
+            ->make(true);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function destroy(Request $request)
     {
-        //
-    }
+        $record = $request->data;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\PatientOtherInformation  $patientOtherInformation
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PatientOtherInformation $patientOtherInformation)
-    {
-        //
-    }
+        foreach($record as $item) {
+            PatientOtherInformation::find($item)->delete();
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\PatientOtherInformation  $patientOtherInformation
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PatientOtherInformation $patientOtherInformation)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PatientOtherInformation  $patientOtherInformation
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PatientOtherInformation $patientOtherInformation)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\PatientOtherInformation  $patientOtherInformation
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PatientOtherInformation $patientOtherInformation)
-    {
-        //
+        return 'Record Deleted';
     }
 }

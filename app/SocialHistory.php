@@ -8,9 +8,9 @@ class SocialHistory extends Model
 {
     protected $fillable = [
         'patient_id',
-        'record',
-        'category',
-        'details',
+        'sh_record',
+        'sh_category',
+        'sh_details',
         'workstation_id',
         'created_by',
         'updated_by'

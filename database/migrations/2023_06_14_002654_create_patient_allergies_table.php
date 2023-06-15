@@ -16,18 +16,18 @@ class CreatePatientAllergiesTable extends Migration
         Schema::create('patient_allergies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('patient_id');
-            $table->string('allergen');
-            $table->string('reaction');
-            $table->string('severity');
-            $table->string('date_of_onset');
-            $table->string('treatment');
-            $table->string('duration');
+            $table->string('allergy_allergen');
+            $table->string('allergy_reaction');
+            $table->string('allergy_severity');
+            $table->string('allergy_date_of_onset');
+            $table->string('allergy_treatment');
+            $table->string('allergy_duration');
             $table->string('source_of_information');
-            $table->string('know_cross_reactives');
+            $table->string('known_cross_reactives');
             $table->string('current_management_plan');
             $table->string('medications_to_avoid');
             $table->string('severity_of_reaction');
-            $table->string('anaphylaxis');
+            $table->string('allergy_anaphylaxis');
             $table->string('allergy_testing');
             $table->string('other_relevant_medical_history');
             $table->integer('workstation_id')->default(1);

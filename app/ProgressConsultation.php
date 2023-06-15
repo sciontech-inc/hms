@@ -8,9 +8,9 @@ class ProgressConsultation extends Model
 {
     protected $fillable = [
         'patient_id',
-        'date',
-        'title',
-        'notes',
+        'progress_date',
+        'progress_title',
+        'progress_notes',
         'workstation_id',
         'created_by',
         'updated_by'

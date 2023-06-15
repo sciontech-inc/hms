@@ -96,6 +96,48 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post          ('/destroy',                    'MedicineTakenController@destroy'                            )->name('destroy_medical_case');
         });
 
+        Route::group(['prefix' => '/procedures-undertaken'], function (){
+            Route::post          ('/update/{id}',                'ProceduresUndertakenController@save'                               )->name('save_procedures_undertaken');
+            Route::get           ('/get/{id}',                   'ProceduresUndertakenController@get'                                )->name('get_procedures_undertaken');
+            Route::post          ('/destroy',                    'ProceduresUndertakenController@destroy'                            )->name('destroy_procedures_undertaken');
+        });
+
+        Route::group(['prefix' => '/patient-allergies'], function (){
+            Route::post          ('/update/{id}',                'PatientAllergiesController@save'                               )->name('save_patient_allergies');
+            Route::get           ('/get/{id}',                   'PatientAllergiesController@get'                                )->name('get_patient_allergies');
+            Route::post          ('/destroy',                    'PatientAllergiesController@destroy'                            )->name('destroy_patient_allergies');
+        });
+
+        Route::group(['prefix' => '/progress-consultation'], function (){
+            Route::post          ('/update/{id}',                'ProgressConsultationController@save'                               )->name('save_progress_consultation');
+            Route::get           ('/get/{id}',                   'ProgressConsultationController@get'                                )->name('get_progress_consultation');
+            Route::post          ('/destroy',                    'ProgressConsultationController@destroy'                            )->name('destroy_progress_consultation');
+        });
+
+        Route::group(['prefix' => '/vital-measurement'], function (){
+            Route::post          ('/update/{id}',                'VitalMeasurementController@save'                               )->name('save_vital_measurement');
+            Route::get           ('/get/{id}',                   'VitalMeasurementController@get'                                )->name('get_vital_measurement');
+            Route::post          ('/destroy',                    'VitalMeasurementController@destroy'                            )->name('destroy_vital_measurement');
+        });
+
+        Route::group(['prefix' => '/family-medical-history'], function (){
+            Route::post          ('/update/{id}',                'FamilyMedicalHistoryController@save'                               )->name('save_family_medical_history');
+            Route::get           ('/get/{id}',                   'FamilyMedicalHistoryController@get'                                )->name('get_family_medical_history');
+            Route::post          ('/destroy',                    'FamilyMedicalHistoryController@destroy'                            )->name('destroy_family_medical_history');
+        });
+
+        Route::group(['prefix' => '/social-history'], function (){
+            Route::post          ('/update/{id}',                'SocialHistoryController@save'                               )->name('save_social_history');
+            Route::get           ('/get/{id}',                   'SocialHistoryController@get'                                )->name('get_social_history');
+            Route::post          ('/destroy',                    'SocialHistoryController@destroy'                            )->name('destroy_social_history');
+        });
+
+        Route::group(['prefix' => '/other-information'], function (){
+            Route::post          ('/update/{id}',                'PatientOtherInformationController@save'                               )->name('save_other_information');
+            Route::get           ('/get/{id}',                   'PatientOtherInformationController@get'                                )->name('get_other_information');
+            Route::post          ('/destroy',                    'PatientOtherInformationController@destroy'                            )->name('destroy_other_information');
+        });
+
         Route::group(['prefix' => '/appointment'], function (){
             Route::get          ('/',                            'AppointmentController@index'                                )->name('employment_information');
             Route::get          ('/get',                         'AppointmentController@get'                                  )->name('get_employment_information');

@@ -16,9 +16,9 @@ class CreateSocialHistoriesTable extends Migration
         Schema::create('social_histories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('patient_id');
-            $table->string('record');
-            $table->string('category');
-            $table->string('details');
+            $table->string('sh_record');
+            $table->string('sh_category');
+            $table->string('sh_details');
             $table->integer('workstation_id')->default(1);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

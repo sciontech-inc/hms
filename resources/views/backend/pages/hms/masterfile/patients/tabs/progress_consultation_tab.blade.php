@@ -1,6 +1,27 @@
 <div id="progress_consultation_tab" class="form-tab">
-    <h5>PROGRESS NOTES AND CONSULTATION</h5>
+    <h5>PROGRESS NOTES & CONSULTATIONS</h5>
     <div style="padding: 1em;"></div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group progress_date">
+                <label>DATE <span class="required">*</span></label>
+                <input type="date" class="form-control" name="progress_date" id="progress_date"/>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group progress_title">
+                <label>TITLE <span class="required">*</span></label>
+                <input type="text" class="form-control" name="progress_title" id="progress_title"/>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group progress_notes">
+                <label>NOTES <span class="required">*</span></label>
+                <textarea type="text" class="form-control" name="progress_notes" id="progress_notes"></textarea>
+            </div>
+        </div>
+    </div>
+    <hr>
     <div class="progress-consultation-table">
         <div class="row">
             <div class="col-12">
@@ -9,42 +30,6 @@
             </div>
         </div>
     </div>
-    <hr>
-    {{-- MODAL --}}
-    @section('sc-modal')
-    <div class="sc-modal-content" id="progress_consultation_form">
-        <div class="sc-modal-dialog">
-            <div class="sc-modal-header">
-                <span class="sc-title-bar"></span>
-                <span class="sc-close" onclick="scion.create.sc_modal('progress_consultation_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
-            </div>
-            <div class="sc-modal-body">
-                <form id="progressconsultationForm" method="post" class="form-record">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group date">
-                                <label>DATE <span class="required">*</span></label>
-                                <input type="date" class="form-control" name="title" id="title"/>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group title">
-                                <label>TITLE <span class="required">*</span></label>
-                                <input type="text" class="form-control" name="title" id="title"/>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group remarks">
-                                <label>NOTES <span class="required">*</span></label>
-                                <textarea type="text" class="form-control" name="remarks" id="remarks"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    @endsection
 </div>
 
 

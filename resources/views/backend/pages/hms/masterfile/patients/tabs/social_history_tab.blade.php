@@ -1,6 +1,26 @@
 <div id="social_history_tab" class="form-tab">
-    <h5>SOCIAL HISTORY</h5>
+    <h5>PROGRESS NOTES & CONSULTATIONS</h5>
     <div style="padding: 1em;"></div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group sh_record">
+                <label>RECORD <span class="required">*</span></label>
+                <input type="text" class="form-control" name="sh_record" id="sh_record"/>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group sh_category">
+                <label>CATEGORY <span class="category">*</span></label>
+                <input type="text" class="form-control" name="sh_category" id="sh_category"/>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group sh_details">
+                <label>DETAILS <span class="required">*</span></label>
+                <textarea type="text" class="form-control" name="sh_details" id="sh_details"></textarea>
+            </div>
+        </div>
+    </div>
     <hr>
     <div class="social-history-table">
         <div class="row">
@@ -10,44 +30,7 @@
             </div>
         </div>
     </div>
-    <hr>
-    {{-- MODAL --}}
-    @section('sc-modal')
-    <div class="sc-modal-content" id="social_history_form">
-        <div class="sc-modal-dialog">
-            <div class="sc-modal-header">
-                <span class="sc-title-bar"></span>
-                <span class="sc-close" onclick="scion.create.sc_modal('social_history_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
-            </div>
-            <div class="sc-modal-body">
-                <form id="socialhistoryForm" method="post" class="form-record">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group description">
-                                <label>RECORD <span class="required">*</span></label>
-                                <input type="text" class="form-control" name="description" id="description"/>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group description">
-                                <label>CATEGORY <span class="category">*</span></label>
-                                <input type="text" class="form-control" name="category" id="category"/>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group remarks">
-                                <label>DETAILS <span class="required">*</span></label>
-                                <textarea type="text" class="form-control" name="details" id="details"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    @endsection
 </div>
-
 
 
 @section('styles')
