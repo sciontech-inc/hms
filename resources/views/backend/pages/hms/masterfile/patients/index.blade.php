@@ -33,7 +33,7 @@
     <div class="col-12" style="height:100%;">
         <div class="tab" style="height:100%;">
             <div class="tab-content">
-                <form class="form-record" method="post" id="patients">
+                <form class="form-record" method="post" id="patientsForm">
                     @include('backend.pages.hms.masterfile.patients.tabs.general_tab')
                     @include('backend.pages.hms.masterfile.patients.tabs.insurance_tab')
                     @include('backend.pages.hms.masterfile.patients.tabs.family_information_tab')

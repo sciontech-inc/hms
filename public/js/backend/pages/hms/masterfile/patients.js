@@ -63,7 +63,7 @@ function success(record) {
                     $('#social_history_table').DataTable().draw();
                     break;
                 case 'other-information':
-                    $('other_information_table').DataTable().draw();
+                    $('#other_information_table').DataTable().draw();
                     break;
     }
             
@@ -83,6 +83,7 @@ function delete_success() {
             scion.centralized_button(true, false, true, true);
 
             break;
+            
      
     }
 
@@ -283,7 +284,6 @@ function generateData() {
                     patient_id: record_id,
                     oi_description: $('#oi_description').val(),
                     oi_remarks: $('#oi_remarks').val(),
-                    
                 };
                     break;
     }
@@ -336,6 +336,11 @@ function patient_insurance_func() {
         'patient_insurance_table',
         module_url + '/get/' + record_id,
         [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                return html;
+            }},
             { data: "provider", title: "PROVIDER" },
             { data: "type", title: "TYPE" },
             { data: "policy_no", title: "POLICY NO" },
@@ -567,6 +572,28 @@ function social_history_func() {
             { data: "sh_record", title: "RECORD" },
             { data: "sh_category", title: "CATEGORY" },
             { data: "sh_details", title: "DETAILS" },
+ 
+        ], 'Bfrtip', []
+    );
+}
+
+function other_information_func() {
+    module_content = 'other-information';
+    module_url = '/hms/other-information';
+    actions = 'update';
+    module_type = 'sub_transaction';
+    scion.centralized_button(true, false, true, true);
+
+    if ($.fn.DataTable.isDataTable('#other_information_table')) {
+        $('#other_information_table').DataTable().destroy();
+    }
+
+    scion.create.table(
+        'other_information_table',
+        module_url + '/get/' + record_id,
+        [
+            { data: "oi_description", title: "RECORD" },
+            { data: "oi_remarks", title: "CATEGORY" },
  
         ], 'Bfrtip', []
     );

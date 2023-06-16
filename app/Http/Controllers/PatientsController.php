@@ -130,7 +130,7 @@ class PatientsController extends Controller
             'birthdate' => 'required',
             'sex' => 'required',
             'citizenship' => 'required',
-            'email' => 'required|unique:patients',
+            'email' => 'required',
             'birthplace' => 'required',
             'marital_status' => 'required',
             'body_marks' => 'required',
