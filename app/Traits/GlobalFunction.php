@@ -16,6 +16,7 @@ trait GlobalFunction
            return $series = $prefix.str_pad($model::orderBy('id','desc')->first()->id + 1, 7, '0', STR_PAD_LEFT);
         }
     }
+    
     function transform($collection, $transformer) {
         $new_collection = new Collection($collection, $transformer);
         $new_collection = $this->fractal->createData($new_collection);

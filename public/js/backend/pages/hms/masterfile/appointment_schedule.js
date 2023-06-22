@@ -1,99 +1,72 @@
 $(function() {
-    module_content = 'appointment';
-    modal_content = 'appointment';
-    module_url = '/hms/appointment';
-    module_url_2 = '/hris/appointment';
-    tab_active = 'general';
-    page_title = "";
-    actions = 'save';
+    modal_content = 'set_appointment';
+    module_url = '/hms/set_appointment';
     module_type = 'custom';
+    page_title = "Set Appointment";
 
     scion.centralized_button(false, true, true, true);
-    scion.action.tab(tab_active);
+    scion.create.table(
+        'set_appointment_table',  
+        module_url + '/get', 
+        [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/ehr/"+modal_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
+            { data: "appointment_staff", title: "DOCTOR NAME" },
+            { data: "patient_id", title: "PATIENT NAME" },
+            { data: "appointment_date", title: "DATE" },
+            { data: "appointment_time", title: "TIME" },
+            { data: "appoitnment_status", title: "STATUS" },
+           
+        ]
+    );
+
 });
 
-// DEFAULT FUNCTION
-function success(record) {
+function success() {
     switch(actions) {
         case 'save':
-            record_id = record.id;
-            $('#employee_no').val(record.employee_no);
-            actions = 'update';
-
-            $('.tab-list-menu-item ').removeAttr('disabled');
-
             break;
-
-
         case 'update':
-            switch(module_content) {
-                case 'employment-requirements':
-                    break;
-            }
             break;
     }
+    $('#set_appointment_table').DataTable().draw();
+    scion.create.sc_modal('set_appointment_form').hide('all', modalHideFunction)
 }
 
 function error() {}
 
 function delete_success() {
-
-    switch(module_content) {
-        case 'employee-information':
-            var form_id = $('.form-record')[0].id;
-            $('#'+form_id)[0].reset();
-            actions = 'save';
-            scion.centralized_button(true, false, true, true);
-
-            break;
-    }
-
+    $('#set_appointment_table').DataTable().draw();
 }
 
 function delete_error() {}
 
 function generateData() {
-    switch(module_content) {
-        case '201-file':
-            form_data = {
-                _token: _token,
-                firstname: $('#firstname').val(),
-            };
-            break;
-    }
+    form_data = {
+        _token: _token,
+        patient_id: $('#patient_id').val(),
+        appointment_type: $('#appointment_type').val(),
+        appointment_staff: $('#appointment_staff').val(),
+        appointment_date: $('#appointment_date').val(),
+        appointment_time: $('#appointment_time').val(),
+        appointment_status: $('#appointment_status').val(),
+        appointment_notification_preference: $('#appointment_notification_preference').val(),
+        appointment_remarks: $('#appointment_remarks').val(),
+        appointment_location: $('#appointment_location').val(),
+        appointment_confirmation: $('#appointment_confirmation').val(),
+        appointment_next_appointment: $('#appointment_next_appointment').val(),
+
+    };
 
     return form_data;
 }
 
-function generateDeleteItems() {
-    switch(module_content) {
-        case '201-file':
-            delete_data = [record_id];
-            break;
-    }
-}
+function generateDeleteItems(){}
 
-// EXTRA FUNCTION
-function general_func() {
-    modal_content = 'appointment';
-    module_content = 'appointment';
-    module_url = '/hms/appointment';
-    module_type = 'transaction';
-
-    if(record_id !== '') {
-        actions = 'update';
-    }
-
-    scion.centralized_button(false, true, true, true);
-}
-
-function billing_history_func() {
-    module_content = 'appointment';
-    module_url = '/hms/appointment';
-    actions = 'update';
-    module_type = 'sub_transaction';
-    scion.centralized_button(true, true, true, true);
-}
 
 function modalShowFunction() {
     scion.centralized_button(true, false, true, true);

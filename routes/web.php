@@ -63,6 +63,8 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::group(['prefix' => '/hms'], function (){
 
+        //Patient Routes
+
         Route::group(['prefix' => '/patients'], function (){
             Route::get          ('/',                            'PatientsController@index'                                )->name('employment_information');
             Route::get          ('/get',                         'PatientsController@get'                                  )->name('get_employment_information');
@@ -138,9 +140,40 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post          ('/destroy',                    'PatientOtherInformationController@destroy'                            )->name('destroy_other_information');
         });
 
-        Route::group(['prefix' => '/appointment'], function (){
+        //End Patient Routes
+
+
+        //Doctor Routes
+
+        Route::group(['prefix' => '/doctors'], function (){
+            Route::get          ('/',                            'DoctorsController@index'                                )->name('doctor_information');
+            Route::get          ('/get',                         'DoctorsController@get'                                  )->name('get_doctor_information');
+            Route::post         ('/save',                        'DoctorsController@store'                                )->name('save_doctor_information');
+            Route::get          ('/edit/{id}',                   'DoctorsController@edit'                                 )->name('edit_doctor_information');
+            Route::post         ('/update/{id}',                 'DoctorsController@update'                               )->name('update_doctor_information');
+            Route::post         ('/destroy',                     'DoctorsController@destroy'                              )->name('destroy_doctor_information');
+        });
+
+        //End Doctor Routes
+
+        //PhilHealth Claims Routes
+
+        Route::group(['prefix' => '/philhealth_claims'], function (){
+            Route::get          ('/',                            'PhilHealthClaimsController@index'                                )->name('philhealth_claims');
+            Route::get          ('/get',                         'PhilHealthClaimsController@get'                                  )->name('get_philhealth_claims');
+            Route::get          ('/patient/get',                 'PhilHealthClaimsController@get'                                  )->name('get_philhealth_claims');
+            Route::post         ('/save',                        'PhilHealthClaimsController@store'                                )->name('save_philhealth_claims');
+            Route::get          ('/edit/{id}',                   'PhilHealthClaimsController@edit'                                 )->name('edit_philhealth_claims');
+            Route::post         ('/update/{id}',                 'PhilHealthClaimsController@update'                               )->name('update_philhealth_claims');
+            Route::post         ('/destroy',                     'PhilHealthClaimsController@destroy'                              )->name('destroy_philhealth_claims');
+        });
+
+        //End PhilHealth Claims
+
+        Route::group(['prefix' => '/set_appointment'], function (){
             Route::get          ('/',                            'AppointmentController@index'                                )->name('employment_information');
             Route::get          ('/get',                         'AppointmentController@get'                                  )->name('get_employment_information');
+            Route::get          ('/patient/get',                  'AppointmentController@patientGet'                           )->name('get_patient_information');
             Route::post         ('/save',                        'AppointmentController@store'                                )->name('save_employment_information');
             Route::get          ('/edit/{id}',                   'AppointmentController@edit'                                 )->name('edit_employment_information');
             Route::post         ('/update/{id}',                 'AppointmentController@update'                               )->name('update_employment_information');

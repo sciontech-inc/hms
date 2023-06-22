@@ -38,7 +38,20 @@
                 <ul id="patientmanagement" class="sidebar-dropdown list-unstyled collapse" data-parent="#sidebar">
                     <li class="list-title">PATIENT MANAGEMENT</li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/patients">PATIENTS</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/appointment">APPOINTMENT SCHEDULE</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/set_appointment">APPOINTMENT SCHEDULE</a></li>
+                </ul>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="#staffmanagement" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-user-md"></i> <span class="align-middle">STAFF</span>
+                    </span>
+                </a>
+                <ul id="staffmanagement" class="sidebar-dropdown list-unstyled collapse" data-parent="#sidebar">
+                    <li class="list-title">STAFF MANAGEMENT</li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/doctors">DOCTORS</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/set_appointment">NURSES</a></li>
                 </ul>
             </li>
 
@@ -209,15 +222,14 @@
             </li>
 
             <li class="sidebar-item">
-                <a href="##" data-toggle="collapse" class="sidebar-link collapsed">
+                <a href="#philhealth" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
                         <i class="align-middle mr-2 fas fa-fw fa-heartbeat"></i> <span class="align-middle">PHILHEALTH ECLAIMS</span>
                     </span>
                 </a>
-                <ul id="#" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="list-title">PHARMACY MANAGEMENT</li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/payment">PAYMENT</a></li>
+                <ul id="philhealth" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                    <li class="list-title">PHILHEALTH ECLAIMS</li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/philhealth_claims">FILE A CLAIM</a></li>
                 </ul>
             </li>
 

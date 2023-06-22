@@ -15,6 +15,19 @@ class CreateAppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('patient_id');
+            $table->string('appointment_type');
+            $table->string('appointment_staff');
+            $table->string('appointment_date');
+            $table->string('appointment_time');
+            $table->string('appointment_notification_preference');
+            $table->string('appointment_remarks');
+            $table->string('appointment_location');
+            $table->string('appointment_confirmation');
+            $table->string('appointment_next_appointment');
+            $table->integer('workstation_id')->default(1);
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }
