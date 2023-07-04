@@ -46,7 +46,7 @@
         <div class="sc-modal-body">
             <form method="post" id="specializedNotesForm" class="form-record">
                 <div class="row">
-                <div class="form-group col-md-12 patient_id">
+                    <div class="form-group col-md-12 patient_id">
                         <label>PATIENT NAME</label>
                         @include('backend.partial.component.lookup', [
                             'label' => "PATIENTS",

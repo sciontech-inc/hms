@@ -10,6 +10,38 @@ use Auth;
 
 class PatientInsuranceController extends Controller
 {
+
+    public function store(Request $request)
+    {
+
+        $validate = $request->validate([
+            'provider' => 'required',
+            'type' => 'required',
+            'policy_no' => 'required',
+        ]);
+
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        PatientInsurance::create($request->all());
+
+        return response()->json(compact('validate'));
+    }
+
+    public function edit($id)
+    {
+        $patient_insurance = PatientInsurance::where('id', $id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('patient_insurance'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request['updated_by'] = Auth::user()->id;
+        PatientInsurance::find($id)->update($request->all());
+        return "Record Saved";
+    }
+
     public function save(Request $request, $id) {
         $output = '';
 

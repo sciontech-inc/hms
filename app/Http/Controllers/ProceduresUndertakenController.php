@@ -9,6 +9,44 @@ use Auth;
 
 class ProceduresUndertakenController extends Controller
 {
+    public function store(Request $request)
+    {
+
+        $validate = $request->validate([
+            'procedure_date' => 'required',
+            'procedure_name' => 'required',
+            'procedure_description' => 'required',
+            'procedure_reason' => 'required',
+            'procedure_results' => 'required',
+            'pre_procedure_preparation' => 'required',
+            'post_procedure_preparation' => 'required',
+            'procedure_complications' => 'required',
+            'procedure_sedation_used' => 'required',
+
+        ]);
+
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        ProceduresUndertaken::create($request->all());
+
+        return response()->json(compact('validate'));
+    }
+
+    public function edit($id)
+    {
+        $procedures_undertaken = ProceduresUndertaken::where('id', $id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('procedures_undertaken'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request['updated_by'] = Auth::user()->id;
+        ProceduresUndertaken::find($id)->update($request->all());
+        return "Record Saved";
+    }
+
     public function save(Request $request, $id) {
         $output = '';
 

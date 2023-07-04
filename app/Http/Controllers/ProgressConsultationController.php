@@ -10,6 +10,39 @@ use Auth;
 
 class ProgressConsultationController extends Controller
 {
+    public function store(Request $request)
+    {
+
+        $validate = $request->validate([
+            
+            'progress_date' => 'required',
+            'progress_title' => 'required',
+            'progress_notes' => 'required',
+       
+        ]);
+
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        ProgressConsultation::create($request->all());
+
+        return response()->json(compact('validate'));
+    }
+
+    public function edit($id)
+    {
+        $progress_consultation = ProgressConsultation::where('id', $id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('progress_consultation'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request['updated_by'] = Auth::user()->id;
+        ProgressConsultation::find($id)->update($request->all());
+        return "Record Saved";
+    }
+
     public function save(Request $request, $id) {
         $output = '';
 

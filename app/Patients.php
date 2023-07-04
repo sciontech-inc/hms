@@ -9,6 +9,7 @@ class Patients extends Model
     protected $fillable = [
         'patient_id',
         'profile_img',
+        'qr_code',
         'status',
         'firstname',
         'middlename',

@@ -1,39 +1,5 @@
 <div id="patient_insurance_tab" class="form-tab">
     <h5>INSURANCE</h5>
-    <div style="padding: 1em;"></div>
-    <div class="row">
-        <div class="col-6">
-            <div class="form-group provider">
-                <label>PROVIDER <span class="required">*</span></label>
-                <input type="text" class="form-control" name="provider" id="provider"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group type">
-                <label>TYPE <span class="required">*</span></label>
-                <input type="text" class="form-control" name="type" id="type"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group policy_no">
-                <label>POLICY NO. <span class="required">*</span></label>
-                <input type="text" class="form-control" name="policy_no" id="policy_no"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group policy_no">
-                <label>GROUP POLICY NO./ <span class="required">*</span></label>
-                <input type="text" class="form-control" name="group_policy_no" id="group_policy_no"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group insurance_notes">
-                <label>NOTES <span class="required">*</span></label>
-                <textarea name="insurance_notes" id="insurance_notes" rows="2" class="form-control"></textarea>
-            </div>
-        </div>
-    </div>
-    <hr>
     <div class="patient-insurance-table">
         <div class="row">
             <div class="col-12">
@@ -43,6 +9,57 @@
         </div>
     </div>
 </div>
+
+
+
+@section('sc-modal')
+@parent
+<div class="sc-modal-content" id="patient_insurance_form">
+    <div class="sc-modal-dialog sc-xl">
+        <div class="sc-modal-header">
+            <span class="sc-title-bar"></span>
+            <span class="sc-close" onclick="scion.create.sc_modal('patient_insurance_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+        </div>
+        <div class="sc-modal-body">
+            <form method="post" id="patientinsuranceForm" class="form-record">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group provider">
+                            <label>PROVIDER <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="provider" id="provider"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group type">
+                            <label>TYPE <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="type" id="type"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group policy_no">
+                            <label>POLICY NO. <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="policy_no" id="policy_no"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group policy_no">
+                            <label>GROUP POLICY NO./ <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="group_policy_no" id="group_policy_no"/>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group insurance_notes">
+                            <label>NOTES <span class="required">*</span></label>
+                            <textarea name="insurance_notes" id="insurance_notes" rows="2" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
+
 
 
 @section('styles')
@@ -162,3 +179,5 @@
     }
   </style>
 @endsection
+
+

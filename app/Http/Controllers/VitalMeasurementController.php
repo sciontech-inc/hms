@@ -10,6 +10,43 @@ use Auth;
 
 class VitalMeasurementController extends Controller
 {
+    public function store(Request $request)
+    {
+
+        $validate = $request->validate([
+            'vital_date' => 'required',
+            'vital_time' => 'required',
+            'blood_pressure' => 'required',
+            'heart_rate' => 'required',
+            'temperature' => 'required',
+            'respiratory_rate' => 'required',
+            'oxygen_saturation' => 'required',
+            'pulse_rate' => 'required',
+
+        ]);
+
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        VitalMeasurement::create($request->all());
+
+        return response()->json(compact('validate'));
+    }
+
+    public function edit($id)
+    {
+        $vital_measurement = VitalMeasurement::where('id', $id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('vital_measurement'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request['updated_by'] = Auth::user()->id;
+        VitalMeasurement::find($id)->update($request->all());
+        return "Record Saved";
+    }
+
     public function save(Request $request, $id) {
         $output = '';
 

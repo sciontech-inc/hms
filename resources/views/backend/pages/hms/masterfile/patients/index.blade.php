@@ -2,6 +2,25 @@
 
 @section('title', 'PATIENTS')
 
+@section('styles')
+<style>
+    .sc-modal-dialog {
+        max-width: 720px;
+        background: #fff;
+        top: 20px;
+        position: relative;
+        margin: auto;
+        border-radius: 9px;
+    }
+    img#barcode {
+        width: 160px;
+        height: auto;
+    }
+
+</style>
+
+@endsection
+
 @section('breadcrumbs')
     <span>MASTERFILE</span>  /  <span class="highlight">PATIENT LIST</span>
 @endsection
@@ -93,4 +112,6 @@
 @section('scripts')
 <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="/js/backend/pages/hms/masterfile/patients.js"></script>
+
+
 @endsection

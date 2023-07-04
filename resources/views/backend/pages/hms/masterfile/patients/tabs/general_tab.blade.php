@@ -2,7 +2,7 @@
 <div id="general_tab" class="form-tab">
     <h3>GENERAL TAB</h3>
     <div class="row">
-        <div class="col-12">
+        <div class="col-6">
             <div class="form-group">
                 <div class="employee-picture">
                     <label>PATIENT PICTURE</label>
@@ -11,6 +11,17 @@
                     </div>
                     <input id="profile_img" type="file" name="profile_img" class="form-control" onchange="scion.fileView(event)" style="display:none;">
                     <button class="btn btn-primary" type="button" onclick="$('#profile_img').click()" style="width:100%;">Select Photo</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <div class="employee-picture">
+                    <label>PATIENT'S QR CODE</label>
+                    <div>
+                        <img id='barcode' alt="" title="HELLO" width="50" height="50" />
+                        <label for=""></label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -26,6 +37,7 @@
                         array('data' => "DT_RowIndex", 'title' => "#"),
                         array('data' => "patient_id", 'title' => "Patient ID"),
                         array('data' => "firstname", 'title' => "First Name"),
+                        array('data' => "lastname", 'title' => "Last Name"),
                         array('data' => "email", 'title' => "Email"),
                     ),
                     'disable' => true,

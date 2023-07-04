@@ -1,69 +1,5 @@
 <div id="procedures_undertaken_tab" class="form-tab">
     <h5>PROCEDURES UNDERTAKEN</h5>
-    <div style="padding: 1em;"></div>
-    <div class="row">
-        <div class="col-6">
-            <div class="form-group procedure_date">
-                <label>DATE OF PROCEDURE</label>
-                <input type="date" class="form-control" name="procedure_date" id="procedure_date"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group procedure_name">
-                <label>PROCEDURE NAME <span class="required">*</span></label>
-                <input type="text" class="form-control" name="procedure_name" id="procedure_name"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group procedure_description">
-                <label>PROCEDURE DESCRIPTION <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="procedure_description" id="procedure_description"></textarea>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group procedure_reason">
-                <label>REASON <span class="required">*</span></label>
-                <input type="text" class="form-control" name="procedure_reason" id="procedure_reason"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group procedure_results">
-                <label>RESULTS OF THE PROCEDURE <span class="required">*</span></label>
-                <input type="text" class="form-control" name="procedure_results" id="procedure_results"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group pre_procedure_preparation">
-                <label>PRE-PROCEDURE PREPARATION<span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="pre_procedure_preparation" id="pre_procedure_preparation"></textarea>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group post_procedure_preparation">
-                <label>POST-PROCEDURE PREPARATION <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="post_procedure_preparation" id="post_procedure_preparation"></textarea>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group procedure_complications">
-                <label>COMPLICATIONS <span class="required">*</span></label>
-                <input type="text" class="form-control" name="procedure_complications" id="procedure_complications"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group procedure_sedation_used">
-                <label>SEDATION USED <span class="required">*</span></label>
-                <input type="text" class="form-control" name="procedure_sedation_used" id="procedure_sedation_used"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group procedure_remarks">
-                <label>REMARKS</label>
-                <textarea type="text" class="form-control" rows="2" name="procedure_remarks" id="procedure_remarks"></textarea>
-            </div>
-        </div>
-    </div>
-    <hr>
     <div class="procedures-undertaken-table">
         <div class="row">
             <div class="col-12">
@@ -74,6 +10,83 @@
     </div>
 </div>
 
+@section('sc-modal')
+@parent
+<div class="sc-modal-content" id="procedures_undertaken_form">
+    <div class="sc-modal-dialog sc-xl">
+        <div class="sc-modal-header">
+            <span class="sc-title-bar"></span>
+            <span class="sc-close" onclick="scion.create.sc_modal('procedures_undertaken_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+        </div>
+        <div class="sc-modal-body">
+            <form method="post" id="proceduresundertakenForm" class="form-record">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group procedure_date">
+                            <label>DATE OF PROCEDURE</label>
+                            <input type="date" class="form-control" name="procedure_date" id="procedure_date"/>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group procedure_name">
+                            <label>PROCEDURE NAME <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="procedure_name" id="procedure_name"/>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group procedure_description">
+                            <label>PROCEDURE DESCRIPTION <span class="required">*</span></label>
+                            <textarea type="text" class="form-control" name="procedure_description" id="procedure_description"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group procedure_reason">
+                            <label>REASON <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="procedure_reason" id="procedure_reason"/>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group procedure_results">
+                            <label>RESULTS OF THE PROCEDURE <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="procedure_results" id="procedure_results"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group pre_procedure_preparation">
+                            <label>PRE-PROCEDURE PREPARATION<span class="required">*</span></label>
+                            <textarea type="text" class="form-control" name="pre_procedure_preparation" id="pre_procedure_preparation"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group post_procedure_preparation">
+                            <label>POST-PROCEDURE PREPARATION <span class="required">*</span></label>
+                            <textarea type="text" class="form-control" name="post_procedure_preparation" id="post_procedure_preparation"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group procedure_complications">
+                            <label>COMPLICATIONS <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="procedure_complications" id="procedure_complications"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group procedure_sedation_used">
+                            <label>SEDATION USED <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="procedure_sedation_used" id="procedure_sedation_used"/>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group procedure_remarks">
+                            <label>REMARKS</label>
+                            <textarea type="text" class="form-control" rows="2" name="procedure_remarks" id="procedure_remarks"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
 
 @section('styles')
 <style>

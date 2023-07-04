@@ -9,6 +9,38 @@ use Auth;
 
 class PatientOtherInformationController extends Controller
 {
+    public function store(Request $request)
+    {
+
+        $validate = $request->validate([
+
+            'oi_description' => 'required',
+            'oi_remarks' => 'required',
+
+        ]);
+
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        PatientOtherInformation::create($request->all());
+
+        return response()->json(compact('validate'));
+    }
+
+    public function edit($id)
+    {
+        $patient_other_information = PatientOtherInformation::where('id', $id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('patient_other_information'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request['updated_by'] = Auth::user()->id;
+        PatientOtherInformation::find($id)->update($request->all());
+        return "Record Saved";
+    }
+
     public function save(Request $request, $id) {
         $output = '';
 

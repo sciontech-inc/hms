@@ -1,66 +1,5 @@
 <div id="family_information_tab" class="form-tab">
     <h5>FAMILY INFORMATION</h5>
-    <div style="padding: 1em;"></div>
-    <div class="row">
-        <div class="col-12">
-            <div class="form-group family_fullname">
-                <label>FULL NAME <span class="required">*</span></label>
-                <input type="text" class="form-control" name="family_fullname" id="family_fullname"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group family_birthdate">
-                <label>BIRTHDATE <span class="required">*</span></label>
-                <input type="date" class="form-control" name="family_birthdate" id="family_birthdate"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group family_relationship">
-                <label>RELATIONSHIP <span class="required">*</span></label>
-                <input type="text" class="form-control" name="family_relationship" id="family_relationship"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group family_sex">
-                <label>SEX <span class="required">*</span></label>
-                <select name="family_sex" id="family_sex" class="form-control">
-                    <option value="MALE">MALE</option>
-                    <option value="FEMALE">FEMALE</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group family_citizenship">
-                <label>CITIZENSHIP</label>
-                <input type="text" class="form-control" name="family_citizenship" id="family_citizenship"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group family_address">
-                <label>ADDRESS <span class="required">*</span></label>
-                <input type="text" class="form-control" name="family_address" id="family_address"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group family_contact_no">
-                <label>CONTACT NO <span class="required">*</span></label>
-                <input type="number" class="form-control" name="family_contact_no" id="family_contact_no"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group family_email">
-                <label>EMAIL </label>
-                <input type="email" class="form-control" name="family_email" id="family_email"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group insurance_notes">
-                <label>FAMILY REMARKS</label>
-                <textarea name="family_remarks" id="family_remarks" rows="2" class="form-control"></textarea>
-            </div>
-        </div>
-    </div>
-    <hr>
     <div class="family-information-table">
         <div class="row">
             <div class="col-12">
@@ -71,6 +10,80 @@
     </div>
 </div>
 
+@section('sc-modal')
+@parent
+<div class="sc-modal-content" id="family_information_form">
+    <div class="sc-modal-dialog sc-xl">
+        <div class="sc-modal-header">
+            <span class="sc-title-bar"></span>
+            <span class="sc-close" onclick="scion.create.sc_modal('family_information_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+        </div>
+        <div class="sc-modal-body">
+            <form method="post" id="familyinformationForm" class="form-record">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group family_fullname">
+                            <label>FULL NAME <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="family_fullname" id="family_fullname"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group family_birthdate">
+                            <label>BIRTHDATE <span class="required">*</span></label>
+                            <input type="date" class="form-control" name="family_birthdate" id="family_birthdate"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group family_relationship">
+                            <label>RELATIONSHIP <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="family_relationship" id="family_relationship"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group family_sex">
+                            <label>SEX <span class="required">*</span></label>
+                            <select name="family_sex" id="family_sex" class="form-control">
+                                <option value="MALE">MALE</option>
+                                <option value="FEMALE">FEMALE</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group family_citizenship">
+                            <label>CITIZENSHIP</label>
+                            <input type="text" class="form-control" name="family_citizenship" id="family_citizenship"/>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group family_address">
+                            <label>ADDRESS <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="family_address" id="family_address"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group family_contact_no">
+                            <label>CONTACT NO <span class="required">*</span></label>
+                            <input type="number" class="form-control" name="family_contact_no" id="family_contact_no"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group family_email">
+                            <label>EMAIL </label>
+                            <input type="email" class="form-control" name="family_email" id="family_email"/>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group insurance_notes">
+                            <label>FAMILY REMARKS</label>
+                            <textarea name="family_remarks" id="family_remarks" rows="2" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
 
 @section('styles')
 <style>

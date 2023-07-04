@@ -1,75 +1,5 @@
 <div id="family_medical_history_tab" class="form-tab">
     <h5>FAMILY MEDICAL HISTORY</h5>
-    <div style="padding: 1em;"></div>
-    <div class="row">
-        <div class="col-12">
-            <div class="form-group fm_relationship">
-                <label>RELATIONSHIP</label>
-                <input type="text" class="form-control" name="fm_relationship" id="fm_relationship"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group fm_medical_condition">
-                <label>MEDICAL CONDITION <span class="required">*</span></label>
-                <input type="text" class="form-control" name="fm_medical_condition" id="fm_medical_condition"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group fm_age_at_diagnosis">
-                <label>AGE AT DIAGNOSIS <span class="required">*</span></label>
-                <input type="number" class="form-control" name="fm_age_at_diagnosis" id="fm_age_at_diagnosis"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group fm_age_at_death">
-                <label>AGE AT DEATH <span class="required">*</span></label>
-                <input type="number" class="form-control" name="fm_age_at_death" id="fm_age_at_death"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group fm_cause_of_death">
-                <label>CAUSE OF DEATH <span class="required">*</span></label>
-                <input type="text" class="form-control" name="fm_cause_of_death" id="fm_cause_of_death"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group fm_other_relevant_medical_history">
-                <label>OTHER RELEVANT MEDICAL HISTORY <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="fm_other_relevant_medical_history" id="fm_other_relevant_medical_history"></textarea>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group fm_family_history_of_specific_conditions">
-                <label>FAMILY HISTORY OF SPECIFIC CONDITIONS <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="fm_family_history_of_specific_conditions" id="fm_family_history_of_specific_conditions"></textarea>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group fm_ethnicity">
-                <label>ETHNICITY <span class="required">*</span></label>
-                <input type="text" class="form-control" name="fm_ethnicity" id="fm_ethnicity"/>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group fm_lifestyle_factors">
-                <label>LIFESTYLE FACTORS <span class="required">*</span></label>
-                <input type="text" class="form-control" name="fm_lifestyle_factors" id="fm_lifestyle_factors"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group fm_other_family_members_affected">
-                <label>OTHER FAMILY MEMBERS AFFECTED <span class="required">*</span></label>
-                <input type="text" class="form-control" name="fm_other_family_members_affected" id="fm_other_family_members_affected"/>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group fm_remarks">
-                <label>REMARKS <span class="required">*</span></label>
-                <textarea type="text" class="form-control" name="fm_remarks" id="fm_remarks"></textarea>
-            </div>
-        </div>
-    </div>
-    <hr>
     <div class="family-medical-history-table">
         <div class="row">
             <div class="col-12">
@@ -80,6 +10,89 @@
     </div>
 </div>
 
+@section('sc-modal')
+@parent
+<div class="sc-modal-content" id="family_medical_history_form">
+    <div class="sc-modal-dialog sc-xl">
+        <div class="sc-modal-header">
+            <span class="sc-title-bar"></span>
+            <span class="sc-close" onclick="scion.create.sc_modal('family_medical_history_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+        </div>
+        <div class="sc-modal-body">
+            <form method="post" id="familymedicalhistoryForm" class="form-record">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group fm_relationship">
+                            <label>RELATIONSHIP</label>
+                            <input type="text" class="form-control" name="fm_relationship" id="fm_relationship"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group fm_medical_condition">
+                            <label>MEDICAL CONDITION <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="fm_medical_condition" id="fm_medical_condition"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group fm_age_at_diagnosis">
+                            <label>AGE AT DIAGNOSIS <span class="required">*</span></label>
+                            <input type="number" class="form-control" name="fm_age_at_diagnosis" id="fm_age_at_diagnosis"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group fm_age_at_death">
+                            <label>AGE AT DEATH <span class="required">*</span></label>
+                            <input type="number" class="form-control" name="fm_age_at_death" id="fm_age_at_death"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group fm_cause_of_death">
+                            <label>CAUSE OF DEATH <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="fm_cause_of_death" id="fm_cause_of_death"/>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group fm_other_relevant_medical_history">
+                            <label>OTHER RELEVANT MEDICAL HISTORY <span class="required">*</span></label>
+                            <textarea type="text" class="form-control" name="fm_other_relevant_medical_history" id="fm_other_relevant_medical_history"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group fm_family_history_of_specific_conditions">
+                            <label>FAMILY HISTORY OF SPECIFIC CONDITIONS <span class="required">*</span></label>
+                            <textarea type="text" class="form-control" name="fm_family_history_of_specific_conditions" id="fm_family_history_of_specific_conditions"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group fm_ethnicity">
+                            <label>ETHNICITY <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="fm_ethnicity" id="fm_ethnicity"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group fm_lifestyle_factors">
+                            <label>LIFESTYLE FACTORS <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="fm_lifestyle_factors" id="fm_lifestyle_factors"/>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group fm_other_family_members_affected">
+                            <label>OTHER FAMILY MEMBERS AFFECTED <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="fm_other_family_members_affected" id="fm_other_family_members_affected"/>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group fm_remarks">
+                            <label>REMARKS <span class="required">*</span></label>
+                            <textarea type="text" class="form-control" name="fm_remarks" id="fm_remarks"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
 
 @section('styles')
 <style>

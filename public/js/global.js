@@ -57,7 +57,7 @@ var scion = {
                         scion.create.modal().hide();
                     }
                     else if(module_type === "transaction") {
-                        scion.centralized_button(false, false, false, true);
+                        scion.centralized_button(false, false, false, false);
                     }
 
                     form_data = {};
@@ -85,7 +85,7 @@ var scion = {
                         scion.create.modal().hide();
                     }
                     else if(module_type === "transaction") {
-                        scion.centralized_button(false, false, false, true);
+                        scion.centralized_button(false, false, false, false);
                     }
 
                     form_data = {};
@@ -141,7 +141,14 @@ var scion = {
                                     }
                                     else {
                                         $('#'+k).val(v);
+
+                                        // Custom code
+                                        if(k === 'patient_id') {
+                                            $('#barcode').attr('src', 'https://api.qrserver.com/v1/create-qr-code/?data=' + v + '&amp;size=50x50');
+                                        }
+
                                     }
+                           
                                 }
                                 else {
                                     if(typeof v === 'object' && v !== null) {
@@ -158,10 +165,13 @@ var scion = {
                                                 }
                                                 else {
                                                     $('#'+k).val(v);
+
                                                 }
                                             }
+
                                         });
                                     }
+
                                 }
                             });
                         });

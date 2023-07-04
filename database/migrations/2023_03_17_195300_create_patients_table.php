@@ -17,6 +17,7 @@ class CreatePatientsTable extends Migration
             $table->bigIncrements('id');
             $table->string('patient_id');
             $table->string('profile_img');
+            $table->string('qr_code');
             $table->text('status');
             $table->string('firstname');
             $table->string('middlename')->nullable();

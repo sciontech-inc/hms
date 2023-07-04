@@ -1,20 +1,28 @@
+var additional_id = null;
 $(function() {
     module_content = 'patients';
+    modal_content = 'patients';
     module_url = '/hms/patients';
     module_url_2 = '/hris/employee-information';
     tab_active = 'general';
     page_title = "";
     actions = 'save';
-    module_type = 'transaction';
-
+    module_type = 'custom';
+    
     scion.centralized_button(true, false, true, true);
     scion.action.tab(tab_active);
+
+    // general_func();
 
     $("#profile_img").cropzee({
         allowedInputs: ['png','jpg','jpeg']
     });
-});
 
+    $('#patient_id').change(function() {
+        console.log('hello');
+    });
+
+});
 
 
 // DEFAULT FUNCTION
@@ -34,36 +42,47 @@ function success(record) {
             switch(module_content) {
                 case 'patient-insurance':
                     $('#patient_insurance_table').DataTable().draw();
+                    scion.create.sc_modal('patient_insurance_form').hide('all', modalHideFunction);
                     break;
                 case 'family-information':
                     $('#family_information_table').DataTable().draw();
+                    scion.create.sc_modal('family_information_form').hide('all', modalHideFunction);
                     break;
                 case 'medical-cases':
                     $('#medical_cases_table').DataTable().draw();
+                    scion.create.sc_modal('medical_cases_form').hide('all', modalHideFunction);
                     break;
                 case 'medicine-taken':
                     $('#medicine_taken_table').DataTable().draw();
+                    scion.create.sc_modal('medicine_taken_form').hide('all', modalHideFunction);
                     break;
                 case 'procedures-undertaken':
                     $('#procedures_undertaken_table').DataTable().draw();
+                    scion.create.sc_modal('procedures_undertaken_form').hide('all', modalHideFunction);
                     break;
                 case 'patient-allergies':
                     $('#patient_allergies_table').DataTable().draw();
+                    scion.create.sc_modal('patient_allergies_form').hide('all', modalHideFunction);
                     break;
                 case 'progress-consultation':
                     $('#progress_consultation_table').DataTable().draw();
+                    scion.create.sc_modal('progress_consultation_form').hide('all', modalHideFunction);
                     break;
                 case 'vital-measurement':
                     $('#vital_measurement_table').DataTable().draw();
+                    scion.create.sc_modal('vital_measurement_form').hide('all', modalHideFunction);
                     break;
                 case 'family-medical-history':
                     $('#family_medical_history_table').DataTable().draw();
+                    scion.create.sc_modal('family_medical_history_form').hide('all', modalHideFunction);
                     break;
                 case 'social-history':
                     $('#social_history_table').DataTable().draw();
+                    scion.create.sc_modal('social_history_form').hide('all', modalHideFunction);
                     break;
                 case 'other-information':
                     $('#other_information_table').DataTable().draw();
+                    scion.create.sc_modal('other_information_form').hide('all', modalHideFunction);
                     break;
     }
             
@@ -83,8 +102,73 @@ function delete_success() {
             scion.centralized_button(true, false, true, true);
 
             break;
+        case 'patient-insurance':
+            $('#patient_insurance_table').DataTable().draw();
+            actions = 'save';
+            scion.centralized_button(true, false, true, true);
+
+            break;
+        case 'family-information':
+            $('#family_information_table').DataTable().draw();
+            actions = 'save';
+            scion.centralized_button(true, false, true, true);
+
+            break;
+        case 'medical-cases':
+            $('#medical_cases_table').DataTable().draw();
+            actions = 'save';
+            scion.centralized_button(true, false, true, true);
+
+            break;
+        case 'medicine-taken':
+            $('#medicine_taken_table').DataTable().draw();
+            actions = 'save';
+            scion.centralized_button(true, false, true, true);
+
+            break;
+        case 'procedures-undertaken':
+            $('#procedures_undertaken_table').DataTable().draw();
+            actions = 'save';
+            scion.centralized_button(true, false, true, true);
+
+            break;
+        case 'patient-allergies':
+            $('#patient_allergies_table').DataTable().draw();
+            actions = 'save';
+            scion.centralized_button(true, false, true, true);
+
+            break;
+        case 'progress-consultation':
+            $('#progress_consultation_table').DataTable().draw();
+            actions = 'save';
+            scion.centralized_button(true, false, true, true);
+
+            break;
+        case 'vital-measurement':
+            $('#vital_measurement_table').DataTable().draw();
+            actions = 'save';
+            scion.centralized_button(true, false, true, true);
+
+            break;
+        case 'family-medical-history':
+            $('#family_medical_history_table').DataTable().draw();
+            actions = 'save';
+            scion.centralized_button(true, false, true, true);
+
+            break;
+        case 'social-history':
+            $('#social_history_table').DataTable().draw();
+            actions = 'save';
+            scion.centralized_button(true, false, true, true);
+
+            break;
+        case 'other-information':
+            $('#other_information_table').DataTable().draw();
+            actions = 'save';
+            scion.centralized_button(true, false, true, true);
+
+            break;
             
-     
     }
 
 }
@@ -94,6 +178,7 @@ function delete_error() {}
 function generateData() {
     switch(module_content) {
         case 'patients':
+
             form_data = {
                 _token: _token,
                 firstname: $('#firstname').val(),
@@ -129,163 +214,199 @@ function generateData() {
                 zip_code_2 : $('#zip_code_2').val(),
                 status: $('#status').val(),
                 profile_img: ($('#profile_img').val() !== ''?cropzeeGetImage('profile_img'):'')
+                
             };
-                break;
-            case 'patient-insurance':
-                form_data = {
-                    _token: _token,
-                    patient_id: record_id,
-                    provider: $('#provider').val(),
-                    type: $('#type').val(),
-                    policy_no: $('#policy_no').val(),
-                    group_policy_no: $('#group_policy_no').val(),
-                    insurance_notes: $('#insurance_notes').val(),
+
+
+            break;
+        case 'patient-insurance':
+            form_data = {
+                _token: _token,
+                patient_id: additional_id,
+                provider: $('#provider').val(),
+                type: $('#type').val(),
+                policy_no: $('#policy_no').val(),
+                group_policy_no: $('#group_policy_no').val(),
+                insurance_notes: $('#insurance_notes').val(),
             };
-                break;
-            case 'family-information':
-                form_data = {
-                    _token: _token,
-                    patient_id: record_id,
-                    family_fullname: $('#family_fullname').val(),
-                    family_birthdate: $('#family_birthdate').val(),
-                    family_relationship: $('#family_relationship').val(),
-                    family_sex: $('#family_sex').val(),
-                    family_citizenship: $('#family_citizenship').val(),
-                    family_address: $('#family_address').val(),
-                    family_contact_no: $('#family_contact_no').val(),
-                    family_email: $('#family_email').val(),
-                    family_remarks	: $('#family_remarks').val(),
+
+            actions = 'update';
+
+            break;
+        case 'family-information':
+            form_data = {
+                _token: _token,
+                patient_id: additional_id,
+                family_fullname: $('#family_fullname').val(),
+                family_birthdate: $('#family_birthdate').val(),
+                family_relationship: $('#family_relationship').val(),
+                family_sex: $('#family_sex').val(),
+                family_citizenship: $('#family_citizenship').val(),
+                family_address: $('#family_address').val(),
+                family_contact_no: $('#family_contact_no').val(),
+                family_email: $('#family_email').val(),
+                family_remarks	: $('#family_remarks').val(),
             };
+
+            actions = 'update';
+
+            break;
+        case 'medical-cases':
+            form_data = {
+                _token: _token,
+                patient_id: additional_id,
+                date_recorded: $('#date_recorded').val(),
+                chief_complaint: $('#chief_complaint').val(),
+                diagnostic_tests: $('#diagnostic_tests').val(),
+                diagnosis: $('#diagnosis').val(),
+                prognosis: $('#prognosis').val(),
+                physician_notes: $('#physician_notes').val(),
+                nursing_notes: $('#nursing_notes').val(),
+                discharge_summary: $('#discharge_summary').val(),
+                medical_case_remarks: $('#medical_case_remarks').val(),
+            };
+
+            actions = 'update';
+
                 break;
-            case 'medical-cases':
-                form_data = {
-                    _token: _token,
-                    patient_id: record_id,
-                    date_recorded: $('#date_recorded').val(),
-                    chief_complaint: $('#chief_complaint').val(),
-                    diagnostic_tests: $('#diagnostic_tests').val(),
-                    diagnosis: $('#diagnosis').val(),
-                    prognosis: $('#prognosis').val(),
-                    physician_notes: $('#physician_notes').val(),
-                    nursing_notes: $('#nursing_notes').val(),
-                    discharge_summary: $('#discharge_summary').val(),
-                    medical_case_remarks: $('#medical_case_remarks').val(),
-                };
-                    break;
-            case 'medicine-taken':
-                form_data = {
-                    _token: _token,
-                    patient_id: record_id,
-                    medicine_name: $('#medicine_name').val(),
-                    medicine_doses: $('#medicine_doses').val(),
-                    routes_of_administration: $('#routes_of_administration').val(),
-                    medicine_type: $('#medicine_type').val(),
-                    medicine_duration: $('#medicine_duration').val(),
-                    medicine_reason: $('#medicine_reason').val(),
-                    medicine_compliance: $('#medicine_compliance').val(),
-                    medicine_remarks: $('#medicine_remarks').val(),
-                };
-                    break;
-            case 'procedures-undertaken':
-                form_data = {
-                    _token: _token,
-                    patient_id: record_id,
-                    procedure_date: $('#procedure_date').val(),
-                    procedure_name: $('#procedure_name').val(),
-                    procedure_description: $('#procedure_description').val(),
-                    procedure_reason: $('#procedure_reason').val(),
-                    procedure_results: $('#procedure_results').val(),
-                    pre_procedure_preparation: $('#pre_procedure_preparation').val(),
-                    post_procedure_preparation: $('#post_procedure_preparation').val(),
-                    procedure_complications: $('#procedure_complications').val(),
-                    procedure_sedation_used: $('#procedure_sedation_used').val(),
-                    procedure_remarks: $('#procedure_remarks').val(),
+        case 'medicine-taken':
+            form_data = {
+                _token: _token,
+                patient_id: additional_id,
+                medicine_name: $('#medicine_name').val(),
+                medicine_doses: $('#medicine_doses').val(),
+                routes_of_administration: $('#routes_of_administration').val(),
+                medicine_type: $('#medicine_type').val(),
+                medicine_duration: $('#medicine_duration').val(),
+                medicine_reason: $('#medicine_reason').val(),
+                medicine_compliance: $('#medicine_compliance').val(),
+                medicine_remarks: $('#medicine_remarks').val(),
+            };
 
-                };
-                    break;
-            case 'patient-allergies':
-                form_data = {
-                    _token: _token,
-                    patient_id: record_id,
-                    allergy_allergen: $('#allergy_allergen').val(),
-                    allergy_reaction: $('#allergy_reaction').val(),
-                    allergy_severity: $('#allergy_severity').val(),
-                    allergy_date_of_onset: $('#allergy_date_of_onset').val(),
-                    allergy_treatment: $('#allergy_treatment').val(),
-                    allergy_duration: $('#allergy_duration').val(),
-                    source_of_information: $('#source_of_information').val(),
-                    known_cross_reactives: $('#known_cross_reactives').val(),
-                    current_management_plan: $('#current_management_plan').val(),
-                    medications_to_avoid: $('#medications_to_avoid').val(),
-                    severity_of_reaction: $('#severity_of_reaction').val(),
-                    allergy_anaphylaxis: $('#allergy_anaphylaxis').val(),
-                    allergy_testing: $('#allergy_testing').val(),
-                    other_relevant_medical_history: $('#other_relevant_medical_history').val(),
+            actions = 'update';
 
-                };
-                    break;
-            case 'progress-consultation':
-                form_data = {
-                    _token: _token,
-                    patient_id: record_id,
-                    progress_date: $('#progress_date').val(),
-                    progress_title: $('#progress_title').val(),
-                    progress_notes: $('#progress_notes').val(),
+                break;
+        case 'procedures-undertaken':
+            form_data = {
+                _token: _token,
+                patient_id: additional_id,
+                procedure_date: $('#procedure_date').val(),
+                procedure_name: $('#procedure_name').val(),
+                procedure_description: $('#procedure_description').val(),
+                procedure_reason: $('#procedure_reason').val(),
+                procedure_results: $('#procedure_results').val(),
+                pre_procedure_preparation: $('#pre_procedure_preparation').val(),
+                post_procedure_preparation: $('#post_procedure_preparation').val(),
+                procedure_complications: $('#procedure_complications').val(),
+                procedure_sedation_used: $('#procedure_sedation_used').val(),
+                procedure_remarks: $('#procedure_remarks').val(),
 
-                };
-                    break;
-            case 'vital-measurement':
-                form_data = {
-                    _token: _token,
-                    patient_id: record_id,
-                    vital_date: $('#vital_date').val(),
-                    vital_time: $('#vital_time').val(),
-                    blood_pressure: $('#blood_pressure').val(),
-                    heart_rate: $('#heart_rate').val(),
-                    temperature: $('#temperature').val(),
-                    respiratory_rate: $('#respiratory_rate').val(),
-                    oxygen_saturation: $('#oxygen_saturation').val(),
-                    pulse_rate: $('#pulse_rate').val(),
-                    vital_remarks: $('#vital_remarks').val(),
+            };
 
-                };
-                    break;
-            case 'family-medical-history':
-                form_data = {
-                    _token: _token,
-                    patient_id: record_id,
-                    fm_relationship: $('#fm_relationship').val(),
-                    fm_medical_condition: $('#fm_medical_condition').val(),
-                    fm_age_at_diagnosis: $('#fm_age_at_diagnosis').val(),
-                    fm_age_at_death: $('#fm_age_at_death').val(),
-                    fm_cause_of_death: $('#fm_cause_of_death').val(),
-                    fm_other_relevant_medical_history: $('#fm_other_relevant_medical_history').val(),
-                    fm_family_history_of_specific_conditions: $('#fm_family_history_of_specific_conditions').val(),
-                    fm_ethnicity: $('#fm_ethnicity').val(),
-                    fm_lifestyle_factors: $('#fm_lifestyle_factors').val(),
-                    fm_other_family_members_affected: $('#fm_other_family_members_affected').val(),
-                    fm_remarks: $('#fm_remarks').val(),
+            actions = 'update';
 
-                };
-                    break;
-            case 'social-history':
-                form_data = {
-                    _token: _token,
-                    patient_id: record_id,
-                    sh_record: $('#sh_record').val(),
-                    sh_category: $('#sh_category').val(),
-                    sh_details: $('#sh_details').val(),
-                    
-                };
-                    break;
-            case 'other-information':
-                form_data = {
-                    _token: _token,
-                    patient_id: record_id,
-                    oi_description: $('#oi_description').val(),
-                    oi_remarks: $('#oi_remarks').val(),
-                };
-                    break;
+                break;
+        case 'patient-allergies':
+            form_data = {
+                _token: _token,
+                patient_id: additional_id,
+                allergy_allergen: $('#allergy_allergen').val(),
+                allergy_reaction: $('#allergy_reaction').val(),
+                allergy_severity: $('#allergy_severity').val(),
+                allergy_date_of_onset: $('#allergy_date_of_onset').val(),
+                allergy_treatment: $('#allergy_treatment').val(),
+                allergy_duration: $('#allergy_duration').val(),
+                source_of_information: $('#source_of_information').val(),
+                known_cross_reactives: $('#known_cross_reactives').val(),
+                current_management_plan: $('#current_management_plan').val(),
+                medications_to_avoid: $('#medications_to_avoid').val(),
+                severity_of_reaction: $('#severity_of_reaction').val(),
+                allergy_anaphylaxis: $('#allergy_anaphylaxis').val(),
+                allergy_testing: $('#allergy_testing').val(),
+                other_relevant_medical_history: $('#other_relevant_medical_history').val(),
+
+            };
+
+            actions = 'update';
+
+                break;
+        case 'progress-consultation':
+            form_data = {
+                _token: _token,
+                patient_id: additional_id,
+                progress_date: $('#progress_date').val(),
+                progress_title: $('#progress_title').val(),
+                progress_notes: $('#progress_notes').val(),
+
+            };
+
+            actions = 'update';
+
+                break;
+        case 'vital-measurement':
+            form_data = {
+                _token: _token,
+                patient_id: additional_id,
+                vital_date: $('#vital_date').val(),
+                vital_time: $('#vital_time').val(),
+                blood_pressure: $('#blood_pressure').val(),
+                heart_rate: $('#heart_rate').val(),
+                temperature: $('#temperature').val(),
+                respiratory_rate: $('#respiratory_rate').val(),
+                oxygen_saturation: $('#oxygen_saturation').val(),
+                pulse_rate: $('#pulse_rate').val(),
+                vital_remarks: $('#vital_remarks').val(),
+
+            };
+
+            actions = 'update';
+
+                break;
+        case 'family-medical-history':
+            form_data = {
+                _token: _token,
+                patient_id: additional_id,
+                fm_relationship: $('#fm_relationship').val(),
+                fm_medical_condition: $('#fm_medical_condition').val(),
+                fm_age_at_diagnosis: $('#fm_age_at_diagnosis').val(),
+                fm_age_at_death: $('#fm_age_at_death').val(),
+                fm_cause_of_death: $('#fm_cause_of_death').val(),
+                fm_other_relevant_medical_history: $('#fm_other_relevant_medical_history').val(),
+                fm_family_history_of_specific_conditions: $('#fm_family_history_of_specific_conditions').val(),
+                fm_ethnicity: $('#fm_ethnicity').val(),
+                fm_lifestyle_factors: $('#fm_lifestyle_factors').val(),
+                fm_other_family_members_affected: $('#fm_other_family_members_affected').val(),
+                fm_remarks: $('#fm_remarks').val(),
+
+            };
+
+            actions = 'update';
+
+                break;
+        case 'social-history':
+            form_data = {
+                _token: _token,
+                patient_id: additional_id,
+                sh_record: $('#sh_record').val(),
+                sh_category: $('#sh_category').val(),
+                sh_details: $('#sh_details').val(),
+                
+            };
+
+            actions = 'update';
+
+                break;
+        case 'other-information':
+            form_data = {
+                _token: _token,
+                patient_id: additional_id,
+                oi_description: $('#oi_description').val(),
+                oi_remarks: $('#oi_remarks').val(),
+            };
+
+            actions = 'update';
+
+                break;
     }
 
     return form_data;
@@ -313,20 +434,17 @@ function general_func() {
 }
 
 
-function modalShowFunction() {
-    scion.centralized_button(true, false, true, true);
-}
-
-function modalHideFunction() {
-    scion.centralized_button(false, true, true, true);
-}
-
 function patient_insurance_func() {
+
+    modal_content = 'patient_insurance';
     module_content = 'patient-insurance';
     module_url = '/hms/patient-insurance';
     actions = 'update';
-    module_type = 'sub_transaction';
-    scion.centralized_button(true, false, true, true);
+    module_type = 'custom';
+
+    scion.centralized_button(false, true, true, true);
+
+
 
     if ($.fn.DataTable.isDataTable('#patient_insurance_table')) {
         $('#patient_insurance_table').DataTable().destroy();
@@ -339,6 +457,7 @@ function patient_insurance_func() {
             { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
                 var html = "";
                 html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+module_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
                 return html;
             }},
             { data: "provider", title: "PROVIDER" },
@@ -348,14 +467,19 @@ function patient_insurance_func() {
             { data: "insurance_notes", title: "NOTES" },
         ], 'Bfrtip', []
     );
+    
 }
 
 function family_information_func() {
+
+    modal_content = 'family_information';
     module_content = 'family-information';
     module_url = '/hms/family-information';
     actions = 'update';
-    module_type = 'sub_transaction';
-    scion.centralized_button(true, false, true, true);
+    module_type = 'custom';
+    
+
+    scion.centralized_button(false, true, true, true);
 
     if ($.fn.DataTable.isDataTable('#family_information_table')) {
         $('#family_information_table').DataTable().destroy();
@@ -365,6 +489,12 @@ function family_information_func() {
         'family_information_table',
         module_url + '/get/' + record_id,
         [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+module_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
             { data: "family_fullname", title: "FULL NAME" },
             { data: "family_birthdate", title: "BIRTHDATE" },
             { data: "family_relationship", title: "RELATIONSHIP" },
@@ -374,11 +504,15 @@ function family_information_func() {
 }
 
 function medical_cases_func() {
+
+    modal_content = 'medical_cases';
     module_content = 'medical-cases';
     module_url = '/hms/medical-cases';
     actions = 'update';
-    module_type = 'sub_transaction';
-    scion.centralized_button(true, false, true, true);
+    module_type = 'custom';
+    
+
+    scion.centralized_button(false, true, true, true);
 
     if ($.fn.DataTable.isDataTable('#medical_cases_table')) {
         $('#medical_cases_table').DataTable().destroy();
@@ -388,6 +522,12 @@ function medical_cases_func() {
         'medical_cases_table',
         module_url + '/get/' + record_id,
         [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+module_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
             { data: "date_recorded", title: "DATE RECORDED" },
             { data: "chief_complaint", title: "CHIEF COMPLAINT" },
             { data: "diagnosis", title: "DIAGNOSIS" },
@@ -399,11 +539,15 @@ function medical_cases_func() {
 }
 
 function medicine_taken_func() {
+
+    modal_content = 'medicine_taken';
     module_content = 'medicine-taken';
     module_url = '/hms/medicine-taken';
     actions = 'update';
-    module_type = 'sub_transaction';
-    scion.centralized_button(true, false, true, true);
+    module_type = 'custom';
+    
+
+    scion.centralized_button(false, true, true, true);
 
     if ($.fn.DataTable.isDataTable('#medicine_taken_table')) {
         $('#medicine_taken_table').DataTable().destroy();
@@ -413,6 +557,12 @@ function medicine_taken_func() {
         'medicine_taken_table',
         module_url + '/get/' + record_id,
         [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+module_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
             { data: "medicine_name", title: "MEDICINE NAME" },
             { data: "medicine_doses", title: "MEDICINE DOSES" },
             { data: "medicine_type", title: "MEDICINE TYPE" },
@@ -424,11 +574,15 @@ function medicine_taken_func() {
 }
 
 function procedures_undertaken_func() {
+
+    modal_content = 'procedures_undertaken';
     module_content = 'procedures-undertaken';
     module_url = '/hms/procedures-undertaken';
     actions = 'update';
-    module_type = 'sub_transaction';
-    scion.centralized_button(true, false, true, true);
+    module_type = 'custom';
+    
+
+    scion.centralized_button(false, true, true, true);
 
     if ($.fn.DataTable.isDataTable('#procedures_undertaken_table')) {
         $('#procedures_undertaken_table').DataTable().destroy();
@@ -438,6 +592,12 @@ function procedures_undertaken_func() {
         'procedures_undertaken_table',
         module_url + '/get/' + record_id,
         [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+module_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
             { data: "procedure_date", title: "PROCEDURE DATE" },
             { data: "procedure_name", title: "PROCEDURE NAME" },
             { data: "procedure_reason", title: "PROCEDURE REASON" },
@@ -449,11 +609,15 @@ function procedures_undertaken_func() {
 }
 
 function patient_allergies_func() {
+
+    modal_content = 'patient_allergies';
     module_content = 'patient-allergies';
     module_url = '/hms/patient-allergies';
     actions = 'update';
-    module_type = 'sub_transaction';
-    scion.centralized_button(true, false, true, true);
+    module_type = 'custom';
+    
+
+    scion.centralized_button(false, true, true, true);
 
     if ($.fn.DataTable.isDataTable('#patient_allergies_table')) {
         $('#patient_allergies_table').DataTable().destroy();
@@ -463,6 +627,12 @@ function patient_allergies_func() {
         'patient_allergies_table',
         module_url + '/get/' + record_id,
         [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+module_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
             { data: "allergy_allergen", title: "PROCEDURE DATE" },
             { data: "allergy_reaction", title: "PROCEDURE NAME" },
             { data: "allergy_severity", title: "PROCEDURE REASON" },
@@ -476,11 +646,15 @@ function patient_allergies_func() {
 }
 
 function progress_consultation_func() {
+
+    modal_content = 'progress_consultation';
     module_content = 'progress-consultation';
     module_url = '/hms/progress-consultation';
     actions = 'update';
-    module_type = 'sub_transaction';
-    scion.centralized_button(true, false, true, true);
+    module_type = 'custom';
+    
+
+    scion.centralized_button(false, true, true, true);
 
     if ($.fn.DataTable.isDataTable('#progress_consultation_table')) {
         $('#progress_consultation_table').DataTable().destroy();
@@ -490,6 +664,12 @@ function progress_consultation_func() {
         'progress_consultation_table',
         module_url + '/get/' + record_id,
         [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+module_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
             { data: "progress_date", title: "PROGRESS DATE" },
             { data: "progress_title", title: "PROGRESS TITLE" },
             { data: "progress_notes", title: "PROGRESS NOTES" },
@@ -499,11 +679,16 @@ function progress_consultation_func() {
 }
 
 function vital_measurement_func() {
+
+    modal_content = 'vital_measurement';
     module_content = 'vital-measurement';
     module_url = '/hms/vital-measurement';
     actions = 'update';
-    module_type = 'sub_transaction';
-    scion.centralized_button(true, false, true, true);
+    module_type = 'custom';
+    
+
+    scion.centralized_button(false, true, true, true);
+
 
     if ($.fn.DataTable.isDataTable('#vital_measurement_table')) {
         $('#vital_measurement_table').DataTable().destroy();
@@ -513,6 +698,12 @@ function vital_measurement_func() {
         'vital_measurement_table',
         module_url + '/get/' + record_id,
         [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+module_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
             { data: "vital_date", title: "PROGRESS DATE" },
             { data: "vital_time", title: "VITAL TIME" },
             { data: "blood_pressure", title: "PROGRESS TITLE" },
@@ -527,11 +718,15 @@ function vital_measurement_func() {
 }
 
 function family_medical_history_func() {
+
+    modal_content = 'family_medical_history';
     module_content = 'family-medical-history';
     module_url = '/hms/family-medical-history';
     actions = 'update';
-    module_type = 'sub_transaction';
-    scion.centralized_button(true, false, true, true);
+    module_type = 'custom';
+    
+
+    scion.centralized_button(false, true, true, true);
 
     if ($.fn.DataTable.isDataTable('#family_medical_history_table')) {
         $('#family_medical_history_table').DataTable().destroy();
@@ -541,6 +736,12 @@ function family_medical_history_func() {
         'family_medical_history_table',
         module_url + '/get/' + record_id,
         [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+module_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
             { data: "fm_relationship", title: "RELATIONSHIP" },
             { data: "fm_medical_condition", title: "MEDICAL CONDITION" },
             { data: "fm_age_at_diagnosis", title: "AGE AT DIAGNOSIS" },
@@ -555,11 +756,15 @@ function family_medical_history_func() {
 }
 
 function social_history_func() {
+
+    modal_content = 'social_history';
     module_content = 'social-history';
     module_url = '/hms/social-history';
     actions = 'update';
-    module_type = 'sub_transaction';
-    scion.centralized_button(true, false, true, true);
+    module_type = 'custom';
+    
+
+    scion.centralized_button(false, true, true, true);
 
     if ($.fn.DataTable.isDataTable('#social_history_table')) {
         $('#social_history_table').DataTable().destroy();
@@ -569,6 +774,12 @@ function social_history_func() {
         'social_history_table',
         module_url + '/get/' + record_id,
         [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+module_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
             { data: "sh_record", title: "RECORD" },
             { data: "sh_category", title: "CATEGORY" },
             { data: "sh_details", title: "DETAILS" },
@@ -578,11 +789,15 @@ function social_history_func() {
 }
 
 function other_information_func() {
+
+    modal_content = 'other_information';
     module_content = 'other-information';
     module_url = '/hms/other-information';
     actions = 'update';
-    module_type = 'sub_transaction';
-    scion.centralized_button(true, false, true, true);
+    module_type = 'custom';
+    
+
+    scion.centralized_button(false, true, true, true);
 
     if ($.fn.DataTable.isDataTable('#other_information_table')) {
         $('#other_information_table').DataTable().destroy();
@@ -592,9 +807,23 @@ function other_information_func() {
         'other_information_table',
         module_url + '/get/' + record_id,
         [
+            { data: "id", title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
+                var html = "";
+                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
+                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'/hms/"+module_content+"/edit/', "+ row.id +')"><i class="fas fa-pen"></i></a>';
+                return html;
+            }},
             { data: "oi_description", title: "RECORD" },
             { data: "oi_remarks", title: "CATEGORY" },
  
         ], 'Bfrtip', []
     );
+}
+
+function modalShowFunction() {
+    scion.centralized_button(true, false, true, true);
+}
+
+function modalHideFunction() {
+    scion.centralized_button(false, true, true, true);
 }

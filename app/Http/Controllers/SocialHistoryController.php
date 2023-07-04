@@ -10,6 +10,37 @@ use Auth;
 
 class SocialHistoryController extends Controller
 {
+    public function store(Request $request)
+    {
+
+        $validate = $request->validate([
+            'sh_record' => 'required',
+            'sh_category' => 'required',
+            'sh_details' => 'required',
+        ]);
+
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        SocialHistory::create($request->all());
+
+        return response()->json(compact('validate'));
+    }
+
+    public function edit($id)
+    {
+        $social_history = SocialHistory::where('id', $id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('social_history'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request['updated_by'] = Auth::user()->id;
+        SocialHistory::find($id)->update($request->all());
+        return "Record Saved";
+    }
+
     public function save(Request $request, $id) {
         $output = '';
 

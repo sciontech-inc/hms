@@ -6,6 +6,7 @@ use App\Traits\GlobalFunction;
 use App\Patients;
 use Illuminate\Http\Request;
 use Auth;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PatientsController extends Controller
 {
@@ -74,6 +75,8 @@ class PatientsController extends Controller
             'zip_code' => 'required',
         ]);
 
+        
+
 
         $request['patient_id'] = $this->series('PTNT', 'Patients');
 
@@ -84,6 +87,17 @@ class PatientsController extends Controller
                 $request['profile_img'] = "default.png";
             }
  
+        // $qrCodeData =  $request->patient_id; 
+
+
+        // $qrCode = QrCode::format('png')->size(300)->generate($qrCodeData);
+
+        // $fileName = $request->patient_id.'qr.png';
+        // $filePath = public_path('images/hms/patients/qr/' . $fileName);
+        // file_put_contents($filePath, $qrCode);
+
+        // $request['qr_code'] = $fileName; 
+
         $request['workstation_id'] = Auth::user()->workstation_id;
         $request['created_by'] = Auth::user()->id;
         $request['updated_by'] = Auth::user()->id;
@@ -124,13 +138,13 @@ class PatientsController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $request->validate([
-            'firstname' => 'required',
+            'firstname' => 'required|unique:patients,firstname,'.$request->id,
             'middlename' => 'required',
-            'lastname' => 'required',
+            'lastname' => 'required|unique:patients,lastname,'.$request->id,
             'birthdate' => 'required',
             'sex' => 'required',
             'citizenship' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:patients,email,'.$request->id,
             'birthplace' => 'required',
             'marital_status' => 'required',
             'body_marks' => 'required',

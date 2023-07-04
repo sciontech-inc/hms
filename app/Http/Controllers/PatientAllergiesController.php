@@ -10,6 +10,47 @@ use Auth;
 
 class PatientAllergiesController extends Controller
 {
+    public function store(Request $request)
+    {
+
+        $validate = $request->validate([
+            'allergy_allergen' => 'required',
+            'allergy_reaction' => 'required',
+            'allergy_severity' => 'required',
+            'allergy_date_of_onset' => 'required',
+            'allergy_treatment' => 'required',
+            'allergy_duration' => 'required',
+            'source_of_information' => 'required',
+            'known_cross_reactives' => 'required',
+            'current_management_plan' => 'required',
+            'medications_to_avoid' => 'required',
+            'severity_of_reaction' => 'required',
+            'allergy_anaphylaxis' => 'required',
+            'allergy_testing' => 'required',
+        ]);
+
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        PatientAllergies::create($request->all());
+
+        return response()->json(compact('validate'));
+    }
+
+    public function edit($id)
+    {
+        $patient_allergies = PatientAllergies::where('id', $id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('patient_allergies'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request['updated_by'] = Auth::user()->id;
+        PatientAllergies::find($id)->update($request->all());
+        return "Record Saved";
+    }
+
     public function save(Request $request, $id) {
         $output = '';
 

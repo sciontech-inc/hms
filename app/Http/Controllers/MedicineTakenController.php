@@ -9,6 +9,42 @@ use Auth;
 
 class MedicineTakenController extends Controller
 {
+    public function store(Request $request)
+    {
+
+        $validate = $request->validate([
+            'medicine_name' => 'required',
+            'medicine_doses' => 'required',
+            'routes_of_administration' => 'required',
+            'medicine_type' => 'required',
+            'medicine_duration' => 'required',
+            'medicine_reason' => 'required',
+            'medicine_compliance' => 'required',
+
+        ]);
+
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        MedicineTaken::create($request->all());
+
+        return response()->json(compact('validate'));
+    }
+
+    public function edit($id)
+    {
+        $medicine_taken = MedicineTaken::where('id', $id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('medicine_taken'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request['updated_by'] = Auth::user()->id;
+        MedicineTaken::find($id)->update($request->all());
+        return "Record Saved";
+    }
+
     public function save(Request $request, $id) {
         $output = '';
 

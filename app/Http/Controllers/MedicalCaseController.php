@@ -9,6 +9,41 @@ use Auth;
 
 class MedicalCaseController extends Controller
 {
+
+    public function store(Request $request)
+    {
+
+        $validate = $request->validate([
+            'date_recorded' => 'required',
+            'chief_complaint' => 'required',
+            'diagnostic_tests' => 'required',
+            'diagnosis' => 'required',
+            'prognosis' => 'required',
+            'discharge_summary' => 'required'
+        ]);
+
+        $request['workstation_id'] = Auth::user()->workstation_id;
+        $request['created_by'] = Auth::user()->id;
+        $request['updated_by'] = Auth::user()->id;
+
+        MedicalCase::create($request->all());
+
+        return response()->json(compact('validate'));
+    }
+
+    public function edit($id)
+    {
+        $medical_case = MedicalCase::where('id', $id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('medical_case'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request['updated_by'] = Auth::user()->id;
+        MedicalCase::find($id)->update($request->all());
+        return "Record Saved";
+    }
+
     public function save(Request $request, $id) {
         $output = '';
 
