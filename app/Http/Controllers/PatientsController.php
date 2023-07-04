@@ -52,30 +52,63 @@ class PatientsController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'firstname' => 'required',
-            'middlename' => 'required',
-            'lastname' => 'required',
-            'birthdate' => 'required',
-            'sex' => 'required',
-            'citizenship' => 'required',
-            'email' => 'required|unique:patients',
-            'birthplace' => 'required',
-            'marital_status' => 'required',
-            'body_marks' => 'required',
-            'nationality' => 'required',
-            'religion' => 'required',
-            'blood_type' => 'required',
-            'contact_number_1' => 'required',
-            'street_no' => 'required',
-            'barangay' => 'required',
-            'city' => 'required',
-            'province' => 'required',
-            'country' => 'required',
-            'zip_code' => 'required',
-        ]);
 
-        
+        $user_firstname = Patients::where('firstname', $request->firstname)->count();
+        $user_middlename = Patients::where('user_middlename', $request->user_middlename)->count();
+        $user_lastname = Patients::where('lastname', $request->lastname)->count();
+
+        if($user_firstname >= 1 && $user_middlename >= 1 && $user_lastname >= 1) {
+
+            $validate = $request->validate([
+                'firstname' => 'required|unique:patients',
+                'middlename' => 'required|unique:patients',
+                'lastname' => 'required|unique:patients',
+                'birthdate' => 'required',
+                'sex' => 'required',
+                'citizenship' => 'required',
+                'email' => 'required|unique:patients',
+                'birthplace' => 'required',
+                'marital_status' => 'required',
+                'body_marks' => 'required',
+                'nationality' => 'required',
+                'religion' => 'required',
+                'blood_type' => 'required',
+                'contact_number_1' => 'required',
+                'street_no' => 'required',
+                'barangay' => 'required',
+                'city' => 'required',
+                'province' => 'required',
+                'country' => 'required',
+                'zip_code' => 'required',
+            ]);
+    
+        }
+        else {
+            $validate = $request->validate([
+                'firstname' => 'required',
+                'middlename' => 'required',
+                'lastname' => 'required',
+                'birthdate' => 'required',
+                'sex' => 'required',
+                'citizenship' => 'required',
+                'email' => 'required|unique:patients',
+                'birthplace' => 'required',
+                'marital_status' => 'required',
+                'body_marks' => 'required',
+                'nationality' => 'required',
+                'religion' => 'required',
+                'blood_type' => 'required',
+                'contact_number_1' => 'required',
+                'street_no' => 'required',
+                'barangay' => 'required',
+                'city' => 'required',
+                'province' => 'required',
+                'country' => 'required',
+                'zip_code' => 'required',
+            ]);
+        }
+
+       
 
 
         $request['patient_id'] = $this->series('PTNT', 'Patients');
