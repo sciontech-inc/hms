@@ -51,7 +51,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
-
+        Yajra\Address\AddressServiceProvider::class,
+        
         /*
          * Package Service Providers...
          */

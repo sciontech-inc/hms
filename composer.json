@@ -17,6 +17,7 @@
         "pusher/pusher-php-server": "~3.0",
         "simplesoftwareio/simple-qrcode": "^1.0.3",
         "spatie/laravel-permission": "3.17",
+        "yajra/laravel-address": "*",
         "yajra/laravel-datatables": "^1.5"
     },
     "require-dev": {

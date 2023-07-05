@@ -136,6 +136,11 @@ class PatientsController extends Controller
         $request['updated_by'] = Auth::user()->id;
 
         $patient = Patients::create($request->all());
+
+        $last_record = array("id" => $patient->id, "patient_id" => $patient->patient_id);
+
+        return response()->json(compact('validate', 'last_record'));
+
     }
 
     /**

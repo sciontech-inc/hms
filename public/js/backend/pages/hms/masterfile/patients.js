@@ -7,7 +7,7 @@ $(function() {
     tab_active = 'general';
     page_title = "";
     actions = 'save';
-    module_type = 'custom';
+    module_type = 'transaction';
     
     scion.centralized_button(true, false, true, true);
     scion.action.tab(tab_active);
@@ -16,10 +16,6 @@ $(function() {
 
     $("#profile_img").cropzee({
         allowedInputs: ['png','jpg','jpeg']
-    });
-
-    $('#patient_id').change(function() {
-        console.log('hello');
     });
 
 });
@@ -33,6 +29,8 @@ function success(record) {
             $('#patient_id').val(record.patient_id);
 
             actions = 'update';
+
+            scion.centralized_button(false, false, true, true);
 
             $('.tab-list-menu-item ').removeAttr('disabled');
 
@@ -432,7 +430,13 @@ function general_func() {
         actions = 'update';
     }
 
-    scion.centralized_button(true, false, true, true);
+    if(actions == 'update') {
+        scion.centralized_button(false, false, true, true);
+    }
+    else {
+        scion.centralized_button(true, false, true, true);
+
+    }
 }
 
 

@@ -19,7 +19,7 @@
                 <div class="employee-picture">
                     <label>PATIENT'S QR CODE</label>
                     <div>
-                        <img id='barcode' alt="" title="HELLO" width="50" height="50" />
+                        <img id='barcode' src="/images/default.png" alt="" title="HELLO" width="50" height="50" />
                         <label for=""></label>
                     </div>
                 </div>
@@ -174,13 +174,13 @@
         <div class="col-6">
             <div class="form-group contact_number_1">
                 <label>CONTACT NUMBER 1 <span class="required">*</span></label>
-                <input type="text" class="form-control" name="contact_number_1" id="contact_number_1"/>
+                <input type="number" class="form-control" name="contact_number_1" id="contact_number_1"/>
             </div>
         </div>
         <div class="col-6">
             <div class="form-group contact_number_2">
                 <label>CONTACT NUMBER 2</label>
-                <input type="text" class="form-control" name="contact_number_2" id="contact_number_2"/>
+                <input type="number" class="form-control" name="contact_number_2" id="contact_number_2"/>
             </div>
         </div>
         <h3 class="col-12 form-title">ADDRESS 1</h3>
@@ -217,7 +217,7 @@
         <div class="col-4">
             <div class="form-group zip_code">
                 <label>ZIP CODE <span class="required">*</span></label>
-                <input type="text" class="form-control" name="zip_code" id="zip_code"/>
+                <input type="number" class="form-control" name="zip_code" id="zip_code"/>
             </div>
         </div>
 
@@ -255,7 +255,7 @@
         <div class="col-4">
             <div class="form-group zip_code_2">
                 <label>ZIP CODE</label>
-                <input type="text" class="form-control" name="zip_code_2" id="zip_code_2"/>
+                <input type="number" class="form-control" name="zip_code_2" id="zip_code_2"/>
             </div>
         </div>
     </div>
