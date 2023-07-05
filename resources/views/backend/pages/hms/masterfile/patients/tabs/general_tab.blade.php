@@ -199,7 +199,8 @@
         <div class="col-4">
             <div class="form-group city">
                 <label>CITY <span class="required">*</span></label>
-                <input type="text" class="form-control" name="city" id="city"/>
+                <select name="city" id="city"></select>
+                <!-- <input type="text" class="form-control" name="city" id="city"/> -->
             </div>
         </div>
         <div class="col-4">

@@ -18,6 +18,7 @@ $(function() {
         allowedInputs: ['png','jpg','jpeg']
     });
 
+
 });
 
 
@@ -25,6 +26,7 @@ $(function() {
 function success(record) {
     switch(actions) {
         case 'save':
+            
             record_id = record.id;
             $('#patient_id').val(record.patient_id);
 
@@ -447,9 +449,9 @@ function patient_insurance_func() {
     module_url = '/hms/patient-insurance';
     actions = 'update';
     module_type = 'custom';
+    additional_id = record_id;
 
     scion.centralized_button(false, true, true, true);
-
 
 
     if ($.fn.DataTable.isDataTable('#patient_insurance_table')) {
@@ -483,7 +485,7 @@ function family_information_func() {
     module_url = '/hms/family-information';
     actions = 'update';
     module_type = 'custom';
-    
+    additional_id = record_id;
 
     scion.centralized_button(false, true, true, true);
 
@@ -516,7 +518,7 @@ function medical_cases_func() {
     module_url = '/hms/medical-cases';
     actions = 'update';
     module_type = 'custom';
-    
+    additional_id = record_id;
 
     scion.centralized_button(false, true, true, true);
 
@@ -552,6 +554,7 @@ function medicine_taken_func() {
     actions = 'update';
     module_type = 'custom';
     
+    additional_id = record_id;
 
     scion.centralized_button(false, true, true, true);
 
@@ -587,6 +590,7 @@ function procedures_undertaken_func() {
     actions = 'update';
     module_type = 'custom';
     
+    additional_id = record_id;
 
     scion.centralized_button(false, true, true, true);
 
@@ -622,6 +626,7 @@ function patient_allergies_func() {
     actions = 'update';
     module_type = 'custom';
     
+    additional_id = record_id;
 
     scion.centralized_button(false, true, true, true);
 
@@ -659,6 +664,7 @@ function progress_consultation_func() {
     actions = 'update';
     module_type = 'custom';
     
+    additional_id = record_id;
 
     scion.centralized_button(false, true, true, true);
 
@@ -692,6 +698,7 @@ function vital_measurement_func() {
     actions = 'update';
     module_type = 'custom';
     
+    additional_id = record_id;
 
     scion.centralized_button(false, true, true, true);
 
@@ -731,6 +738,7 @@ function family_medical_history_func() {
     actions = 'update';
     module_type = 'custom';
     
+    additional_id = record_id;
 
     scion.centralized_button(false, true, true, true);
 
@@ -769,6 +777,7 @@ function social_history_func() {
     actions = 'update';
     module_type = 'custom';
     
+    additional_id = record_id;
 
     scion.centralized_button(false, true, true, true);
 
