@@ -31,6 +31,7 @@ function success(record) {
         case 'save':
             record_id = record.id;
             $('#patient_id').val(record.patient_id);
+
             actions = 'update';
 
             $('.tab-list-menu-item ').removeAttr('disabled');
@@ -181,6 +182,7 @@ function generateData() {
 
             form_data = {
                 _token: _token,
+                // patient_id: $('#patient_id').val(),
                 firstname: $('#firstname').val(),
                 middlename: $('#middlename').val(),
                 lastname: $('#lastname').val(),

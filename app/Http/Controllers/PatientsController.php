@@ -54,7 +54,7 @@ class PatientsController extends Controller
     {
 
         $user_firstname = Patients::where('firstname', $request->firstname)->count();
-        $user_middlename = Patients::where('user_middlename', $request->user_middlename)->count();
+        $user_middlename = Patients::where('middlename', $request->middlename)->count();
         $user_lastname = Patients::where('lastname', $request->lastname)->count();
 
         if($user_firstname >= 1 && $user_middlename >= 1 && $user_lastname >= 1) {

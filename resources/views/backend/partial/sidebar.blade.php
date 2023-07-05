@@ -75,6 +75,19 @@
             </li>
 
             <li class="sidebar-item">
+                <a href="#supplies_transaction" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-boxes"></i> <span class="align-middle">SUPPLIES INVENTORY</span>
+                    </span>
+                </a>
+                <ul id="supplies_transaction" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                    <li class="list-title">SUPPLIES INVENTORY</li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/hms/inventory">CREATE INVENTORY</a></li>
+                </ul>
+            </li>
+
+
+            <!-- <li class="sidebar-item">
                 <a href="#" data-toggle="collapse" class="sidebar-link collapsed">
                     <span class="item">
                         <i class="align-middle mr-2 fas fa-fw fa-bed"></i> <span class="align-middle">FACILITY</span>
@@ -268,8 +281,23 @@
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/billing">BILLING</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/hms/payment">PAYMENT</a></li>
                 </ul>
+            </li> -->
+
+            <li class="sidebar-header">
+                MAINTENANCE
             </li>
 
+            <li class="sidebar-item">
+                <a href="#supplies_maintenance" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="item">
+                        <i class="align-middle mr-2 fas fa-fw fa-boxes"></i> <span class="align-middle">SUPPLIES INVENTORY</span>
+                    </span>
+                </a>
+                <ul id="supplies_maintenance" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                    <li class="list-title">SUPPLIES INVENTORY</li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="/supplies_inventory/maintenance/suppliers">SUPPLIERS</a></li>
+                </ul>
+            </li>
 
             <li class="sidebar-header">
                 SETUP
